@@ -1,0 +1,104 @@
+#student {
+    width: 220px;
+    height: 150px;
+    padding: 15px;
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: blue;
+    border-radius: 10px;
+    margin: 20px;
+    margin-top: 15px;
+    margin-right: 20px;
+    margin-bottom: 15px;
+    margin-left: 20px;
+    background-color: lightblue;
+    text-align: center;
+}
+
+#employee {
+    width: 220px;
+    height: 150px;
+    padding: 15px;
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    border-width: 2px;
+    border-style: dashed;
+    border-color: green;
+    border-radius: 10px;
+    margin: 20px;
+    margin-top: 15px;
+    margin-right: 20px;
+    margin-bottom: 15px;
+    margin-left: 20px;
+    background-color: lightgreen;
+    text-align: center;
+}
+
+#product {
+    width: 220px;
+    height: 150px;
+    padding: 15px;
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: orange;
+    border-radius: 10px;
+    margin: 20px;
+    margin-top: 15px;
+    margin-right: 20px;
+    margin-bottom: 15px;
+    margin-left: 20px;
+    background-color: lightyellow;
+    text-align: center;
+}
+
+#movie {
+    width: 220px;
+    height: 150px;
+    padding: 15px;
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    border-width: 2px;
+    border-style: dotted;
+    border-color: purple;
+    border-radius: 10px;
+    margin: 20px;
+    margin-top: 15px;
+    margin-right: 20px;
+    margin-bottom: 15px;
+    margin-left: 20px;
+    background-color: lightpink;
+    text-align: center;
+}
+
+#company {
+    width: 220px;
+    height: 150px;
+    padding: 15px;
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 10px;
+    margin: 20px;
+    margin-top: 15px;
+    margin-right: 20px;
+    margin-bottom: 15px;
+    margin-left: 20px;
+    background-color: lightgray;
+    text-align: center;
+}

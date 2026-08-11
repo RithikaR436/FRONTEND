@@ -1,0 +1,20 @@
+h2 {
+    color: darkred;
+}
+
+.company {
+    background-color: lightyellow;
+    color: black;
+    width: 400px;
+    margin: 10px auto;
+    padding: 15px;
+}
+
+#main-heading {
+    background-color: navy;
+    color: white;
+    width: 400px;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+}

@@ -1,0 +1,16 @@
+.box {
+  display: flex;
+  justify-content: center; 
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100vh;
+  background-color: beige;
+}
+
+.child {
+  display: inline-block;
+  height: 100px;
+  width: 200px;
+  background-color: lightblue;
+  margin: 5px;
+}

@@ -1,0 +1,12 @@
+#image{
+     color:black;
+    width: 600px;
+    height: 600px;
+    padding: 15px;
+    margin: 30px;
+    border: 2px solid blue;
+    background-color: aquamarine;
+    text-align: center;
+    image-rendering: 50px;
+}
+  

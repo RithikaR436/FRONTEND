@@ -1,0 +1,84 @@
+<html>
+<head>
+    <title>Electronics Shop Inventory System</title>
+</head>
+<body>
+    <center>
+
+    <h1>Electronics Shop Inventory System</h1>
+
+    <h2>Product Registration Form</h2>
+    <form>
+        <label for="pid">Product ID:</label><br>
+        <input type="text" id="pid" name="pid"><br><br>
+
+        <label for="pname">Product Name:</label><br>
+        <input type="text" id="pname" name="pname"><br><br>
+
+        <label for="brand">Brand:</label><br>
+        <input type="text" id="brand" name="brand"><br><br>
+
+        <label for="category">Category:</label><br>
+        <select id="category" name="category">
+            <option value="Mobile">Mobile</option>
+            <option value="Laptop">Laptop</option>
+            <option value="TV">TV</option>
+            <option value="Headphones">Headphones</option>
+            <option value="Home Appliances">Home Appliances</option>
+            <option value="Accessories">Accessories</option>
+        </select><br><br>
+
+        <label for="price">Price:</label><br>
+        <input type="number" id="price" name="price" min="0" step="0.01"><br><br>
+
+        <label for="quantity">Quantity:</label><br>
+        <input type="number" id="quantity" name="quantity" min="0"><br><br>
+
+        <label for="supplier">Supplier:</label><br>
+        <input type="text" id="supplier" name="supplier"><br><br>
+
+        <label for="pimage">Product Image:</label><br>
+        <input type="file" id="pimage" name="pimage" accept="image/*"><br><br>
+
+        <input type="submit" value="Add Product">
+        <input type="reset" value="Reset">
+    </form>
+
+    <h2>Inventory Report Table</h2>
+    <table border="1">
+        <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Brand</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Stock Status</th>
+        </tr>
+        <tr>
+            <td>P001</td>
+            <td>Galaxy M14</td>
+            <td>Samsung</td>
+            <td>12999</td>
+            <td>25</td>
+            <td>In Stock</td>
+        </tr>
+        <tr>
+            <td>P002</td>
+            <td>Inspiron 15</td>
+            <td>Dell</td>
+            <td>45999</td>
+            <td>0</td>
+            <td>Out of Stock</td>
+        </tr>
+        <tr>
+            <td>P003</td>
+            <td>Buds Air</td>
+            <td>boAt</td>
+            <td>1499</td>
+            <td>5</td>
+            <td>Low Stock</td>
+        </tr>
+    </table>
+</center>
+</body>
+</html>

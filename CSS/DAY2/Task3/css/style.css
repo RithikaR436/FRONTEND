@@ -1,0 +1,27 @@
+.dept {
+    background-color: lightgray;
+    width: 350px;
+    margin: 10px auto;
+    padding: 15px;
+    text-align: center;
+}
+
+#cse {
+    background-color: lightblue;
+}
+
+#it {
+    background-color: lightgreen;
+}
+
+#ece {
+    background-color: lightpink;
+}
+
+#eee {
+    background-color: lightyellow;
+}
+
+#mech {
+    background-color: lightsalmon;
+}

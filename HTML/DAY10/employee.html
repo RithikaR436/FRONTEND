@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <title>Employee Registration</title>
+    </head>
+    <body>
+        <center>
+            <label for="empid">Employee ID:</label>
+<input type="text" id="empid" name="empid" placeholder="Enter Employee ID">
+<br><br>
+
+<label for="empname">Employee Name:</label>
+<input type="text" id="empname" name="empname">
+<br><br>
+
+<label for="dept">Department:</label>
+<select id="dept" name="dept">
+  <option value="">Select Department</option>
+  <option value="hr">HR</option>
+  <option value="dev">Development</option>
+  <option value="qa">QA</option>
+</select>
+<br><br>
+
+<label for="exp">Experience (years):</label>
+<input type="number" id="exp" name="exp" min="0">
+<br><br>
+
+<label for="salary">Salary:</label>
+<input type="number" id="salary" name="salary" min="0">
+<br><br>
+
+<label>Skills:</label>
+<input type="checkbox" id="html" name="skills" value="HTML">
+<label for="html">HTML</label>
+<input type="checkbox" id="css" name="skills" value="CSS">
+<label for="css">CSS</label>
+<input type="checkbox" id="js" name="skills" value="JavaScript">
+<label for="js">JavaScript</label>
+<br><br>
+
+<label for="resume">Resume Upload:</label>
+<input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx">
+<br>
+
+
+
+<table border="2">
+  <thead>
+    <tr>
+      <th>Employee ID</th>
+      <th>Employee Name</th>
+      <th>Department</th>
+      <th>Experience</th>
+      <th>Salary</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>EMP001</td>
+      <td>Ravi</td>
+      <td>Development</td>
+      <td>2 years</td>
+      <td>25000</td>
+      <td>Pending</td>
+    </tr>
+    <tr>
+      <td>EMP002</td>
+      <td>Rithika</td>
+      <td>Development</td>
+      <td>2 years</td>
+      <td>25000</td>
+      <td>Active</td>
+    </tr>
+    <tr>
+      <td>EMP003</td>
+      <td>Renita</td>
+      <td>Development</td>
+      <td>2 years</td>
+      <td>25000</td>
+      <td>Active</td>
+    </tr>
+  </tbody>
+</table>
+        </center>
+    </body>
+</html>

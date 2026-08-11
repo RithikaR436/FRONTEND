@@ -1,0 +1,25 @@
+h2 {
+    color: darkgreen;
+}
+
+.section {
+    background-color: honeydew;
+    width: 400px;
+    margin: 10px auto;
+    padding: 15px;
+}
+
+#hospital-name {
+    background-color: teal;
+    color: white;
+    width: 400px;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+}
+
+#emergency {
+    background-color: mistyrose;
+    color: red;
+    font-weight: bold;
+}

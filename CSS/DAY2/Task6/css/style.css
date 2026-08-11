@@ -1,0 +1,36 @@
+h2, p, span {
+    display: block;
+    text-align: center;
+    padding: 5px;
+}
+
+.company {
+    width: 350px;
+    margin: 10px auto;
+    padding: 15px;
+}
+
+.zoho {
+    background-color: lightblue;
+    color: darkblue;
+}
+
+.freshworks {
+    background-color: lightgreen;
+    color: darkgreen;
+}
+
+.aspire {
+    background-color: lightyellow;
+    color: brown;
+}
+
+.cts {
+    background-color: lightpink;
+    color: darkred;
+}
+
+.tcs {
+    background-color: lavender;
+    color: purple;
+}

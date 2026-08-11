@@ -1,0 +1,24 @@
+.box {
+    width: 150px;
+    height: 100px;
+    margin: 10px;
+    color: white;
+    text-align: center;
+    line-height: 100px;
+    font-family: Arial;
+}
+
+.box1 {
+    background-color: blue;
+}
+
+.box2 {
+    background-color: green;
+    position: relative;
+    top: 50px;
+    left: 70px;
+}
+
+.box3 {
+    background-color: orange;
+}

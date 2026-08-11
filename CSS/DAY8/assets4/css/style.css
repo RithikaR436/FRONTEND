@@ -1,0 +1,6 @@
+h2::before{
+    content: "\2605 ";
+}
+h2::after{
+    content:"\2714";
+}

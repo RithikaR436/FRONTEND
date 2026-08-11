@@ -1,0 +1,22 @@
+
+.cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 200px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  text-align: center;
+  transition: 0.4s;
+}
+
+.card img {
+  width: 100%;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}

@@ -1,0 +1,103 @@
+<html>
+    <head>
+        <title>College Admission Form</title>
+    </head>
+    <body>
+        <center>
+            <section>
+                <div>
+                    <h1>Engineering College Admission Portal</h1>
+
+                     <h2>Admission Form</h2>
+                    <form>
+                        <label for="name">Student Name:</label><br>
+                        <input type="text" id="name" name="name"><br><br>
+
+                        <label for="fname">Father Name:</label><br>
+                        <input type="text" id="fname" name="fname"><br><br>
+
+                        <label for="mname">Mother Name:</label><br>
+                        <input type="text" id="mname" name="mname"><br><br>
+
+                        <label for="email">Email:</label><br>
+                        <input type="email" id="email" name="email"><br><br>
+
+                        <label for="phone">Phone:</label><br>
+                        <input type="tel" id="phone" name="phone"><br><br>
+
+                        <label for="dob">Date of Birth:</label><br>
+                        <input type="date" id="dob" name="dob"><br><br>
+
+        <label>Gender:</label><br>
+        <input type="radio" id="male" name="gender" value="Male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="Female">
+        <label for="female">Female</label>
+        <input type="radio" id="other" name="gender" value="Other">
+        <label for="other">Other</label><br><br>
+
+        <label for="dept">Department:</label><br>
+        <select id="dept" name="dept">
+            <option value="CSE">Computer Science Engineering</option>
+            <option value="ECE">Electronics and Communication Engineering</option>
+            <option value="EEE">Electrical and Electronics Engineering</option>
+            <option value="MECH">Mechanical Engineering</option>
+            <option value="CIVIL">Civil Engineering</option>
+            <option value="IT">Information Technology</option>
+        </select><br><br>
+
+        <label for="percentage">Percentage:</label><br>
+        <input type="number" id="percentage" name="percentage" min="0" max="100" step="0.01"><br><br>
+
+        <label for="address">Address:</label><br>
+        <textarea id="address" name="address" rows="4" cols="30"></textarea><br><br>
+
+        <label for="photo">Passport Size Photo:</label><br>
+        <input type="file" id="photo" name="photo" accept="image/*"><br><br>
+
+        <input type="submit" value="Submit Application">
+        <input type="reset" value="Reset">
+    </form>
+
+    <h2>Admission Status Table</h2>
+    <table border="2">
+        <tr>
+            <th>Application ID</th>
+            <th>Student Name</th>
+            <th>Department</th>
+            <th>Percentage</th>
+            <th>Email</th>
+            <th>Admission Status</th>
+        </tr>
+        <tr>
+            <td>APP001</td>
+            <td>Rithika S</td>
+            <td>CSE</td>
+            <td>85.5</td>
+            <td>rithika@example.com</td>
+            <td>Approved</td>
+        </tr>
+        <tr>
+            <td>APP002</td>
+            <td>Kavin R</td>
+            <td>ECE</td>
+            <td>78.2</td>
+            <td>kavin@example.com</td>
+            <td>Pending</td>
+        </tr>
+        <tr>
+            <td>APP003</td>
+            <td>Divya M</td>
+            <td>MECH</td>
+            <td>65.0</td>
+            <td>divya@example.com</td>
+            <td>Rejected</td>
+        </tr>
+    </table>
+                    </form>
+                </div>
+
+            </section>
+        </center>
+    </body>
+</html>

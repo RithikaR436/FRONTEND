@@ -1,0 +1,51 @@
+1. What is a semantic tag?
+
+A semantic tag provides meaning about the content it contains.
+Both the browser and the developer understand what kind of content it is ,just by looking at the tag name.
+
+2.Why are sematic tags important?
+
+Semantic tags are important for several reasons:
+
+Clarity – The tag name itself describes its content, so the code is easier to read and understand.
+SEO – Search engines can better understand your page structure, which helps improve search ranking.
+Accessibility – Screen readers rely on semantic tags to correctly explain page content to visually impaired users.
+Maintainability – Other developers can quickly understand and edit your code when semantic tags are used instead of generic <div>s.
+Consistent structure – Browsers interpret semantic tags in a standard way, improving compatibility across different browsers and devices.
+
+3.Name Five Semantic Tags
+
+<header> – represents the header section of a page
+<nav> – represents navigation links
+<article> – represents independent, self-contained content
+<section> – represents a thematic grouping of content
+<footer> – represents the footer section of a page
+
+4.Name Two Non-Semantic Tags
+
+<div> – a generic block-level container with no specific meaning
+<span> – a generic inline container with no specific meaning
+
+5.What is the Difference Between Semantic and Non-Semantic Tags?
+
+Semantic tags provide meaning while non-semantic tags do not provide meaning.
+
+6.What is the Purpose of the Paragraph Tag?
+
+The <p> tag is used to define a paragraph of text. It's a block-level element that starts on a new line and helps organize content into readable sections.
+
+7.Is Paragraph a Block-Level Element?
+
+Yes, <p> is a block-level element. It always starts on a new line and takes up the full width available, with default margin space above and below it.
+
+8.Which Tag Represents Main Content?
+
+The <main> tag represents the main content of a page.
+
+9.Which Tag Represents Navigation?
+
+The <nav> tag represents navigation — it's used to group links that help users navigate the website.
+
+10.Which Tag Represents Independent Content?
+
+The <article> tag represents independent content — content that makes sense on its own, like a blog post, news article, or forum post.

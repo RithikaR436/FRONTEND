@@ -1,0 +1,50 @@
+<html >
+<head>
+    
+    <title>Feedback form</title>
+</head>
+<body>
+    <center>
+    <h1>Feedback Form</h1>
+    
+    <form>
+        <p></p><label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name"></p>
+
+        <p><label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email"></p>
+
+        <label>Feedback Type:</label>
+        <label for="good">Good</label>
+  <input type="radio" id="good" name="feedback_type" value="Good">
+  <label for="good">Good</label>
+<label for="average">Average</label>
+  <input type="radio" id="average" name="feedback_type" value="Average">
+  
+ <label for="bad">Bad</label>
+  <input type="radio" id="bad" name="feedback_type" value="Bad">
+ 
+
+  <br><br>
+
+  <label for="rating">Rating:</label>
+  <select id="rating" name="rating">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+
+  <br><br>
+
+  <label for="comments">Comments:</label>
+  <textarea id="comments" name="comments" rows="5" cols="30" placeholder="Type your feedback here"></textarea>
+
+
+        <p><button type="submit">Submit</button></p>
+        </center>
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <title>Student Registration form</Form></title>
+    </head>
+    <body>
+        <center>
+            <h1>Student Register Form</h1>
+            <p><label for="Student Name">Student Name:</label>
+            <input type="text"  placeholder="Enter your Name" id="Student Name"></p>
+            <p><label for="Email">Email:</label>
+            <input type="email"  placeholder="Enter your Email " id="Email"></p>
+            <p> <label for="Password">Password:</label>
+            <input type="password"  placeholder="Enter your Password" id="Password"></p>
+            <p><label for="Mobile Number">Mobile Number:</label>
+            <input type="tel"  placeholder="3874966466" id="Mobile Number" minlength="10"  maxlength="10"></p>
+            <p> <label for="Age"> Age:</label>
+            <input type="number"  placeholder=" Age" id="Age" min="18" max="40"></p>
+            <p><label for="Usergender">Gender:</label>
+                <input type="redio"  name="Gender" id="Usergender">Male
+               <input type="redio"  name="Gender" id="Usergender">Female
+            </p>
+            <p><label for="Skills">Skills:</label>
+            <input type="checkbox" id="Skills">HTML
+            <input type="checkbox" id="Skills">CSS
+            <input type="checkbox" id="Skills">PYTHON
+            <input type="checkbox" id="Skills">JS
+        </p>
+        <p>
+        <label for="Course">Course Selection:</label>
+        <select name="Course" id="Course">
+        <option value=""> Select Course</option>
+        <option value="python">python developer</option>
+        <option value="django">django developer</option>
+        <option value="fullstack"> ai full stack developer</option>           
+          </select>  
+          </p>
+          <p><label for="address">Address:</label>
+           <textarea id="address" name="address" rows="4" cols="30" placeholder="Enter your address"></textarea></p>
+           <p><label for="profile">Profile Image Upload:</label>
+          <input type="file" id="profile" name="profile" accept="image/*"></p>
+          <p><button type="submit">Submit</button></p>
+           <p><button type="reset">Reset</button></p>
+
+
+
+           <table border="2">
+  <thead>
+    <tr>
+      <th>SLA ID</th>
+      <th>Student Name</th>
+      <th>Course</th>
+      <th>Email</th>
+      <th>Mobile Number</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SLA001</td>
+      <td>Rithika</td>
+      <td>Full Stack Developer</td>
+      <td>rithika@example.com</td>
+      <td>9876543210</td>
+      <td>Active</td>
+    </tr>
+    <tr>
+      <td>SLA002</td>
+      <td>Kavya</td>
+      <td>Python Developer</td>
+      <td>kavya@example.com</td>
+      <td>9123456789</td>
+      <td>Pending</td>
+    </tr>
+    <tr>
+      <td>SLA002</td>
+      <td>Renita</td>
+      <td>Python Developer</td>
+      <td>kavya@example.com</td>
+      <td>9123456789</td>
+      <td>Active</td>
+    </tr>
+  </tbody>
+</table>
+
+            
+
+        </center>
+        
+    </body>
+</html>
