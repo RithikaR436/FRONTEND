@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Large Language Models (LLM)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <header class="bg-slate-900 text-white sticky top-0 z-10 shadow-md">
+    <div class="px-6 sm:px-10 py-4 flex flex-wrap items-center justify-between gap-3">
+      <span class="font-bold text-lg whitespace-nowrap">AI Learning Hub</span>
+      <nav class="flex flex-wrap gap-4 sm:gap-6 text-sm font-medium">
+        <a href="#home" class="hover:text-blue-300 transition-colors">Home</a>
+        <a href="#articles" class="hover:text-blue-300 transition-colors">Articles</a>
+        <a href="#about" class="hover:text-blue-300 transition-colors">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <div id="home" class="px-10 py-12">
+
+    <p class="text-blue-700 font-semibold text-sm uppercase tracking-wide mb-2">AI Basics</p>
+    <h1 class="text-4xl font-bold text-slate-900 mb-3">Large Language Models (LLM)</h1>
+    <p class="text-slate-500 text-lg mb-10">How machines learned to read, write, and answer questions</p>
+
+    <h2 id="articles" class="text-2xl font-bold text-slate-900 mt-10 mb-4 scroll-mt-20">What is an LLM?</h2>
+    <p class="text-base mb-4">
+      A Large Language Model is an AI system trained on massive amounts of text — books, articles, websites, and code. Its core skill is simple: given some text, predict what word comes next. By doing this at a huge scale, it learns to write, summarize, translate, and answer questions naturally.
+    </p>
+    <p class="text-base mb-4">
+      Examples of LLMs include <strong>GPT</strong> (OpenAI), <strong>Claude</strong> (Anthropic), <strong>Gemini</strong> (Google), and <strong>Llama</strong> (Meta).
+    </p>
+
+    <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4">How it Works</h2>
+    <ul class="space-y-3 mb-4">
+      <li class="bg-white border-l-4 border-blue-600 rounded p-4 shadow-sm">
+        <strong class="text-slate-900">Tokenization:</strong> Text is broken into small pieces called tokens.
+      </li>
+      <li class="bg-white border-l-4 border-blue-600 rounded p-4 shadow-sm">
+        <strong class="text-slate-900">Prediction:</strong> The model predicts the next token, one at a time.
+      </li>
+      <li class="bg-white border-l-4 border-blue-600 rounded p-4 shadow-sm">
+        <strong class="text-slate-900">Generation:</strong> This repeats until a full response is built.
+      </li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4">Key Terms to Know</h2>
+    <div class="grid sm:grid-cols-2 gap-4 mb-4">
+      <div class="bg-blue-50 rounded-lg p-4">
+        <p class="font-semibold text-blue-900 mb-1">Tokens</p>
+        <p class="text-sm text-slate-600">Small chunks of text the model reads and writes.</p>
+      </div>
+      <div class="bg-blue-50 rounded-lg p-4">
+        <p class="font-semibold text-blue-900 mb-1">Context Window</p>
+        <p class="text-sm text-slate-600">How much text the model can consider at once.</p>
+      </div>
+      <div class="bg-blue-50 rounded-lg p-4">
+        <p class="font-semibold text-blue-900 mb-1">Fine-tuning</p>
+        <p class="text-sm text-slate-600">Training the model further for a specific task.</p>
+      </div>
+      <div class="bg-blue-50 rounded-lg p-4">
+        <p class="font-semibold text-blue-900 mb-1">Hallucination</p>
+        <p class="text-sm text-slate-600">When the model confidently states something wrong.</p>
+      </div>
+    </div>
+
+    <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4">Why Full Stack Developers Should Learn This</h2>
+    <ul class="list-disc list-inside space-y-2 mb-4 text-base">
+      <li><strong>Prompt engineering</strong> — writing clear instructions for better output</li>
+      <li><strong>Calling LLM APIs</strong> — connecting apps to OpenAI, Anthropic, or Gemini</li>
+      <li><strong>RAG (Retrieval Augmented Generation)</strong> — letting the model use your own data</li>
+      <li><strong>AI Agents</strong> — chaining LLM calls with tools to complete tasks</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4">A Short History</h2>
+    <p class="text-base mb-4">
+      LLMs are built on a design called the <strong>Transformer</strong>, introduced by Google researchers in 2017. It introduced "attention" — a way for the model to weigh which words in a sentence matter most to each other. This idea made it possible to train much larger, much smarter language models than before.
+    </p>
+    <ul class="list-disc list-inside space-y-2 mb-4 text-base">
+      <li><strong>2017</strong> — Transformer architecture introduced ("Attention is All You Need")</li>
+      <li><strong>2018–2019</strong> — GPT and BERT show what large pre-trained models can do</li>
+      <li><strong>2020</strong> — GPT-3 shows LLMs can perform tasks with just a prompt, no retraining</li>
+      <li><strong>2022</strong> — ChatGPT brings LLMs to everyday users</li>
+      <li><strong>2023–Now</strong> — Claude, Gemini, GPT-4/5, Llama, and others push capability and safety further</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4">Types of Generative Models</h2>
+    <p class="text-base mb-4">LLMs are just one branch of generative AI. It helps to know how they relate to others:</p>
+    <div class="grid sm:grid-cols-3 gap-4 mb-4">
+      <div class="bg-white border border-slate-200 rounded-lg p-4">
+        <p class="font-semibold text-slate-900 mb-1">LLMs</p>
+        <p class="text-sm text-slate-600">Text generation — writing, chat, code, reasoning.</p>
+      </div>
+      <div class="bg-white border border-slate-200 rounded-lg p-4">
+        <p class="font-semibold text-slate-900 mb-1">Diffusion Models</p>
+        <p class="text-sm text-slate-600">Image generation — turning noise into pictures (e.g. Midjourney, Stable Diffusion).</p>
+      </div>
+      <div class="bg-white border border-slate-200 rounded-lg p-4">
+        <p class="font-semibold text-slate-900 mb-1">Multimodal Models</p>
+        <p class="text-sm text-slate-600">Handle text, images, and audio together in one model.</p>
+      </div>
+    </div>
+
+    <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4">Popular LLMs Compared</h2>
+    <div class="overflow-x-auto mb-4">
+      <table class="w-full text-sm border border-slate-200 rounded-lg overflow-hidden">
+        <thead class="bg-blue-100 text-blue-900">
+          <tr>
+            <th class="text-left p-3">Model</th>
+            <th class="text-left p-3">Company</th>
+            <th class="text-left p-3">Known For</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white">
+          <tr class="border-t border-slate-200">
+            <td class="p-3 font-medium">GPT</td>
+            <td class="p-3">OpenAI</td>
+            <td class="p-3">Widely used, strong general performance</td>
+          </tr>
+          <tr class="border-t border-slate-200">
+            <td class="p-3 font-medium">Claude</td>
+            <td class="p-3">Anthropic</td>
+            <td class="p-3">Long context, careful/safe reasoning</td>
+          </tr>
+          <tr class="border-t border-slate-200">
+            <td class="p-3 font-medium">Gemini</td>
+            <td class="p-3">Google</td>
+            <td class="p-3">Multimodal, integrated with Google products</td>
+          </tr>
+          <tr class="border-t border-slate-200">
+            <td class="p-3 font-medium">Llama</td>
+            <td class="p-3">Meta</td>
+            <td class="p-3">Open-source, free to run and fine-tune</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4">Real-World Applications</h2>
+    <ul class="space-y-3 mb-4">
+      <li class="bg-white border-l-4 border-blue-600 rounded p-4 shadow-sm">
+        <strong class="text-slate-900">Customer Support:</strong> Chatbots that answer questions and resolve issues 24/7.
+      </li>
+      <li class="bg-white border-l-4 border-blue-600 rounded p-4 shadow-sm">
+        <strong class="text-slate-900">Coding Assistants:</strong> Tools like GitHub Copilot and Claude Code that write and explain code.
+      </li>
+      <li class="bg-white border-l-4 border-blue-600 rounded p-4 shadow-sm">
+        <strong class="text-slate-900">Content Creation:</strong> Drafting blogs, emails, product descriptions, and social posts.
+      </li>
+      <li class="bg-white border-l-4 border-blue-600 rounded p-4 shadow-sm">
+        <strong class="text-slate-900">Search & Research:</strong> Summarizing documents and answering questions over large datasets.
+      </li>
+      <li class="bg-white border-l-4 border-blue-600 rounded p-4 shadow-sm">
+        <strong class="text-slate-900">Education:</strong> Personalized tutoring and explanations at any skill level.
+      </li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4">Limitations</h2>
+    <ul class="list-disc list-inside space-y-2 mb-4 text-base">
+      <li><strong>Hallucination</strong> — can state incorrect information confidently</li>
+      <li><strong>Fixed knowledge</strong> — doesn't know about events after its training cutoff</li>
+      <li><strong>Limited context</strong> — can only consider a certain amount of text at once</li>
+      <li><strong>Bias</strong> — can reflect biases present in its training data</li>
+      <li><strong>Cost & speed</strong> — larger models are slower and more expensive to run</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4">How to Get Started as a Developer</h2>
+    <ol class="list-decimal list-inside space-y-2 mb-4 text-base">
+      <li>Get an API key from OpenAI, Anthropic, or Google</li>
+      <li>Practice prompt engineering — write clear, specific instructions</li>
+      <li>Build a small project: a chatbot, summarizer, or Q&A tool</li>
+      <li>Learn RAG — connect the model to your own documents or database</li>
+      <li>Explore frameworks like LangChain or LlamaIndex to structure larger apps</li>
+    </ol>
+
+  </div>
+
+  <footer id="about" class="bg-slate-900 text-slate-300 mt-10 scroll-mt-20">
+    <div class="px-10 py-8 text-sm">
+      <div class="flex flex-col sm:flex-row justify-between gap-4 mb-4">
+        <div>
+          <p class="font-semibold text-white mb-1">AI Learning Hub</p>
+          <p class="text-slate-400">Simple explanations of AI concepts for developers.</p>
+        </div>
+        <div class="flex gap-6">
+          <a href="#home" class="hover:text-white transition-colors">Home</a>
+          <a href="#articles" class="hover:text-white transition-colors">Articles</a>
+          <a href="#about" class="hover:text-white transition-colors">About</a>
+        </div>
+      </div>
+      <p class="text-slate-500 border-t border-slate-700 pt-4">© 2026 AI Learning Hub. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
