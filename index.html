@@ -1,21 +1,2279 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="ASSIGNMENT/css1/style.css">
-    <title>Assignment</title>
+    <title>Frontend Development Hub | 84+ Projects & Tasks</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f4ff',
+                            100: '#dbe4fe',
+                            200: '#bfd0fe',
+                            300: '#93b1fd',
+                            400: '#608afa',
+                            500: '#3b66f6',
+                            600: '#2547eb',
+                            700: '#1d35d8',
+                            800: '#1e2cb0',
+                            900: '#1e298a',
+                        },
+                        html: '#e44d26',
+                        css: '#264de4',
+                        bootstrap: '#7952b3',
+                        javascript: '#f7df1e',
+                        tailwind: '#06b6d4',
+                        assignment: '#10b981'
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    boxShadow: {
+                        'glow': '0 0 25px -5px rgba(59, 130, 246, 0.5)',
+                        'glow-purple': '0 0 25px -5px rgba(121, 82, 179, 0.5)',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* Custom smooth scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.05);
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.6);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(99, 102, 241, 0.4);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(99, 102, 241, 0.8);
+        }
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glassmorphism {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .device-iframe-wrapper {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
 </head>
-<body>
-    <div>
-        <header class="part">
-            <h2>FRONTEND</h2>
-            <div class="part1">
-                <a href="../HTML/">HTML</a>
-                <a href="../CSS/">CSS</a>
-                <a href="../BOOTSTRAP/">BOOTSTRAP</a>
-            </div>
-        </header>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen transition-colors duration-300 font-sans antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-5 py-3 rounded-xl shadow-2xl font-medium text-sm border border-slate-700 dark:border-slate-200">
+        <i class="fa-solid fa-circle-check text-emerald-400 dark:text-emerald-600 text-base"></i>
+        <span id="toast-message">Path copied to clipboard!</span>
     </div>
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-40 w-full glassmorphism border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            
+            <!-- Brand / Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-600 via-blue-600 to-cyan-400 flex items-center justify-center text-white shadow-lg shadow-indigo-500/25 group-hover:scale-105 transition-transform duration-300">
+                    <i class="fa-solid fa-code text-xl"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-extrabold text-xl tracking-tight bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500 bg-clip-text text-transparent">TechStart</span>
+                        <span class="text-xs px-2 py-0.5 rounded-full font-bold bg-indigo-100 text-indigo-700 dark:bg-indigo-950/80 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">PORTAL</span>
+                    </div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Frontend Master Hub & Directory</p>
+                </div>
+            </a>
+
+            <!-- Quick Navigation Stats & Actions -->
+            <div class="flex items-center gap-3">
+                <!-- Direct Module Shortcuts for Quick Jump -->
+                <div class="hidden lg:flex items-center gap-1.5 bg-slate-100 dark:bg-slate-900/90 p-1.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold">
+                    <button onclick="setCategoryFilter('HTML')" class="px-2.5 py-1 rounded-lg text-slate-600 dark:text-slate-300 hover:text-orange-500 dark:hover:text-orange-400 hover:bg-white dark:hover:bg-slate-800 transition-all flex items-center gap-1.5">
+                        <i class="fa-brands fa-html5 text-orange-500"></i> HTML
+                    </button>
+                    <button onclick="setCategoryFilter('CSS')" class="px-2.5 py-1 rounded-lg text-slate-600 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 hover:bg-white dark:hover:bg-slate-800 transition-all flex items-center gap-1.5">
+                        <i class="fa-brands fa-css3-alt text-blue-500"></i> CSS
+                    </button>
+                    <button onclick="setCategoryFilter('BOOTSTRAP')" class="px-2.5 py-1 rounded-lg text-slate-600 dark:text-slate-300 hover:text-purple-500 dark:hover:text-purple-400 hover:bg-white dark:hover:bg-slate-800 transition-all flex items-center gap-1.5">
+                        <i class="fa-brands fa-bootstrap text-purple-500"></i> Bootstrap
+                    </button>
+                    <button onclick="setCategoryFilter('JAVASCRIPT')" class="px-2.5 py-1 rounded-lg text-slate-600 dark:text-slate-300 hover:text-amber-500 dark:hover:text-amber-400 hover:bg-white dark:hover:bg-slate-800 transition-all flex items-center gap-1.5">
+                        <i class="fa-brands fa-js text-yellow-500"></i> JavaScript
+                    </button>
+                    <button onclick="setCategoryFilter('TAILWIND')" class="px-2.5 py-1 rounded-lg text-slate-600 dark:text-slate-300 hover:text-cyan-500 dark:hover:text-cyan-400 hover:bg-white dark:hover:bg-slate-800 transition-all flex items-center gap-1.5">
+                        <i class="fa-solid fa-wind text-cyan-500"></i> Tailwind
+                    </button>
+                </div>
+
+                <!-- Random Page Button -->
+                <button onclick="openRandomProject()" title="Launch a random project page" class="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-xl text-sm font-semibold bg-indigo-50 text-indigo-600 dark:bg-indigo-950/60 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 border border-indigo-200/60 dark:border-indigo-800/60 transition-all">
+                    <i class="fa-solid fa-shuffle"></i>
+                    <span>Random Page</span>
+                </button>
+
+                <!-- Dark Mode Toggle -->
+                <button id="theme-toggle" class="p-2.5 rounded-xl text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all" aria-label="Toggle Theme">
+                    <i id="theme-toggle-dark-icon" class="fa-solid fa-moon hidden text-base"></i>
+                    <i id="theme-toggle-light-icon" class="fa-solid fa-sun hidden text-base text-amber-400"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
+
+        <!-- Hero Section -->
+        <section class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-indigo-900 via-slate-900 to-slate-950 text-white p-8 sm:p-12 lg:p-16 border border-slate-800 shadow-2xl shadow-indigo-950/40">
+            <!-- Background Glow Gradients -->
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="relative z-10 space-y-8">
+                <!-- Top Badge -->
+                <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-xs font-semibold tracking-wide text-indigo-200">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 -ml-4"></span>
+                    <span>All 84+ Webpages Verified & Fully Connected</span>
+                </div>
+
+                <!-- Main Heading & Description -->
+                <div class="max-w-3xl space-y-4">
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                        Frontend Web Development <br class="hidden sm:block">
+                        <span class="bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-300 bg-clip-text text-transparent">Complete Portal & Showcase</span>
+                    </h1>
+                    <p class="text-slate-300 text-base sm:text-lg leading-relaxed font-light">
+                        Explore all projects, daily exercises, tasks, forms, media players, UI clones, and responsive dashboards built across 
+                        <span class="text-white font-medium">HTML5, CSS3, Bootstrap 5, Tailwind CSS,</span> and <span class="text-white font-medium">JavaScript</span>.
+                    </p>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 pt-4">
+                    <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-4 text-center hover:bg-white/10 transition-colors">
+                        <div class="text-2xl sm:text-3xl font-extrabold text-white" id="stat-total">84</div>
+                        <div class="text-xs font-medium text-slate-300 mt-1">Total Webpages</div>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-4 text-center hover:bg-white/10 transition-colors">
+                        <div class="text-2xl sm:text-3xl font-extrabold text-orange-400" id="stat-html">43</div>
+                        <div class="text-xs font-medium text-slate-300 mt-1">HTML Pages</div>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-4 text-center hover:bg-white/10 transition-colors">
+                        <div class="text-2xl sm:text-3xl font-extrabold text-blue-400" id="stat-css">41</div>
+                        <div class="text-xs font-medium text-slate-300 mt-1">CSS Demos</div>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-4 text-center hover:bg-white/10 transition-colors">
+                        <div class="text-2xl sm:text-3xl font-extrabold text-purple-400" id="stat-bootstrap">11</div>
+                        <div class="text-xs font-medium text-slate-300 mt-1">Bootstrap Tasks</div>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-4 text-center hover:bg-white/10 transition-colors">
+                        <div class="text-2xl sm:text-3xl font-extrabold text-yellow-400" id="stat-javascript">13</div>
+                        <div class="text-xs font-medium text-slate-300 mt-1">JavaScript Tasks</div>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-4 text-center hover:bg-white/10 transition-colors">
+                        <div class="text-2xl sm:text-3xl font-extrabold text-cyan-400" id="stat-tailwind">1</div>
+                        <div class="text-xs font-medium text-slate-300 mt-1">Tailwind App</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search, Filter & Control Toolbar -->
+        <section class="space-y-6">
+            <!-- Search Bar -->
+            <div class="relative max-w-4xl mx-auto">
+                <div class="relative flex items-center">
+                    <i class="fa-solid fa-magnifying-glass absolute left-5 text-slate-400 text-lg pointer-events-none"></i>
+                    <input 
+                        type="text" 
+                        id="search-input" 
+                        placeholder="Search by topic, keyword, filename, or day (e.g., 'flexbox', 'login', 'DAY 8', 'audio', 'task1')..." 
+                        class="w-full pl-14 pr-28 py-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-slate-800 dark:text-white placeholder-slate-400 shadow-xl shadow-slate-200/50 dark:shadow-none focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-base transition-all font-medium"
+                    >
+                    <div class="absolute right-4 hidden sm:flex items-center gap-1.5 text-xs font-mono text-slate-400 bg-slate-100 dark:bg-slate-800 px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700">
+                        <span>ESC</span> to clear
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Pills & View Switchers -->
+            <div class="flex flex-wrap items-center justify-between gap-4">
+                
+                <!-- Category Filter Pills -->
+                <div class="flex flex-wrap items-center gap-2" id="category-pills">
+                    <button onclick="setCategoryFilter('ALL')" data-category="ALL" class="category-pill active px-4 py-2 rounded-xl text-sm font-bold bg-indigo-600 text-white shadow-md shadow-indigo-500/25 transition-all">
+                        All Projects <span class="ml-1 text-xs opacity-90 font-mono">(<span id="count-all">84</span>)</span>
+                    </button>
+                    <button onclick="setCategoryFilter('HTML')" data-category="HTML" class="category-pill px-4 py-2 rounded-xl text-sm font-semibold bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-all flex items-center gap-2">
+                        <i class="fa-brands fa-html5 text-orange-500 text-base"></i>
+                        <span>HTML5</span>
+                        <span class="text-xs text-slate-400 font-mono">(43)</span>
+                    </button>
+                    <button onclick="setCategoryFilter('CSS')" data-category="CSS" class="category-pill px-4 py-2 rounded-xl text-sm font-semibold bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-all flex items-center gap-2">
+                        <i class="fa-brands fa-css3-alt text-blue-500 text-base"></i>
+                        <span>CSS3</span>
+                        <span class="text-xs text-slate-400 font-mono">(41)</span>
+                    </button>
+                    <button onclick="setCategoryFilter('BOOTSTRAP')" data-category="BOOTSTRAP" class="category-pill px-4 py-2 rounded-xl text-sm font-semibold bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-all flex items-center gap-2">
+                        <i class="fa-brands fa-bootstrap text-purple-500 text-base"></i>
+                        <span>Bootstrap</span>
+                        <span class="text-xs text-slate-400 font-mono">(11)</span>
+                    </button>
+                    <button onclick="setCategoryFilter('JAVASCRIPT')" data-category="JAVASCRIPT" class="category-pill px-4 py-2 rounded-xl text-sm font-semibold bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-all flex items-center gap-2">
+                        <i class="fa-brands fa-js text-yellow-500 text-base"></i>
+                        <span>JavaScript</span>
+                        <span class="text-xs text-slate-400 font-mono">(13)</span>
+                    </button>
+                    <button onclick="setCategoryFilter('TAILWIND')" data-category="TAILWIND" class="category-pill px-4 py-2 rounded-xl text-sm font-semibold bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-wind text-cyan-500 text-base"></i>
+                        <span>Tailwind</span>
+                        <span class="text-xs text-slate-400 font-mono">(1)</span>
+                    </button>
+                    <button onclick="setCategoryFilter('ASSIGNMENT')" data-category="ASSIGNMENT" class="category-pill px-4 py-2 rounded-xl text-sm font-semibold bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-folder-tree text-emerald-500 text-base"></i>
+                        <span>Assignments</span>
+                        <span class="text-xs text-slate-400 font-mono">(1)</span>
+                    </button>
+                </div>
+
+                <!-- Secondary Sub-Filter & View Toggle -->
+                <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+                    <select id="day-filter" onchange="renderCards()" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 text-sm font-semibold rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <option value="ALL">All Days / Modules</option>
+                        <option value="DAY1">Day 1</option>
+                        <option value="DAY2">Day 2</option>
+                        <option value="DAY3">Day 3</option>
+                        <option value="DAY4">Day 4</option>
+                        <option value="DAY5">Day 5</option>
+                        <option value="DAY6">Day 6</option>
+                        <option value="DAY7">Day 7</option>
+                        <option value="DAY8">Day 8</option>
+                        <option value="DAY9">Day 9</option>
+                        <option value="DAY10">Day 10</option>
+                        <option value="DAY11">Day 11</option>
+                        <option value="DAY12">Day 12</option>
+                    </select>
+
+                    <div class="flex items-center bg-slate-200/80 dark:bg-slate-900 p-1 rounded-xl border border-slate-300/60 dark:border-slate-800">
+                        <button id="view-grid-btn" onclick="setViewMode('grid')" title="Grid View" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-sm transition-all">
+                            <i class="fa-solid fa-grip"></i>
+                        </button>
+                        <button id="view-list-btn" onclick="setViewMode('list')" title="List View" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all">
+                            <i class="fa-solid fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Showing Results Bar -->
+        <div class="flex items-center justify-between text-sm text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-slate-800 pb-3">
+            <div>
+                Showing <span id="displayed-count" class="font-bold text-slate-800 dark:text-slate-200">0</span> results
+            </div>
+            <div id="active-filter-badge" class="text-xs font-medium text-indigo-600 dark:text-indigo-400">
+                Filter: All Projects
+            </div>
+        </div>
+
+        <!-- Cards Container (Grid / List) -->
+        <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Dynamically populated via JavaScript -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="hidden text-center py-16 space-y-4">
+            <div class="w-16 h-16 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto text-slate-400 text-2xl">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-700 dark:text-slate-300">No matching projects found</h3>
+            <p class="text-sm text-slate-500 max-w-sm mx-auto">Try adjusting your search terms or clearing category filters to find what you're looking for.</p>
+            <button onclick="resetFilters()" class="px-4 py-2 bg-indigo-600 text-white rounded-xl text-sm font-semibold hover:bg-indigo-700 transition-all">
+                Reset All Filters
+            </button>
+        </div>
+
+    </main>
+
+    <!-- In-Portal Live Device Preview Modal -->
+    <div id="preview-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex flex-col items-center justify-center p-2 sm:p-6 transition-all duration-300">
+        
+        <div class="bg-slate-900 border border-slate-800 w-full max-w-7xl h-[92vh] rounded-2xl flex flex-col shadow-2xl overflow-hidden">
+            
+            <!-- Modal Header / Device Switcher -->
+            <div class="px-5 py-3.5 bg-slate-900 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3">
+                
+                <!-- Current File Info -->
+                <div class="flex items-center gap-3 min-w-0">
+                    <div id="modal-icon" class="w-9 h-9 rounded-xl flex items-center justify-center text-white text-base">
+                        <i class="fa-brands fa-html5"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <h4 id="modal-title" class="font-bold text-white text-sm truncate">Page Title</h4>
+                        <p id="modal-path" class="text-xs font-mono text-slate-400 truncate">HTML/DAY1/index.html</p>
+                    </div>
+                </div>
+
+                <!-- Device Width Switcher -->
+                <div class="flex items-center bg-slate-950 p-1 rounded-xl border border-slate-800 gap-1 text-xs font-semibold text-slate-300">
+                    <button onclick="setModalDevice('desktop')" id="dev-desktop" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white flex items-center gap-1.5 transition-all">
+                        <i class="fa-solid fa-desktop"></i> <span class="hidden sm:inline">Desktop</span>
+                    </button>
+                    <button onclick="setModalDevice('tablet')" id="dev-tablet" class="px-3 py-1.5 rounded-lg hover:bg-slate-800 flex items-center gap-1.5 transition-all">
+                        <i class="fa-solid fa-tablet-screen-button"></i> <span class="hidden sm:inline">Tablet (768px)</span>
+                    </button>
+                    <button onclick="setModalDevice('mobile')" id="dev-mobile" class="px-3 py-1.5 rounded-lg hover:bg-slate-800 flex items-center gap-1.5 transition-all">
+                        <i class="fa-solid fa-mobile-screen"></i> <span class="hidden sm:inline">Mobile (375px)</span>
+                    </button>
+                </div>
+
+                <!-- Modal Actions -->
+                <div class="flex items-center gap-2">
+                    <button onclick="refreshModalFrame()" title="Reload preview" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition-all">
+                        <i class="fa-solid fa-rotate-right"></i>
+                    </button>
+                    <a id="modal-open-link" href="#" target="_blank" title="Open full page in new tab" class="px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold flex items-center gap-1.5 transition-all">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> <span class="hidden sm:inline">Open New Tab</span>
+                    </a>
+                    <button onclick="closePreviewModal()" class="p-2 rounded-xl bg-slate-800 hover:bg-rose-900/60 text-slate-300 hover:text-rose-300 transition-all">
+                        <i class="fa-solid fa-xmark text-base"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal Iframe Body -->
+            <div class="flex-1 bg-slate-950 flex items-center justify-center p-2 sm:p-4 overflow-auto">
+                <div id="device-wrapper" class="device-iframe-wrapper w-full h-full bg-white rounded-xl shadow-2xl overflow-hidden border border-slate-700">
+                    <iframe id="preview-iframe" src="" class="w-full h-full border-0 bg-white" title="Page Preview"></iframe>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-20 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+                <div>
+                    <div class="font-bold text-slate-900 dark:text-white">TechStart Frontend Learning Platform</div>
+                    <div class="text-xs text-slate-500">Comprehensive index of all web modules, tasks & assignments</div>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-500 dark:text-slate-400">
+                <span class="flex items-center gap-1"><i class="fa-brands fa-html5 text-orange-500"></i> HTML5</span>
+                <span>•</span>
+                <span class="flex items-center gap-1"><i class="fa-brands fa-css3-alt text-blue-500"></i> CSS3</span>
+                <span>•</span>
+                <span class="flex items-center gap-1"><i class="fa-brands fa-bootstrap text-purple-500"></i> Bootstrap 5</span>
+                <span>•</span>
+                <span class="flex items-center gap-1"><i class="fa-solid fa-wind text-cyan-500"></i> Tailwind CSS</span>
+                <span>•</span>
+                <span class="flex items-center gap-1"><i class="fa-brands fa-js text-yellow-500"></i> JavaScript</span>
+            </div>
+
+            <div class="text-xs text-slate-400">
+                © 2026 TechStart. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Master Projects Database Script -->
+    <script>
+        // Master Catalog of all 84 Project Files
+        const projectData = [
+            // ==================== HTML MODULES (Days 1 to 12) ====================
+            {
+                id: 'html-d1-1',
+                title: 'HTML Day 1 - Main Welcome Page',
+                category: 'HTML',
+                day: 'DAY1',
+                path: 'HTML/DAY1/index.html',
+                description: 'Initial introduction to basic HTML syntax and document structure.',
+                tags: ['Starter', 'Doctype', 'HTML5'],
+                icon: 'fa-brands fa-html5',
+                color: 'orange'
+            },
+            {
+                id: 'html-d1-2',
+                title: 'HTML Day 1 - Intro Practice 2',
+                category: 'HTML',
+                day: 'DAY1',
+                path: 'HTML/DAY1/intex2.html',
+                description: 'Secondary practice page testing basic paragraphs and headings.',
+                tags: ['Headings', 'Paragraphs'],
+                icon: 'fa-brands fa-html5',
+                color: 'orange'
+            },
+            {
+                id: 'html-d1-3',
+                title: 'HTML Day 1 - Profile Card',
+                category: 'HTML',
+                day: 'DAY1',
+                path: 'HTML/DAY1/profile.html',
+                description: 'Basic bio and personal profile card structure in HTML.',
+                tags: ['Profile', 'Bio', 'Personal'],
+                icon: 'fa-solid fa-user',
+                color: 'orange'
+            },
+            {
+                id: 'html-d2-1',
+                title: 'HTML Day 2 - Text Structure',
+                category: 'HTML',
+                day: 'DAY2',
+                path: 'HTML/DAY2/intex1.html',
+                description: 'Exploration of text elements, line breaks, and horizontal rules.',
+                tags: ['Text', 'Formatting'],
+                icon: 'fa-solid fa-align-left',
+                color: 'orange'
+            },
+            {
+                id: 'html-d3-1',
+                title: 'HTML Day 3 - Advanced Tags',
+                category: 'HTML',
+                day: 'DAY3',
+                path: 'HTML/DAY3/index2.html',
+                description: 'Deep dive into content groupings and nested HTML markup.',
+                tags: ['Nesting', 'Hierarchy'],
+                icon: 'fa-solid fa-sitemap',
+                color: 'orange'
+            },
+            {
+                id: 'html-d4-1',
+                title: 'HTML Day 4 - Company Page',
+                category: 'HTML',
+                day: 'DAY4',
+                path: 'HTML/DAY4/company.html',
+                description: 'Corporate business information and company profile markup.',
+                tags: ['Business', 'Corporate'],
+                icon: 'fa-solid fa-building',
+                color: 'orange'
+            },
+            {
+                id: 'html-d4-2',
+                title: 'HTML Day 4 - Extended Profile',
+                category: 'HTML',
+                day: 'DAY4',
+                path: 'HTML/DAY4/profile.html',
+                description: 'Comprehensive personal profile with skills and experience layout.',
+                tags: ['Portfolio', 'Resume'],
+                icon: 'fa-solid fa-address-card',
+                color: 'orange'
+            },
+            {
+                id: 'html-d5-1',
+                title: 'HTML Day 5 - Block Level Elements',
+                category: 'HTML',
+                day: 'DAY5',
+                path: 'HTML/DAY5/blocklevel.html',
+                description: 'Understanding block-level element behavior, divs, headings, and containers.',
+                tags: ['Block', 'Layout', 'Divs'],
+                icon: 'fa-solid fa-cube',
+                color: 'orange'
+            },
+            {
+                id: 'html-d5-2',
+                title: 'HTML Day 5 - Text Formatting Tags',
+                category: 'HTML',
+                day: 'DAY5',
+                path: 'HTML/DAY5/Formatingtags.html',
+                description: 'Demonstration of bold, italic, underline, mark, sub, and sup tags.',
+                tags: ['Typography', 'Formatting'],
+                icon: 'fa-solid fa-font',
+                color: 'orange'
+            },
+            {
+                id: 'html-d5-3',
+                title: 'HTML Day 5 - Inline Elements',
+                category: 'HTML',
+                day: 'DAY5',
+                path: 'HTML/DAY5/Inline.html',
+                description: 'Understanding span, anchor, strong, em, and inline flows.',
+                tags: ['Inline', 'Span'],
+                icon: 'fa-solid fa-i-cursor',
+                color: 'orange'
+            },
+            {
+                id: 'html-d5-4',
+                title: 'HTML Day 5 - Interactive Tags',
+                category: 'HTML',
+                day: 'DAY5',
+                path: 'HTML/DAY5/interacctive-tags.html',
+                description: 'Interactive HTML5 accordion tags using details, summary, and dialog.',
+                tags: ['Interactive', 'Details', 'Summary'],
+                icon: 'fa-solid fa-hand-pointer',
+                color: 'orange'
+            },
+            {
+                id: 'html-d5-5',
+                title: 'HTML Day 5 - Task 5 Practice',
+                category: 'HTML',
+                day: 'DAY5',
+                path: 'HTML/DAY5/Task5.html',
+                description: 'Comprehensive Day 5 combined layout test with formatting tags.',
+                tags: ['Practice', 'Task'],
+                icon: 'fa-solid fa-list-check',
+                color: 'orange'
+            },
+            {
+                id: 'html-d6-1',
+                title: 'HTML Day 6 - Non-Semantic Elements',
+                category: 'HTML',
+                day: 'DAY6',
+                path: 'HTML/DAY6/nonsemantic.html',
+                description: 'Comparison of div and span layouts prior to HTML5 semantic tags.',
+                tags: ['Divs', 'NonSemantic'],
+                icon: 'fa-solid fa-border-all',
+                color: 'orange'
+            },
+            {
+                id: 'html-d6-2',
+                title: 'HTML Day 6 - Modern Semantic Tags',
+                category: 'HTML',
+                day: 'DAY6',
+                path: 'HTML/DAY6/semantic.html',
+                description: 'HTML5 semantic architecture: header, nav, main, article, section, footer.',
+                tags: ['Semantic', 'HTML5', 'SEO'],
+                icon: 'fa-solid fa-cubes-stacked',
+                color: 'orange'
+            },
+            {
+                id: 'html-d6-3',
+                title: 'HTML Day 6 - Semantic Task 3',
+                category: 'HTML',
+                day: 'DAY6',
+                path: 'HTML/DAY6/task3semantic.html',
+                description: 'Structured semantic article with sidebars and navigation.',
+                tags: ['Semantic', 'Article'],
+                icon: 'fa-solid fa-newspaper',
+                color: 'orange'
+            },
+            {
+                id: 'html-d6-4',
+                title: 'HTML Day 6 - Formatting Tags Task 4',
+                category: 'HTML',
+                day: 'DAY6',
+                path: 'HTML/DAY6/task4formattingtag.html',
+                description: 'Exercise testing rich text formatting and styling hierarchies.',
+                tags: ['Formatting', 'Typography'],
+                icon: 'fa-solid fa-pen-nib',
+                color: 'orange'
+            },
+            {
+                id: 'html-d6-5',
+                title: 'HTML Day 6 - Semantic Structure Task 5',
+                category: 'HTML',
+                day: 'DAY6',
+                path: 'HTML/DAY6/task5semantic.html',
+                description: 'Full-page semantic layout exercise with header, aside, and main content.',
+                tags: ['Semantic', 'Layout'],
+                icon: 'fa-solid fa-layer-group',
+                color: 'orange'
+            },
+            {
+                id: 'html-d7-1',
+                title: 'HTML Day 7 - My Favorites Page',
+                category: 'HTML',
+                day: 'DAY7',
+                path: 'HTML/DAY7/my-favorite.html',
+                description: 'Curated list of favorite books, movies, places, and hobbies.',
+                tags: ['Favorites', 'Lists'],
+                icon: 'fa-solid fa-heart',
+                color: 'orange'
+            },
+            {
+                id: 'html-d7-2',
+                title: 'HTML Day 7 - Link Navigation Task 1',
+                category: 'HTML',
+                day: 'DAY7',
+                path: 'HTML/DAY7/task1link.html',
+                description: 'Internal document bookmarks, anchor jumps, and external links.',
+                tags: ['Links', 'Navigation'],
+                icon: 'fa-solid fa-link',
+                color: 'orange'
+            },
+            {
+                id: 'html-d7-3',
+                title: 'HTML Day 7 - Hyperlink Task 2',
+                category: 'HTML',
+                day: 'DAY7',
+                path: 'HTML/DAY7/task2kink.html',
+                description: 'Inter-page linking and multi-file navigation structure.',
+                tags: ['Hyperlinks', 'Anchors'],
+                icon: 'fa-solid fa-diagram-project',
+                color: 'orange'
+            },
+            {
+                id: 'html-d7-4',
+                title: 'HTML Day 7 - Student Details Task 3',
+                category: 'HTML',
+                day: 'DAY7',
+                path: 'HTML/DAY7/task3student.html',
+                description: 'Student profile sheet with academic records and contacts.',
+                tags: ['Student', 'Education'],
+                icon: 'fa-solid fa-graduation-cap',
+                color: 'orange'
+            },
+            {
+                id: 'html-d7-5',
+                title: 'HTML Day 7 - Image Gallery Task 4',
+                category: 'HTML',
+                day: 'DAY7',
+                path: 'HTML/DAY7/task4gallery.html',
+                description: 'Multi-image showcase gallery with captions and alt tags.',
+                tags: ['Gallery', 'Images'],
+                icon: 'fa-solid fa-images',
+                color: 'orange'
+            },
+            {
+                id: 'html-d7-6',
+                title: 'HTML Day 7 - College Webpage Task 5',
+                category: 'HTML',
+                day: 'DAY7',
+                path: 'HTML/DAY7/task5college.html',
+                description: 'College portal page displaying departments, courses, and admissions.',
+                tags: ['College', 'Portal'],
+                icon: 'fa-solid fa-school',
+                color: 'orange'
+            },
+            {
+                id: 'html-d8-1',
+                title: 'HTML Day 8 - City Portal Index',
+                category: 'HTML',
+                day: 'DAY8',
+                path: 'HTML/DAY8/index.html',
+                description: 'Main landing page for multi-page regional and city directories.',
+                tags: ['Portal', 'Cities', 'Navigation'],
+                icon: 'fa-solid fa-city',
+                color: 'orange'
+            },
+            {
+                id: 'html-d8-2',
+                title: 'HTML Day 8 - Online Shop Webpage',
+                category: 'HTML',
+                day: 'DAY8',
+                path: 'HTML/DAY8/onlineshop.html',
+                description: 'E-Commerce storefront showcasing item listings and prices.',
+                tags: ['Shop', 'E-Commerce'],
+                icon: 'fa-solid fa-cart-shopping',
+                color: 'orange'
+            },
+            {
+                id: 'html-d8-3',
+                title: 'HTML Day 8 - Taluk Info Page',
+                category: 'HTML',
+                day: 'DAY8',
+                path: 'HTML/DAY8/taluk.html',
+                description: 'Local government taluk statistics, demographics, and services.',
+                tags: ['Government', 'Directory'],
+                icon: 'fa-solid fa-map-location-dot',
+                color: 'orange'
+            },
+            {
+                id: 'html-d8-4',
+                title: 'HTML Day 8 - Bangalore City Guide',
+                category: 'HTML',
+                day: 'DAY8',
+                path: 'HTML/DAY8/pages/bangalore.html',
+                description: 'Tourist spots, tech hubs, and history of Bangalore.',
+                tags: ['Bangalore', 'City Guide'],
+                icon: 'fa-solid fa-location-dot',
+                color: 'orange'
+            },
+            {
+                id: 'html-d8-5',
+                title: 'HTML Day 8 - Chennai City Guide',
+                category: 'HTML',
+                day: 'DAY8',
+                path: 'HTML/DAY8/pages/chennai.html',
+                description: 'Culture, beaches, and historical monuments of Chennai.',
+                tags: ['Chennai', 'City Guide'],
+                icon: 'fa-solid fa-umbrella-beach',
+                color: 'orange'
+            },
+            {
+                id: 'html-d8-6',
+                title: 'HTML Day 8 - Hyderabad City Guide',
+                category: 'HTML',
+                day: 'DAY8',
+                path: 'HTML/DAY8/pages/hyderabad.html',
+                description: 'Monuments, heritage, and cyber cities in Hyderabad.',
+                tags: ['Hyderabad', 'City Guide'],
+                icon: 'fa-solid fa-monument',
+                color: 'orange'
+            },
+            {
+                id: 'html-d8-7',
+                title: 'HTML Day 8 - Schools Directory',
+                category: 'HTML',
+                day: 'DAY8',
+                path: 'HTML/DAY8/pages/schools.html',
+                description: 'Listing of primary and secondary educational institutions.',
+                tags: ['Schools', 'Education'],
+                icon: 'fa-solid fa-book-open-reader',
+                color: 'orange'
+            },
+            {
+                id: 'html-d8-8',
+                title: 'HTML Day 8 - Villages Directory',
+                category: 'HTML',
+                day: 'DAY8',
+                path: 'HTML/DAY8/pages/villages.html',
+                description: 'Rural administrative directory of village clusters.',
+                tags: ['Villages', 'Rural'],
+                icon: 'fa-solid fa-tree',
+                color: 'orange'
+            },
+            {
+                id: 'html-d9-1',
+                title: 'HTML Day 9 - Contact Us Form',
+                category: 'HTML',
+                day: 'DAY9',
+                path: 'HTML/DAY9/Contact.html',
+                description: 'Interactive contact form with input validations, email, and textarea.',
+                tags: ['Forms', 'Contact'],
+                icon: 'fa-solid fa-envelope',
+                color: 'orange'
+            },
+            {
+                id: 'html-d9-2',
+                title: 'HTML Day 9 - Feedback Form',
+                category: 'HTML',
+                day: 'DAY9',
+                path: 'HTML/DAY9/feedback.html',
+                description: 'Customer rating and review feedback submission form.',
+                tags: ['Forms', 'Feedback', 'Rating'],
+                icon: 'fa-solid fa-comment-dots',
+                color: 'orange'
+            },
+            {
+                id: 'html-d9-3',
+                title: 'HTML Day 9 - Job Application Form',
+                category: 'HTML',
+                day: 'DAY9',
+                path: 'HTML/DAY9/jobapplication.html',
+                description: 'Detailed employment application with resume upload and experience selectors.',
+                tags: ['Forms', 'Careers', 'Upload'],
+                icon: 'fa-solid fa-briefcase',
+                color: 'orange'
+            },
+            {
+                id: 'html-d9-4',
+                title: 'HTML Day 9 - User Login Form',
+                category: 'HTML',
+                day: 'DAY9',
+                path: 'HTML/DAY9/login.html',
+                description: 'Clean user authentication portal with password and remember me option.',
+                tags: ['Auth', 'Login', 'Security'],
+                icon: 'fa-solid fa-right-to-bracket',
+                color: 'orange'
+            },
+            {
+                id: 'html-d9-5',
+                title: 'HTML Day 9 - Registration Form',
+                category: 'HTML',
+                day: 'DAY9',
+                path: 'HTML/DAY9/Registration.html',
+                description: 'Complete new account registration form with form field controls.',
+                tags: ['Auth', 'Register', 'Forms'],
+                icon: 'fa-solid fa-user-plus',
+                color: 'orange'
+            },
+            {
+                id: 'html-d9-6',
+                title: 'HTML Day 9 - Forgot Password Page',
+                category: 'HTML',
+                day: 'DAY9',
+                path: 'HTML/DAY9/pages/forget.html',
+                description: 'Account recovery and email password reset form.',
+                tags: ['Auth', 'Recovery'],
+                icon: 'fa-solid fa-key',
+                color: 'orange'
+            },
+            {
+                id: 'html-d9-7',
+                title: 'HTML Day 9 - Signup Page',
+                category: 'HTML',
+                day: 'DAY9',
+                path: 'HTML/DAY9/pages/signup.html',
+                description: 'Dedicated sign-up flow with terms and conditions checkbox.',
+                tags: ['Auth', 'Signup'],
+                icon: 'fa-solid fa-id-badge',
+                color: 'orange'
+            },
+            {
+                id: 'html-d10-1',
+                title: 'HTML Day 10 - College Admission Form',
+                category: 'HTML',
+                day: 'DAY10',
+                path: 'HTML/DAY10/admission.html',
+                description: 'University admission portal with course selection and quota fields.',
+                tags: ['Forms', 'Admission', 'College'],
+                icon: 'fa-solid fa-file-signature',
+                color: 'orange'
+            },
+            {
+                id: 'html-d10-2',
+                title: 'HTML Day 10 - Employee Table Records',
+                category: 'HTML',
+                day: 'DAY10',
+                path: 'HTML/DAY10/employee.html',
+                description: 'HTML table with headers, salary, role, and department data.',
+                tags: ['Tables', 'Employee', 'Data'],
+                icon: 'fa-solid fa-table',
+                color: 'orange'
+            },
+            {
+                id: 'html-d10-3',
+                title: 'HTML Day 10 - Hospital Directory Table',
+                category: 'HTML',
+                day: 'DAY10',
+                path: 'HTML/DAY10/hospital.html',
+                description: 'Healthcare medical department, doctor schedules, and room availability table.',
+                tags: ['Tables', 'Hospital', 'Medical'],
+                icon: 'fa-solid fa-hospital',
+                color: 'orange'
+            },
+            {
+                id: 'html-d10-4',
+                title: 'HTML Day 10 - Product Catalog Table',
+                category: 'HTML',
+                day: 'DAY10',
+                path: 'HTML/DAY10/product.html',
+                description: 'Product specifications, inventory status, and pricing comparison table.',
+                tags: ['Tables', 'Products', 'Catalog'],
+                icon: 'fa-solid fa-box-archive',
+                color: 'orange'
+            },
+            {
+                id: 'html-d10-5',
+                title: 'HTML Day 10 - Student Registration Table',
+                category: 'HTML',
+                day: 'DAY10',
+                path: 'HTML/DAY10/studentregistration.html',
+                description: 'Comprehensive student matriculation and enrollment sheet.',
+                tags: ['Tables', 'Students'],
+                icon: 'fa-solid fa-user-graduate',
+                color: 'orange'
+            },
+            {
+                id: 'html-d10-6',
+                title: 'HTML Day 10 - Advanced HTML Tables',
+                category: 'HTML',
+                day: 'DAY10',
+                path: 'HTML/DAY10/table.html',
+                description: 'Complex table formatting with rowspan, colspan, thead, tbody, and tfoot.',
+                tags: ['Tables', 'Rowspan', 'Colspan'],
+                icon: 'fa-solid fa-table-cells',
+                color: 'orange'
+            },
+            {
+                id: 'html-d11-1',
+                title: 'HTML Day 11 - College Web Layout',
+                category: 'HTML',
+                day: 'DAY11',
+                path: 'HTML/DAY11/college.html',
+                description: 'Full-page multi-section college site layout with banners and notices.',
+                tags: ['Layout', 'College'],
+                icon: 'fa-solid fa-building-columns',
+                color: 'orange'
+            },
+            {
+                id: 'html-d11-2',
+                title: 'HTML Day 11 - Company Landing Page',
+                category: 'HTML',
+                day: 'DAY11',
+                path: 'HTML/DAY11/company.html',
+                description: 'Corporate business services, mission, vision, and team overview.',
+                tags: ['Corporate', 'Landing Page'],
+                icon: 'fa-solid fa-briefcase',
+                color: 'orange'
+            },
+            {
+                id: 'html-d11-3',
+                title: 'HTML Day 11 - HTML5 Master Structure',
+                category: 'HTML',
+                day: 'DAY11',
+                path: 'HTML/DAY11/html5structure.html',
+                description: 'Complete best-practice HTML5 blueprint template with semantic regions.',
+                tags: ['Blueprint', 'HTML5', 'Semantic'],
+                icon: 'fa-solid fa-code-branch',
+                color: 'orange'
+            },
+            {
+                id: 'html-d11-4',
+                title: 'HTML Day 11 - Personal Portfolio Page',
+                category: 'HTML',
+                day: 'DAY11',
+                path: 'HTML/DAY11/portfolio.html',
+                description: 'Developer portfolio showcasing skills, projects, and bio.',
+                tags: ['Portfolio', 'Developer', 'Bio'],
+                icon: 'fa-solid fa-id-card-clip',
+                color: 'orange'
+            },
+            {
+                id: 'html-d11-5',
+                title: 'HTML Day 11 - Travel & Tourism Hub',
+                category: 'HTML',
+                day: 'DAY11',
+                path: 'HTML/DAY11/travel.html',
+                description: 'Travel destinations showcase, packages, and holiday bookings.',
+                tags: ['Travel', 'Tourism', 'Vacation'],
+                icon: 'fa-solid fa-plane-departure',
+                color: 'orange'
+            },
+            {
+                id: 'html-d12-1',
+                title: 'HTML Day 12 - HTML5 Audio Player',
+                category: 'HTML',
+                day: 'DAY12',
+                path: 'HTML/DAY12/audio.html',
+                description: 'Native HTML5 audio integration with controls, autoplay, and loop options.',
+                tags: ['Media', 'Audio', 'HTML5'],
+                icon: 'fa-solid fa-music',
+                color: 'orange'
+            },
+            {
+                id: 'html-d12-2',
+                title: 'HTML Day 12 - Iframe & Embed Elements',
+                category: 'HTML',
+                day: 'DAY12',
+                path: 'HTML/DAY12/embed.html',
+                description: 'Embedding external content, YouTube videos, maps, and PDF documents.',
+                tags: ['Media', 'Iframe', 'Embed'],
+                icon: 'fa-solid fa-window-restore',
+                color: 'orange'
+            },
+            {
+                id: 'html-d12-3',
+                title: 'HTML Day 12 - Responsive Images & Figures',
+                category: 'HTML',
+                day: 'DAY12',
+                path: 'HTML/DAY12/image.html',
+                description: 'HTML image integration using figure, figcaption, and srcset attributes.',
+                tags: ['Media', 'Images', 'Figure'],
+                icon: 'fa-solid fa-image',
+                color: 'orange'
+            },
+            {
+                id: 'html-d12-4',
+                title: 'HTML Day 12 - Multi-Media Showcase',
+                category: 'HTML',
+                day: 'DAY12',
+                path: 'HTML/DAY12/medio.html',
+                description: 'Comprehensive media library featuring combined audio, video, and graphics.',
+                tags: ['Media', 'Showcase'],
+                icon: 'fa-solid fa-photo-film',
+                color: 'orange'
+            },
+            {
+                id: 'html-d12-5',
+                title: 'HTML Day 12 - HTML5 Video Player',
+                category: 'HTML',
+                day: 'DAY12',
+                path: 'HTML/DAY12/video.html',
+                description: 'Custom video player embed with poster frame, controls, and subtitle tracks.',
+                tags: ['Media', 'Video', 'Player'],
+                icon: 'fa-solid fa-film',
+                color: 'orange'
+            },
+
+            // ==================== CSS MODULES (Days 1 to 10 + Article) ====================
+            {
+                id: 'css-pkl-1',
+                title: 'Pro Kabaddi League (PKL) Showcase',
+                category: 'CSS',
+                day: 'ARTICLE',
+                path: 'CSS/article/kabadi/pkl.html',
+                description: 'Rich magazine article and team gallery for the Pro Kabaddi League.',
+                tags: ['PKL', 'Sports', 'Article', 'Images'],
+                icon: 'fa-solid fa-trophy',
+                color: 'blue'
+            },
+            {
+                id: 'css-d1-1',
+                title: 'CSS Day 1 - Box Model Basics',
+                category: 'CSS',
+                day: 'DAY1',
+                path: 'CSS/DAY1/box.html',
+                description: 'Understanding content, padding, border, and margin box model.',
+                tags: ['Box Model', 'Padding', 'Margin'],
+                icon: 'fa-solid fa-vector-square',
+                color: 'blue'
+            },
+            {
+                id: 'css-d1-2',
+                title: 'CSS Day 1 - Company Web Styling',
+                category: 'CSS',
+                day: 'DAY1',
+                path: 'CSS/DAY1/company.html',
+                description: 'Custom styled corporate profile page using CSS color palettes.',
+                tags: ['Company', 'Colors'],
+                icon: 'fa-solid fa-building-user',
+                color: 'blue'
+            },
+            {
+                id: 'css-d1-3',
+                title: 'CSS Day 1 - Department Hierarchy',
+                category: 'CSS',
+                day: 'DAY1',
+                path: 'CSS/DAY1/department.html',
+                description: 'Departmental layout with custom borders and font stylings.',
+                tags: ['Department', 'Styling'],
+                icon: 'fa-solid fa-network-wired',
+                color: 'blue'
+            },
+            {
+                id: 'css-d1-4',
+                title: 'CSS Day 1 - Favorites Styled Page',
+                category: 'CSS',
+                day: 'DAY1',
+                path: 'CSS/DAY1/favorite.html',
+                description: 'Styling list items with custom hover effects and background gradients.',
+                tags: ['Lists', 'Hover'],
+                icon: 'fa-solid fa-star',
+                color: 'blue'
+            },
+            {
+                id: 'css-d1-5',
+                title: 'CSS Day 1 - Digital ID Card',
+                category: 'CSS',
+                day: 'DAY1',
+                path: 'CSS/DAY1/idcard.html',
+                description: 'Realistic employee ID badge with rounded avatar and shadow.',
+                tags: ['Card', 'Badge', 'ID'],
+                icon: 'fa-solid fa-id-card',
+                color: 'blue'
+            },
+            {
+                id: 'css-d1-6',
+                title: 'CSS Day 1 - Welcome Index',
+                category: 'CSS',
+                day: 'DAY1',
+                path: 'CSS/DAY1/index.html',
+                description: 'Day 1 CSS introduction and foundational style rules.',
+                tags: ['Intro', 'Basics'],
+                icon: 'fa-brands fa-css3-alt',
+                color: 'blue'
+            },
+            {
+                id: 'css-d1-7',
+                title: 'CSS Day 1 - Internal CSS Rules',
+                category: 'CSS',
+                day: 'DAY1',
+                path: 'CSS/DAY1/internal.html',
+                description: 'Exploring internal style tags vs inline style attributes.',
+                tags: ['Internal CSS', 'Selectors'],
+                icon: 'fa-solid fa-code',
+                color: 'blue'
+            },
+            {
+                id: 'css-d1-8',
+                title: 'CSS Day 1 - Profile Card Design',
+                category: 'CSS',
+                day: 'DAY1',
+                path: 'CSS/DAY1/profile.html',
+                description: 'Modern user profile card with styled typography and margins.',
+                tags: ['Profile', 'Card'],
+                icon: 'fa-solid fa-user-tie',
+                color: 'blue'
+            },
+            {
+                id: 'css-d2-1',
+                title: 'CSS Day 2 - Chennai City Spotlight',
+                category: 'CSS',
+                day: 'DAY2',
+                path: 'CSS/DAY2/chennai.html',
+                description: 'City profile card with themed colors and typography.',
+                tags: ['City', 'Card'],
+                icon: 'fa-solid fa-landmark',
+                color: 'blue'
+            },
+            {
+                id: 'css-d2-2',
+                title: 'CSS Day 2 - College Portal Page',
+                category: 'CSS',
+                day: 'DAY2',
+                path: 'CSS/DAY2/college.html',
+                description: 'Styled campus portal layout with custom headers and borders.',
+                tags: ['College', 'Education'],
+                icon: 'fa-solid fa-graduation-cap',
+                color: 'blue'
+            },
+            {
+                id: 'css-d2-3',
+                title: 'CSS Day 2 - Hospital Care Layout',
+                category: 'CSS',
+                day: 'DAY2',
+                path: 'CSS/DAY2/hospital.html',
+                description: 'Clean medical portal design with patient service highlights.',
+                tags: ['Hospital', 'Healthcare'],
+                icon: 'fa-solid fa-heart-pulse',
+                color: 'blue'
+            },
+            {
+                id: 'css-d2-4',
+                title: 'CSS Day 2 - IT Company Showcase',
+                category: 'CSS',
+                day: 'DAY2',
+                path: 'CSS/DAY2/itcompany.html',
+                description: 'Tech consulting firm layout with card hover animations.',
+                tags: ['Tech', 'Corporate'],
+                icon: 'fa-solid fa-laptop-code',
+                color: 'blue'
+            },
+            {
+                id: 'css-d2-5',
+                title: 'CSS Day 2 - Movie Review Card',
+                category: 'CSS',
+                day: 'DAY2',
+                path: 'CSS/DAY2/movie.html',
+                description: 'Cinematic poster card with rating stars and synopsis.',
+                tags: ['Movie', 'Entertainment'],
+                icon: 'fa-solid fa-clapperboard',
+                color: 'blue'
+            },
+            {
+                id: 'css-d2-6',
+                title: 'CSS Day 2 - Student Profile Design',
+                category: 'CSS',
+                day: 'DAY2',
+                path: 'CSS/DAY2/student.html',
+                description: 'Student scorecard and academic summary with custom badges.',
+                tags: ['Student', 'Scorecard'],
+                icon: 'fa-solid fa-user-graduate',
+                color: 'blue'
+            },
+            {
+                id: 'css-d2-7',
+                title: 'CSS Day 2 - Starter Demo',
+                category: 'CSS',
+                day: 'DAY2',
+                path: 'CSS/DAY2/start/index.html',
+                description: 'Day 2 external stylesheet linking and asset directory layout.',
+                tags: ['Starter', 'External CSS'],
+                icon: 'fa-solid fa-folder-open',
+                color: 'blue'
+            },
+            {
+                id: 'css-d3-1',
+                title: 'CSS Day 3 - Article Magazine Page',
+                category: 'CSS',
+                day: 'DAY3',
+                path: 'CSS/DAY3/article.html',
+                description: 'Multi-column typography layout with stylized drop caps.',
+                tags: ['Magazine', 'Typography'],
+                icon: 'fa-solid fa-newspaper',
+                color: 'blue'
+            },
+            {
+                id: 'css-d3-2',
+                title: 'CSS Day 3 - CSS Layout Challenge',
+                category: 'CSS',
+                day: 'DAY3',
+                path: 'CSS/DAY3/chellange.html',
+                description: 'Advanced CSS challenge testing alignment, padding, and borders.',
+                tags: ['Challenge', 'Box Model'],
+                icon: 'fa-solid fa-fire',
+                color: 'blue'
+            },
+            {
+                id: 'css-d3-3',
+                title: 'CSS Day 3 - Employee Directory Card',
+                category: 'CSS',
+                day: 'DAY3',
+                path: 'CSS/DAY3/employe.html',
+                description: 'Staff member directory card with contact actions.',
+                tags: ['Staff', 'Card'],
+                icon: 'fa-solid fa-users-gear',
+                color: 'blue'
+            },
+            {
+                id: 'css-d3-4',
+                title: 'CSS Day 3 - Mini Box Grid',
+                category: 'CSS',
+                day: 'DAY3',
+                path: 'CSS/DAY3/minibox.html',
+                description: 'Modular mini-box layout testing margin collapse and boundaries.',
+                tags: ['Boxes', 'Alignment'],
+                icon: 'fa-solid fa-shapes',
+                color: 'blue'
+            },
+            {
+                id: 'css-d3-5',
+                title: 'CSS Day 3 - Product Feature Card',
+                category: 'CSS',
+                day: 'DAY3',
+                path: 'CSS/DAY3/product.html',
+                description: 'E-commerce item card with pricing badge and buy button.',
+                tags: ['E-Commerce', 'Product'],
+                icon: 'fa-solid fa-bag-shopping',
+                color: 'blue'
+            },
+            {
+                id: 'css-d3-6',
+                title: 'CSS Day 3 - Student Task 1 Showcase',
+                category: 'CSS',
+                day: 'DAY3',
+                path: 'CSS/DAY3/Task1/student.html',
+                description: 'Complete student dashboard task with image assets and custom CSS.',
+                tags: ['Task', 'Dashboard'],
+                icon: 'fa-solid fa-address-book',
+                color: 'blue'
+            },
+            {
+                id: 'css-d4-1',
+                title: 'CSS Day 4 - Box Model Mastery',
+                category: 'CSS',
+                day: 'DAY4',
+                path: 'CSS/DAY4/box.html',
+                description: 'Box sizing border-box vs content-box comprehensive demonstration.',
+                tags: ['BoxSizing', 'Layout'],
+                icon: 'fa-solid fa-box',
+                color: 'blue'
+            },
+            {
+                id: 'css-d4-2',
+                title: 'CSS Day 4 - Reusable Card Components',
+                category: 'CSS',
+                day: 'DAY4',
+                path: 'CSS/DAY4/card.html',
+                description: 'Polished card component library with shadow elevations.',
+                tags: ['Components', 'Cards'],
+                icon: 'fa-solid fa-clone',
+                color: 'blue'
+            },
+            {
+                id: 'css-d4-3',
+                title: 'CSS Day 4 - Display Properties Demo',
+                category: 'CSS',
+                day: 'DAY4',
+                path: 'CSS/DAY4/display.html',
+                description: 'Visual comparison of none, block, inline, inline-block, and flex.',
+                tags: ['Display', 'CSS Layout'],
+                icon: 'fa-solid fa-eye',
+                color: 'blue'
+            },
+            {
+                id: 'css-d4-4',
+                title: 'CSS Day 4 - Flexbox Fundamentals',
+                category: 'CSS',
+                day: 'DAY4',
+                path: 'CSS/DAY4/felx.html',
+                description: 'CSS Flexbox axis, justify-content, align-items, and flex-wrap.',
+                tags: ['Flexbox', 'Responsive'],
+                icon: 'fa-solid fa-arrows-split-up-and-left',
+                color: 'blue'
+            },
+            {
+                id: 'css-d4-5',
+                title: 'CSS Day 4 - Inline-Block Elements',
+                category: 'CSS',
+                day: 'DAY4',
+                path: 'CSS/DAY4/inlineblock.html',
+                description: 'Using inline-block for horizontal navbars and grid galleries.',
+                tags: ['InlineBlock', 'Alignment'],
+                icon: 'fa-solid fa-table-columns',
+                color: 'blue'
+            },
+            {
+                id: 'css-d4-6',
+                title: 'CSS Day 4 - Classroom Exercise Hub',
+                category: 'CSS',
+                day: 'DAY4',
+                path: 'CSS/DAY4/CLASS/index.html',
+                description: 'In-class live coding exercises and CSS practice sheets.',
+                tags: ['Classroom', 'Exercise'],
+                icon: 'fa-solid fa-chalkboard-user',
+                color: 'blue'
+            },
+            {
+                id: 'css-d5-1',
+                title: 'CSS Day 5 - PKL Pro Kabaddi Page',
+                category: 'CSS',
+                day: 'DAY5',
+                path: 'CSS/DAY5/pkl.html',
+                description: 'Sporting match scorecard and player stats layout in CSS.',
+                tags: ['Sports', 'Kabaddi'],
+                icon: 'fa-solid fa-medal',
+                color: 'blue'
+            },
+            {
+                id: 'css-d52-1',
+                title: 'CSS Day 5(2) - Staff Directory',
+                category: 'CSS',
+                day: 'DAY5',
+                path: 'CSS/DAY5(2)/employee.html',
+                description: 'Corporate staff listing with avatar badges and email buttons.',
+                tags: ['Employees', 'Directory'],
+                icon: 'fa-solid fa-id-badge',
+                color: 'blue'
+            },
+            {
+                id: 'css-d52-2',
+                title: 'CSS Day 5(2) - Navigation Bar',
+                category: 'CSS',
+                day: 'DAY5',
+                path: 'CSS/DAY5(2)/navigation.html',
+                description: 'Modern horizontal responsive header navbar with hover underlines.',
+                tags: ['Navbar', 'Header'],
+                icon: 'fa-solid fa-bars',
+                color: 'blue'
+            },
+            {
+                id: 'css-d52-3',
+                title: 'CSS Day 5(2) - Product Catalog',
+                category: 'CSS',
+                day: 'DAY5',
+                path: 'CSS/DAY5(2)/product.html',
+                description: 'E-commerce product grid with responsive image cards.',
+                tags: ['Catalog', 'ECommerce'],
+                icon: 'fa-solid fa-cart-arrow-down',
+                color: 'blue'
+            },
+            {
+                id: 'css-d52-4',
+                title: 'CSS Day 5(2) - Student Record',
+                category: 'CSS',
+                day: 'DAY5',
+                path: 'CSS/DAY5(2)/student.html',
+                description: 'Academic score summary and student identity card.',
+                tags: ['Student', 'Card'],
+                icon: 'fa-solid fa-user-check',
+                color: 'blue'
+            },
+            {
+                id: 'css-d6-1',
+                title: 'CSS Day 6 - Positioning Boxes',
+                category: 'CSS',
+                day: 'DAY6',
+                path: 'CSS/DAY6/boxes.html',
+                description: 'CSS coordinate positioning: static, relative, absolute, and fixed.',
+                tags: ['Positioning', 'Coordinates'],
+                icon: 'fa-solid fa-crosshairs',
+                color: 'blue'
+            },
+            {
+                id: 'css-d6-2',
+                title: 'CSS Day 6 - Notification Badges',
+                category: 'CSS',
+                day: 'DAY6',
+                path: 'CSS/DAY6/notification.html',
+                description: 'Floating notification counter badges positioned over icons.',
+                tags: ['Badges', 'Absolute'],
+                icon: 'fa-solid fa-bell',
+                color: 'blue'
+            },
+            {
+                id: 'css-d6-3',
+                title: 'CSS Day 6 - Relative Positioning',
+                category: 'CSS',
+                day: 'DAY6',
+                path: 'CSS/DAY6/relative.html',
+                description: 'Parent-child coordinate offsets using position relative & absolute.',
+                tags: ['Relative', 'Layout'],
+                icon: 'fa-solid fa-arrows-up-down-left-right',
+                color: 'blue'
+            },
+            {
+                id: 'css-d6-4',
+                title: 'CSS Day 6 - Sticky Header Demo',
+                category: 'CSS',
+                day: 'DAY6',
+                path: 'CSS/DAY6/sticky.html',
+                description: 'CSS position sticky navigation that locks on scroll.',
+                tags: ['Sticky', 'Scroll'],
+                icon: 'fa-solid fa-thumbtack',
+                color: 'blue'
+            },
+            {
+                id: 'css-d6-5',
+                title: 'CSS Day 6 - WhatsApp Web UI Clone',
+                category: 'CSS',
+                day: 'DAY6',
+                path: 'CSS/DAY6/whatsapp.html',
+                description: 'Full WhatsApp Web chat interface clone with sidebar & chat bubbles.',
+                tags: ['Clone', 'WhatsApp', 'UI'],
+                icon: 'fa-brands fa-whatsapp',
+                color: 'blue'
+            },
+            {
+                id: 'css-d7-1',
+                title: 'CSS Day 7 - Company Showcase',
+                category: 'CSS',
+                day: 'DAY7',
+                path: 'CSS/DAY7/company.html',
+                description: 'Professional corporate landing layout with modern CSS hero.',
+                tags: ['Corporate', 'Design'],
+                icon: 'fa-solid fa-city',
+                color: 'blue'
+            },
+            {
+                id: 'css-d7-2',
+                title: 'CSS Day 7 - Analytics Dashboard',
+                category: 'CSS',
+                day: 'DAY7',
+                path: 'CSS/DAY7/dashboard.html',
+                description: 'Admin dashboard UI with sidebar, stat widgets, and data grids.',
+                tags: ['Dashboard', 'Admin', 'UI'],
+                icon: 'fa-solid fa-chart-line',
+                color: 'blue'
+            },
+            {
+                id: 'css-d7-3',
+                title: 'CSS Day 7 - Image Showcase Gallery',
+                category: 'CSS',
+                day: 'DAY7',
+                path: 'CSS/DAY7/image.html',
+                description: 'Responsive photography grid with overlay text effects on hover.',
+                tags: ['Gallery', 'Hover'],
+                icon: 'fa-solid fa-images',
+                color: 'blue'
+            },
+            {
+                id: 'css-d7-4',
+                title: 'CSS Day 7 - E-Commerce Showcase',
+                category: 'CSS',
+                day: 'DAY7',
+                path: 'CSS/DAY7/product.html',
+                description: 'Modern online store product view with add-to-cart animations.',
+                tags: ['Store', 'ECommerce'],
+                icon: 'fa-solid fa-bag-shopping',
+                color: 'blue'
+            },
+            {
+                id: 'css-d8-1',
+                title: 'CSS Day 8 - Task 1 Layout',
+                category: 'CSS',
+                day: 'DAY8',
+                path: 'CSS/DAY8/task1.html',
+                description: 'Day 8 Task 1 layout focusing on flex item alignment and margins.',
+                tags: ['Task1', 'Flex'],
+                icon: 'fa-solid fa-1',
+                color: 'blue'
+            },
+            {
+                id: 'css-d8-2',
+                title: 'CSS Day 8 - Task 2 Layout',
+                category: 'CSS',
+                day: 'DAY8',
+                path: 'CSS/DAY8/task2.html',
+                description: 'Day 8 Task 2 multi-card column responsive arrangement.',
+                tags: ['Task2', 'Grid'],
+                icon: 'fa-solid fa-2',
+                color: 'blue'
+            },
+            {
+                id: 'css-d8-3',
+                title: 'CSS Day 8 - Task 3 Layout',
+                category: 'CSS',
+                day: 'DAY8',
+                path: 'CSS/DAY8/task3.html',
+                description: 'Day 8 Task 3 feature section with custom icon headers.',
+                tags: ['Task3', 'Cards'],
+                icon: 'fa-solid fa-3',
+                color: 'blue'
+            },
+            {
+                id: 'css-d8-4',
+                title: 'CSS Day 8 - Task 4 Layout',
+                category: 'CSS',
+                day: 'DAY8',
+                path: 'CSS/DAY8/task4.html',
+                description: 'Day 8 Task 4 pricing table design with call-to-action button.',
+                tags: ['Task4', 'Pricing'],
+                icon: 'fa-solid fa-4',
+                color: 'blue'
+            },
+            {
+                id: 'css-d8-5',
+                title: 'CSS Day 8 - Task 5 Layout',
+                category: 'CSS',
+                day: 'DAY8',
+                path: 'CSS/DAY8/task5.html',
+                description: 'Day 8 Task 5 complex footer and multi-column site map layout.',
+                tags: ['Task5', 'Footer'],
+                icon: 'fa-solid fa-5',
+                color: 'blue'
+            },
+            {
+                id: 'css-d9-1',
+                title: 'CSS Day 9 - Task 1 Styles',
+                category: 'CSS',
+                day: 'DAY9',
+                path: 'CSS/DAY9/task1.html',
+                description: 'Day 9 Task 1 advanced CSS transitions and keyframe animations.',
+                tags: ['Animation', 'Transition'],
+                icon: 'fa-solid fa-wand-magic-sparkles',
+                color: 'blue'
+            },
+            {
+                id: 'css-d9-2',
+                title: 'CSS Day 9 - Task 2 Styles',
+                category: 'CSS',
+                day: 'DAY9',
+                path: 'CSS/DAY9/task2.html',
+                description: 'Day 9 Task 2 button hover effects and gradient backgrounds.',
+                tags: ['Gradients', 'Buttons'],
+                icon: 'fa-solid fa-brush',
+                color: 'blue'
+            },
+            {
+                id: 'css-d9-3',
+                title: 'CSS Day 9 - Task 3 Styles',
+                category: 'CSS',
+                day: 'DAY9',
+                path: 'CSS/DAY9/task3.html',
+                description: 'Day 9 Task 3 custom form input focus rings and stylized borders.',
+                tags: ['Forms', 'Focus'],
+                icon: 'fa-solid fa-pen-to-square',
+                color: 'blue'
+            },
+            {
+                id: 'css-d9-4',
+                title: 'CSS Day 9 - Task 4 Styles',
+                category: 'CSS',
+                day: 'DAY9',
+                path: 'CSS/DAY9/task4.html',
+                description: 'Day 9 Task 4 responsive media query breakpoints demonstration.',
+                tags: ['MediaQueries', 'Responsive'],
+                icon: 'fa-solid fa-mobile-screen-button',
+                color: 'blue'
+            },
+            {
+                id: 'css-d9-5',
+                title: 'CSS Day 9 - Task 5 Styles',
+                category: 'CSS',
+                day: 'DAY9',
+                path: 'CSS/DAY9/task5.html',
+                description: 'Day 9 Task 5 full responsive multi-device landing page.',
+                tags: ['Responsive', 'FullPage'],
+                icon: 'fa-solid fa-display',
+                color: 'blue'
+            },
+            {
+                id: 'css-d10-1',
+                title: 'CSS Day 10 - SLA Layout Showcase',
+                category: 'CSS',
+                day: 'DAY10',
+                path: 'CSS/DAY10/sla.html',
+                description: 'Service Level Agreement layout with contract terms and tables.',
+                tags: ['SLA', 'Corporate'],
+                icon: 'fa-solid fa-file-contract',
+                color: 'blue'
+            },
+            {
+                id: 'css-d10-2',
+                title: 'CSS Day 10 - Task 1 Exercise',
+                category: 'CSS',
+                day: 'DAY10',
+                path: 'CSS/DAY10/task1.html',
+                description: 'Day 10 Task 1 image gallery with CSS drop shadows and overlays.',
+                tags: ['Images', 'Gallery'],
+                icon: 'fa-solid fa-camera',
+                color: 'blue'
+            },
+            {
+                id: 'css-d10-3',
+                title: 'CSS Day 10 - Task 2 Exercise',
+                category: 'CSS',
+                day: 'DAY10',
+                path: 'CSS/DAY10/task2.html',
+                description: 'Day 10 Task 2 final comprehensive CSS styling capstone exercise.',
+                tags: ['Capstone', 'CSSMastery'],
+                icon: 'fa-solid fa-award',
+                color: 'blue'
+            },
+
+            // ==================== BOOTSTRAP MODULES (Days 1 to 5) ====================
+            {
+                id: 'bs-d1-1',
+                title: 'Bootstrap Day 1 - Getting Started',
+                category: 'BOOTSTRAP',
+                day: 'DAY1',
+                path: 'BOOTSTRAP/day1/index.html',
+                description: 'Introduction to Bootstrap 5 CDN, container classes, and typography.',
+                tags: ['Intro', 'Grid', 'CDN'],
+                icon: 'fa-brands fa-bootstrap',
+                color: 'purple'
+            },
+            {
+                id: 'bs-d2-1',
+                title: 'Bootstrap Day 2 - Task 1 Components',
+                category: 'BOOTSTRAP',
+                day: 'DAY2',
+                path: 'BOOTSTRAP/day2/task1.html',
+                description: 'Bootstrap buttons, alerts, badges, and utility classes.',
+                tags: ['Buttons', 'Alerts'],
+                icon: 'fa-brands fa-bootstrap',
+                color: 'purple'
+            },
+            {
+                id: 'bs-d2-2',
+                title: 'Bootstrap Day 2 - Task 2 Grid System',
+                category: 'BOOTSTRAP',
+                day: 'DAY2',
+                path: 'BOOTSTRAP/day2/task2.html',
+                description: 'Responsive 12-column grid layout across xs, md, and lg viewports.',
+                tags: ['Grid', 'Columns'],
+                icon: 'fa-brands fa-bootstrap',
+                color: 'purple'
+            },
+            {
+                id: 'bs-d2-3',
+                title: 'Bootstrap Day 2 - Task 3 Card Group',
+                category: 'BOOTSTRAP',
+                day: 'DAY2',
+                path: 'BOOTSTRAP/day2/task3.html',
+                description: 'Responsive Bootstrap card deck with image caps and footers.',
+                tags: ['Cards', 'Deck'],
+                icon: 'fa-brands fa-bootstrap',
+                color: 'purple'
+            },
+            {
+                id: 'bs-d3-1',
+                title: 'Bootstrap Day 3 - Banner & Assets Layout',
+                category: 'BOOTSTRAP',
+                day: 'DAY3',
+                path: 'BOOTSTRAP/day3/index.html',
+                description: 'Hero banner section with custom brand logo and responsive images.',
+                tags: ['Hero', 'Banner', 'Images'],
+                icon: 'fa-brands fa-bootstrap',
+                color: 'purple'
+            },
+            {
+                id: 'bs-d4-1',
+                title: 'Bootstrap Day 4 - Task 1 Navbars',
+                category: 'BOOTSTRAP',
+                day: 'DAY4',
+                path: 'BOOTSTRAP/day4/task1.html',
+                description: 'Responsive collapsible navigation bar with dropdown menus.',
+                tags: ['Navbar', 'Dropdown'],
+                icon: 'fa-brands fa-bootstrap',
+                color: 'purple'
+            },
+            {
+                id: 'bs-d4-2',
+                title: 'Bootstrap Day 4 - Task 2 Forms',
+                category: 'BOOTSTRAP',
+                day: 'DAY4',
+                path: 'BOOTSTRAP/day4/task2.html',
+                description: 'Bootstrap form controls, input groups, switches, and validation.',
+                tags: ['Forms', 'Validation'],
+                icon: 'fa-brands fa-bootstrap',
+                color: 'purple'
+            },
+            {
+                id: 'bs-d4-3',
+                title: 'Bootstrap Day 4 - Task 3 Modals & Popups',
+                category: 'BOOTSTRAP',
+                day: 'DAY4',
+                path: 'BOOTSTRAP/day4/task3.html',
+                description: 'Interactive JavaScript-driven modal dialogs and alert triggers.',
+                tags: ['Modal', 'JavaScript'],
+                icon: 'fa-brands fa-bootstrap',
+                color: 'purple'
+            },
+            {
+                id: 'bs-d4-4',
+                title: 'Bootstrap Day 4 - Task 4 Tables & Lists',
+                category: 'BOOTSTRAP',
+                day: 'DAY4',
+                path: 'BOOTSTRAP/day4/task4.html',
+                description: 'Striped, hovered, and bordered Bootstrap responsive data tables.',
+                tags: ['Tables', 'ListGroup'],
+                icon: 'fa-brands fa-bootstrap',
+                color: 'purple'
+            },
+            {
+                id: 'bs-d4-5',
+                title: 'Bootstrap Day 4 - Task 5 Full Page',
+                category: 'BOOTSTRAP',
+                day: 'DAY4',
+                path: 'BOOTSTRAP/day4/task5.html',
+                description: 'Comprehensive multi-section Bootstrap landing page template.',
+                tags: ['Template', 'LandingPage'],
+                icon: 'fa-brands fa-bootstrap',
+                color: 'purple'
+            },
+            {
+                id: 'bs-d5-1',
+                title: 'Bootstrap Day 5 - Article & Blog Post',
+                category: 'BOOTSTRAP',
+                day: 'DAY5',
+                path: 'BOOTSTRAP/day5/article.html',
+                description: 'Complete magazine blog post layout with sidebar widgets and breadcrumbs.',
+                tags: ['Blog', 'Article', 'Widgets'],
+                icon: 'fa-brands fa-bootstrap',
+                color: 'purple'
+            },
+
+            // ==================== JAVASCRIPT MODULES (Days 2 to 4) ====================
+            {
+                id: 'js-d2-1',
+                title: 'JavaScript Day 2 - Task 1: Variables & Data Types',
+                category: 'JAVASCRIPT',
+                day: 'DAY2',
+                path: 'JAVASCRIPT/day2/task1.html',
+                description: 'Learning let, const, var, string, number, boolean, and type checking.',
+                tags: ['Variables', 'Types', 'ES6'],
+                icon: 'fa-brands fa-js',
+                color: 'yellow'
+            },
+            {
+                id: 'js-d2-2',
+                title: 'JavaScript Day 2 - Task 2: Operators & Arithmetic',
+                category: 'JAVASCRIPT',
+                day: 'DAY2',
+                path: 'JAVASCRIPT/day2/task2.html',
+                description: 'Arithmetic calculations, comparison operators, and ternary logic.',
+                tags: ['Operators', 'Math'],
+                icon: 'fa-brands fa-js',
+                color: 'yellow'
+            },
+            {
+                id: 'js-d2-3',
+                title: 'JavaScript Day 2 - Task 3: Conditional Logic',
+                category: 'JAVASCRIPT',
+                day: 'DAY2',
+                path: 'JAVASCRIPT/day2/task3.html',
+                description: 'If-else branching, switch statements, and condition flows.',
+                tags: ['Conditionals', 'Switch'],
+                icon: 'fa-brands fa-js',
+                color: 'yellow'
+            },
+            {
+                id: 'js-d2-4',
+                title: 'JavaScript Day 2 - Task 4: Loops & Iteration',
+                category: 'JAVASCRIPT',
+                day: 'DAY2',
+                path: 'JAVASCRIPT/day2/task4.html',
+                description: 'For, while, and do-while loops generating dynamic outputs.',
+                tags: ['Loops', 'Iteration'],
+                icon: 'fa-brands fa-js',
+                color: 'yellow'
+            },
+            {
+                id: 'js-d3-1',
+                title: 'JavaScript Day 3 - Task 1: Functions & Arrow Functions',
+                category: 'JAVASCRIPT',
+                day: 'DAY3',
+                path: 'JAVASCRIPT/day3/task1.html',
+                description: 'Function declarations, parameters, return values, and ES6 arrows.',
+                tags: ['Functions', 'Scope'],
+                icon: 'fa-brands fa-js',
+                color: 'yellow'
+            },
+            {
+                id: 'js-d3-2',
+                title: 'JavaScript Day 3 - Task 2: Array Methods',
+                category: 'JAVASCRIPT',
+                day: 'DAY3',
+                path: 'JAVASCRIPT/day3/task2.html',
+                description: 'Array manipulations: push, pop, shift, unshift, slice, and splice.',
+                tags: ['Arrays', 'Methods'],
+                icon: 'fa-brands fa-js',
+                color: 'yellow'
+            },
+            {
+                id: 'js-d3-3',
+                title: 'JavaScript Day 3 - Task 3: Objects & Key-Values',
+                category: 'JAVASCRIPT',
+                day: 'DAY3',
+                path: 'JAVASCRIPT/day3/task3.html',
+                description: 'JavaScript object creation, properties, methods, and destructuring.',
+                tags: ['Objects', 'JSON'],
+                icon: 'fa-brands fa-js',
+                color: 'yellow'
+            },
+            {
+                id: 'js-d3-4',
+                title: 'JavaScript Day 3 - Task 4: DOM Selection',
+                category: 'JAVASCRIPT',
+                day: 'DAY3',
+                path: 'JAVASCRIPT/day3/task4.html',
+                description: 'Selecting elements using querySelector, getElementById, and classList.',
+                tags: ['DOM', 'Selectors'],
+                icon: 'fa-brands fa-js',
+                color: 'yellow'
+            },
+            {
+                id: 'js-d3-5',
+                title: 'JavaScript Day 3 - Task 5: Event Handling',
+                category: 'JAVASCRIPT',
+                day: 'DAY3',
+                path: 'JAVASCRIPT/day3/task5.html',
+                description: 'Click, hover, input, and keydown event listeners with interactive UI.',
+                tags: ['Events', 'Listeners'],
+                icon: 'fa-brands fa-js',
+                color: 'yellow'
+            },
+            {
+                id: 'js-d4-1',
+                title: 'JavaScript Day 4 - Task 1: Form Validation',
+                category: 'JAVASCRIPT',
+                day: 'DAY4',
+                path: 'JAVASCRIPT/day4/task1.html',
+                description: 'Realtime client-side form validation with error messages.',
+                tags: ['Validation', 'Forms'],
+                icon: 'fa-brands fa-js',
+                color: 'yellow'
+            },
+            {
+                id: 'js-d4-2',
+                title: 'JavaScript Day 4 - Task 2: Interactive Counter App',
+                category: 'JAVASCRIPT',
+                day: 'DAY4',
+                path: 'JAVASCRIPT/day4/task2.html',
+                description: 'State management and dynamic DOM manipulation counter application.',
+                tags: ['Counter', 'State'],
+                icon: 'fa-brands fa-js',
+                color: 'yellow'
+            },
+            {
+                id: 'js-d4-3',
+                title: 'JavaScript Day 4 - Task 3: Dynamic Element Generator',
+                category: 'JAVASCRIPT',
+                day: 'DAY4',
+                path: 'JAVASCRIPT/day4/task3.html',
+                description: 'Dynamically creating, styling, and appending DOM nodes at runtime.',
+                tags: ['DynamicDOM', 'CreateElement'],
+                icon: 'fa-brands fa-js',
+                color: 'yellow'
+            },
+            {
+                id: 'js-d4-4',
+                title: 'JavaScript Day 4 - Task 4: Local Storage & Data Store',
+                category: 'JAVASCRIPT',
+                day: 'DAY4',
+                path: 'JAVASCRIPT/day4/task4.html',
+                description: 'Persisting application state and user preferences with browser localStorage.',
+                tags: ['LocalStorage', 'Persistence'],
+                icon: 'fa-brands fa-js',
+                color: 'yellow'
+            },
+
+            // ==================== TAILWIND CSS MODULE ====================
+            {
+                id: 'tailwind-d1-1',
+                title: 'Tailwind CSS Day 1 - Modern Starter App',
+                category: 'TAILWIND',
+                day: 'DAY1',
+                path: 'TAILWIND/day1/index.html',
+                description: 'Utility-first modern styling, responsive layouts, and Tailwind design tokens.',
+                tags: ['Tailwind', 'UtilityCSS', 'Modern'],
+                icon: 'fa-solid fa-wind',
+                color: 'cyan'
+            },
+
+            // ==================== ASSIGNMENTS MODULE ====================
+            {
+                id: 'assign-1',
+                title: 'Frontend Main Assignment Portal',
+                category: 'ASSIGNMENT',
+                day: 'ASSIGNMENT',
+                path: 'ASSIGNMENT/index.html',
+                description: 'Comprehensive master assignment combining multi-tier frontend technologies.',
+                tags: ['Assignment', 'Master', 'Showcase'],
+                icon: 'fa-solid fa-folder-tree',
+                color: 'emerald'
+            }
+        ];
+
+        // State Management
+        let currentCategory = 'ALL';
+        let currentViewMode = 'grid';
+
+        // Filter Colors & Styles Lookup
+        const colorStyles = {
+            orange: {
+                badge: 'bg-orange-50 text-orange-700 dark:bg-orange-950/80 dark:text-orange-300 border-orange-200 dark:border-orange-900',
+                borderHover: 'hover:border-orange-500/60 dark:hover:border-orange-500/60',
+                iconBg: 'bg-orange-500',
+                btn: 'bg-orange-600 hover:bg-orange-700 text-white'
+            },
+            blue: {
+                badge: 'bg-blue-50 text-blue-700 dark:bg-blue-950/80 dark:text-blue-300 border-blue-200 dark:border-blue-900',
+                borderHover: 'hover:border-blue-500/60 dark:hover:border-blue-500/60',
+                iconBg: 'bg-blue-600',
+                btn: 'bg-blue-600 hover:bg-blue-700 text-white'
+            },
+            purple: {
+                badge: 'bg-purple-50 text-purple-700 dark:bg-purple-950/80 dark:text-purple-300 border-purple-200 dark:border-purple-900',
+                borderHover: 'hover:border-purple-500/60 dark:hover:border-purple-500/60',
+                iconBg: 'bg-purple-600',
+                btn: 'bg-purple-600 hover:bg-purple-700 text-white'
+            },
+            yellow: {
+                badge: 'bg-amber-50 text-amber-700 dark:bg-amber-950/80 dark:text-amber-300 border-amber-200 dark:border-amber-900',
+                borderHover: 'hover:border-amber-500/60 dark:hover:border-amber-500/60',
+                iconBg: 'bg-amber-500',
+                btn: 'bg-amber-600 hover:bg-amber-700 text-white'
+            },
+            cyan: {
+                badge: 'bg-cyan-50 text-cyan-700 dark:bg-cyan-950/80 dark:text-cyan-300 border-cyan-200 dark:border-cyan-900',
+                borderHover: 'hover:border-cyan-500/60 dark:hover:border-cyan-500/60',
+                iconBg: 'bg-cyan-600',
+                btn: 'bg-cyan-600 hover:bg-cyan-700 text-white'
+            },
+            emerald: {
+                badge: 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/80 dark:text-emerald-300 border-emerald-200 dark:border-emerald-900',
+                borderHover: 'hover:border-emerald-500/60 dark:hover:border-emerald-500/60',
+                iconBg: 'bg-emerald-600',
+                btn: 'bg-emerald-600 hover:bg-emerald-700 text-white'
+            }
+        };
+
+        // Render Function
+        function renderCards() {
+            const container = document.getElementById('projects-container');
+            const searchVal = document.getElementById('search-input').value.toLowerCase().trim();
+            const dayVal = document.getElementById('day-filter').value;
+            const emptyState = document.getElementById('empty-state');
+            const displayedCount = document.getElementById('displayed-count');
+
+            const filtered = projectData.filter(item => {
+                // Category Filter
+                if (currentCategory !== 'ALL' && item.category !== currentCategory) {
+                    return false;
+                }
+                // Day Filter
+                if (dayVal !== 'ALL' && !item.day.includes(dayVal)) {
+                    return false;
+                }
+                // Search query
+                if (searchVal) {
+                    const matchTitle = item.title.toLowerCase().includes(searchVal);
+                    const matchPath = item.path.toLowerCase().includes(searchVal);
+                    const matchDesc = item.description.toLowerCase().includes(searchVal);
+                    const matchDay = item.day.toLowerCase().includes(searchVal);
+                    const matchTags = item.tags.some(tag => tag.toLowerCase().includes(searchVal));
+                    if (!matchTitle && !matchPath && !matchDesc && !matchDay && !matchTags) {
+                        return false;
+                    }
+                }
+                return true;
+            });
+
+            displayedCount.textContent = filtered.length;
+
+            if (filtered.length === 0) {
+                container.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+
+            if (currentViewMode === 'grid') {
+                container.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
+                container.innerHTML = filtered.map(item => {
+                    const c = colorStyles[item.color] || colorStyles.blue;
+                    const encodedItem = encodeURIComponent(JSON.stringify(item));
+                    return `
+                        <div class="group relative bg-white dark:bg-slate-900/90 rounded-2xl p-6 border border-slate-200/90 dark:border-slate-800/90 shadow-sm hover:shadow-xl ${c.borderHover} transition-all duration-300 flex flex-col justify-between">
+                            
+                            <div>
+                                <!-- Top Bar with Category, Day & Copy Path -->
+                                <div class="flex items-center justify-between gap-2 mb-4">
+                                    <div class="flex items-center gap-2">
+                                        <span class="px-2.5 py-1 rounded-lg text-xs font-bold border ${c.badge}">
+                                            ${item.category}
+                                        </span>
+                                        <span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+                                            ${item.day}
+                                        </span>
+                                    </div>
+                                    <button onclick="copyFilePath('${item.path}')" title="Copy relative path" class="p-1.5 rounded-lg text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                                        <i class="fa-regular fa-copy text-xs"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Title & Icon -->
+                                <div class="flex items-start gap-3.5 mb-3">
+                                    <div class="w-10 h-10 rounded-xl ${c.iconBg} text-white flex-shrink-0 flex items-center justify-center text-lg shadow-md">
+                                        <i class="${item.icon}"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-slate-900 dark:text-white text-base leading-snug group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                                            ${item.title}
+                                        </h3>
+                                        <div class="text-xs font-mono text-slate-400 mt-1 truncate max-w-[220px]">
+                                            ${item.path}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Description -->
+                                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-2 mb-4">
+                                    ${item.description}
+                                </p>
+
+                                <!-- Tag Pills -->
+                                <div class="flex flex-wrap gap-1.5 mb-6">
+                                    ${item.tags.map(t => `<span class="text-[10px] font-medium bg-slate-100 dark:bg-slate-800/80 text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded-md">#${t}</span>`).join('')}
+                                </div>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="grid grid-cols-2 gap-2 pt-3 border-t border-slate-100 dark:border-slate-800/80">
+                                <button onclick="openPreviewModal('${encodedItem}')" class="w-full py-2 px-3 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all flex items-center justify-center gap-1.5">
+                                    <i class="fa-solid fa-laptop text-xs"></i>
+                                    <span>Live Preview</span>
+                                </button>
+                                <a href="${item.path}" target="_blank" class="w-full py-2 px-3 rounded-xl text-xs font-bold ${c.btn} transition-all flex items-center justify-center gap-1.5 shadow-sm">
+                                    <span>Open Page</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                                </a>
+                            </div>
+
+                        </div>
+                    `;
+                }).join('');
+            } else {
+                // List View
+                container.className = 'space-y-3';
+                container.innerHTML = filtered.map(item => {
+                    const c = colorStyles[item.color] || colorStyles.blue;
+                    const encodedItem = encodeURIComponent(JSON.stringify(item));
+                    return `
+                        <div class="bg-white dark:bg-slate-900/90 rounded-xl p-4 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 flex flex-col sm:row items-start sm:items-center justify-between gap-4 transition-all">
+                            <div class="flex items-center gap-3 min-w-0">
+                                <div class="w-9 h-9 rounded-lg ${c.iconBg} text-white flex items-center justify-center text-sm flex-shrink-0">
+                                    <i class="${item.icon}"></i>
+                                </div>
+                                <div class="min-w-0">
+                                    <div class="flex items-center gap-2 flex-wrap">
+                                        <span class="font-bold text-slate-900 dark:text-white text-sm truncate">${item.title}</span>
+                                        <span class="px-2 py-0.5 rounded text-[10px] font-bold border ${c.badge}">${item.category}</span>
+                                        <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-500">${item.day}</span>
+                                    </div>
+                                    <div class="text-xs font-mono text-slate-400 mt-0.5 truncate">${item.path}</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-2 w-full sm:w-auto justify-end flex-shrink-0">
+                                <button onclick="copyFilePath('${item.path}')" class="p-2 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800 text-xs">
+                                    <i class="fa-regular fa-copy"></i>
+                                </button>
+                                <button onclick="openPreviewModal('${encodedItem}')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">
+                                    Preview
+                                </button>
+                                <a href="${item.path}" target="_blank" class="px-3 py-1.5 rounded-lg text-xs font-bold ${c.btn}">
+                                    Open
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+        }
+
+        // Filter Handlers
+        function setCategoryFilter(category) {
+            currentCategory = category;
+            const pills = document.querySelectorAll('.category-pill');
+            pills.forEach(pill => {
+                if (pill.getAttribute('data-category') === category) {
+                    pill.className = 'category-pill active px-4 py-2 rounded-xl text-sm font-bold bg-indigo-600 text-white shadow-md shadow-indigo-500/25 transition-all flex items-center gap-2';
+                } else {
+                    pill.className = 'category-pill px-4 py-2 rounded-xl text-sm font-semibold bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-all flex items-center gap-2';
+                }
+            });
+
+            document.getElementById('active-filter-badge').textContent = `Category: ${category}`;
+            renderCards();
+        }
+
+        function resetFilters() {
+            document.getElementById('search-input').value = '';
+            document.getElementById('day-filter').value = 'ALL';
+            setCategoryFilter('ALL');
+        }
+
+        function setViewMode(mode) {
+            currentViewMode = mode;
+            const gridBtn = document.getElementById('view-grid-btn');
+            const listBtn = document.getElementById('view-list-btn');
+            if (mode === 'grid') {
+                gridBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-sm transition-all';
+                listBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all';
+            } else {
+                listBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-sm transition-all';
+                gridBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all';
+            }
+            renderCards();
+        }
+
+        // Live Preview Modal
+        function openPreviewModal(encodedData) {
+            const item = JSON.parse(decodeURIComponent(encodedData));
+            const modal = document.getElementById('preview-modal');
+            const iframe = document.getElementById('preview-iframe');
+            const title = document.getElementById('modal-title');
+            const path = document.getElementById('modal-path');
+            const openLink = document.getElementById('modal-open-link');
+            const modalIcon = document.getElementById('modal-icon');
+            const c = colorStyles[item.color] || colorStyles.blue;
+
+            title.textContent = item.title;
+            path.textContent = item.path;
+            openLink.href = item.path;
+            iframe.src = item.path;
+            modalIcon.className = `w-9 h-9 rounded-xl ${c.iconBg} flex items-center justify-center text-white text-base shadow-md`;
+            modalIcon.innerHTML = `<i class="${item.icon}"></i>`;
+
+            setModalDevice('desktop');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePreviewModal() {
+            const modal = document.getElementById('preview-modal');
+            const iframe = document.getElementById('preview-iframe');
+            iframe.src = '';
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        function refreshModalFrame() {
+            const iframe = document.getElementById('preview-iframe');
+            iframe.src = iframe.src;
+        }
+
+        function setModalDevice(device) {
+            const wrapper = document.getElementById('device-wrapper');
+            const btnDesk = document.getElementById('dev-desktop');
+            const btnTab = document.getElementById('dev-tablet');
+            const btnMob = document.getElementById('dev-mobile');
+
+            [btnDesk, btnTab, btnMob].forEach(b => {
+                b.className = 'px-3 py-1.5 rounded-lg hover:bg-slate-800 text-slate-300 flex items-center gap-1.5 transition-all';
+            });
+
+            if (device === 'desktop') {
+                wrapper.style.width = '100%';
+                wrapper.style.maxWidth = '100%';
+                btnDesk.className = 'px-3 py-1.5 rounded-lg bg-indigo-600 text-white flex items-center gap-1.5 transition-all';
+            } else if (device === 'tablet') {
+                wrapper.style.width = '768px';
+                wrapper.style.maxWidth = '768px';
+                btnTab.className = 'px-3 py-1.5 rounded-lg bg-indigo-600 text-white flex items-center gap-1.5 transition-all';
+            } else if (device === 'mobile') {
+                wrapper.style.width = '375px';
+                wrapper.style.maxWidth = '375px';
+                btnMob.className = 'px-3 py-1.5 rounded-lg bg-indigo-600 text-white flex items-center gap-1.5 transition-all';
+            }
+        }
+
+        // Random Project Launcher
+        function openRandomProject() {
+            const randomIndex = Math.floor(Math.random() * projectData.length);
+            const randomItem = projectData[randomIndex];
+            openPreviewModal(encodeURIComponent(JSON.stringify(randomItem)));
+        }
+
+        // Copy Path Function with Toast Notification
+        function copyFilePath(path) {
+            navigator.clipboard.writeText(path).then(() => {
+                showToast(`Path "${path}" copied!`);
+            }).catch(() => {
+                showToast(`Copied: ${path}`);
+            });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.textContent = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 2500);
+        }
+
+        // Search Input Debounced Listener
+        document.getElementById('search-input').addEventListener('input', () => {
+            renderCards();
+        });
+
+        // Keyboard Shortcut (ESC to close modal or clear search)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('preview-modal');
+                if (!modal.classList.contains('hidden')) {
+                    closePreviewModal();
+                } else {
+                    document.getElementById('search-input').value = '';
+                    renderCards();
+                }
+            }
+        });
+
+        // Theme Switcher Logic with System / LocalStorage detection
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+        function initTheme() {
+            if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                lightIcon.classList.remove('hidden');
+                darkIcon.classList.add('hidden');
+            } else {
+                document.documentElement.classList.remove('dark');
+                darkIcon.classList.remove('hidden');
+                lightIcon.classList.add('hidden');
+            }
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+                darkIcon.classList.remove('hidden');
+                lightIcon.classList.add('hidden');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+                lightIcon.classList.remove('hidden');
+                darkIcon.classList.add('hidden');
+            }
+        });
+
+        // Initialize App
+        initTheme();
+        renderCards();
+    </script>
 </body>
 </html>

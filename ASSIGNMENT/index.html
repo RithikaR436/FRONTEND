@@ -3,19 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css1/style.css">
-    <title>Assignment</title>
+    <title>Frontend Assignments Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
 </head>
-<body>
-    <div>
-        <header class="part">
-            <h2>FRONTEND</h2>
-            <div class="part1">
-                <a href="../HTML/">HTML</a>
-                <a href="../CSS/">CSS</a>
-                <a href="../BOOTSTRAP/">BOOTSTRAP</a>
+<body class="bg-slate-900 text-white min-h-screen flex flex-col justify-between">
+
+    <!-- Navbar -->
+    <header class="border-b border-slate-800 bg-slate-950/80 backdrop-blur-md sticky top-0 z-30">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-cyan-400 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-arrow-left text-sm"></i>
+                </div>
+                <div>
+                    <span class="font-bold text-base text-white">Back to Master Hub</span>
+                    <p class="text-xs text-slate-400">TechStart Frontend Portal</p>
+                </div>
+            </a>
+            <span class="text-xs px-3 py-1 bg-emerald-950 text-emerald-300 border border-emerald-800 rounded-full font-semibold">
+                Assignment Portal
+            </span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-6 py-12 flex-1 w-full space-y-10">
+        
+        <!-- Hero Section -->
+        <div class="text-center space-y-4 max-w-2xl mx-auto">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-900/60 border border-indigo-700 text-indigo-300 text-xs font-semibold">
+                <i class="fa-solid fa-graduation-cap"></i> Practice & Module Tasks
             </div>
-        </header>
-    </div>
+            <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+                Frontend Development <span class="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">Curriculum Showcase</span>
+            </h1>
+            <p class="text-slate-400 text-sm sm:text-base">
+                Direct access to foundational modules across HTML, CSS, Bootstrap, Tailwind, and JavaScript.
+            </p>
+        </div>
+
+        <!-- Module Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- HTML Card -->
+            <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-6 hover:border-orange-500/60 transition-all group flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-orange-600/20 text-orange-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-html5"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1">HTML5 Modules</h3>
+                    <p class="text-xs text-slate-400 mb-4">Semantic tags, forms, tables, media elements (Day 1 to Day 12).</p>
+                </div>
+                <a href="../HTML/DAY1/index.html" class="w-full py-2.5 px-4 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold flex items-center justify-center gap-2 transition-all">
+                    <span>Open HTML Day 1</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+
+            <!-- CSS Card -->
+            <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-6 hover:border-blue-500/60 transition-all group flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-blue-600/20 text-blue-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-css3-alt"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1">CSS3 Modules</h3>
+                    <p class="text-xs text-slate-400 mb-4">Box model, Flexbox, positioning, responsive layouts, WhatsApp clone (Day 1 to 10).</p>
+                </div>
+                <a href="../CSS/DAY1/index.html" class="w-full py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center justify-center gap-2 transition-all">
+                    <span>Open CSS Day 1</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+
+            <!-- Bootstrap Card -->
+            <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-6 hover:border-purple-500/60 transition-all group flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-purple-600/20 text-purple-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-bootstrap"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1">Bootstrap 5 Modules</h3>
+                    <p class="text-xs text-slate-400 mb-4">Responsive grid system, UI components, modals, and landing pages (Day 1 to 5).</p>
+                </div>
+                <a href="../BOOTSTRAP/day1/index.html" class="w-full py-2.5 px-4 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold flex items-center justify-center gap-2 transition-all">
+                    <span>Open Bootstrap Day 1</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+
+            <!-- JavaScript Card -->
+            <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-6 hover:border-yellow-500/60 transition-all group flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-yellow-500/20 text-yellow-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-js"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1">JavaScript Modules</h3>
+                    <p class="text-xs text-slate-400 mb-4">Variables, DOM manipulation, form validation, event listeners (Day 2 to 4).</p>
+                </div>
+                <a href="../JAVASCRIPT/day2/task1.html" class="w-full py-2.5 px-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold flex items-center justify-center gap-2 transition-all">
+                    <span>Open JavaScript Day 2</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+
+            <!-- Tailwind Card -->
+            <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-6 hover:border-cyan-500/60 transition-all group flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-cyan-600/20 text-cyan-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-wind"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1">Tailwind CSS</h3>
+                    <p class="text-xs text-slate-400 mb-4">Modern utility-first styling and flexible components layout.</p>
+                </div>
+                <a href="../TAILWIND/day1/index.html" class="w-full py-2.5 px-4 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold flex items-center justify-center gap-2 transition-all">
+                    <span>Open Tailwind Day 1</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+
+            <!-- Full Master Hub Link Card -->
+            <div class="bg-gradient-to-br from-indigo-900/60 to-blue-900/60 border border-indigo-700/60 rounded-2xl p-6 hover:border-indigo-400 transition-all group flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500 text-white flex items-center justify-center text-2xl mb-4 shadow-lg group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-compass"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1">Master Portal (84+ Pages)</h3>
+                    <p class="text-xs text-indigo-200/80 mb-4">Complete index with real-time search, filters, and live preview simulator.</p>
+                </div>
+                <a href="../index.html" class="w-full py-2.5 px-4 rounded-xl bg-white hover:bg-indigo-50 text-indigo-900 text-xs font-bold flex items-center justify-center gap-2 transition-all shadow-md">
+                    <span>View All 84+ Webpages</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-950 py-6 text-center text-xs text-slate-500">
+        © 2026 TechStart Frontend Development Portal.
+    </footer>
+
 </body>
 </html>
