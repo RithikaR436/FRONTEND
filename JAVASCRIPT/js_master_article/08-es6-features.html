@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08. ES6+ Modern Features | JavaScript Master Guide</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50: '#fffbeb', 500: '#f59e0b', 600: '#d97706', 900: '#78350f' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200 min-h-screen flex flex-col antialiased selection:bg-yellow-500 selection:text-slate-950">
+
+  <div id="reading-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-yellow-500 via-amber-500 to-orange-500 z-50 w-0"></div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-950/90 border-b border-slate-200 dark:border-slate-800 glass-header">
+    <div class="w-full max-w-[100vw] px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-xl text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+          <i class="fa-solid fa-bars-staggered text-lg"></i>
+        </button>
+        <a href="index.html" class="flex items-center gap-2.5 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-yellow-400 to-amber-500 flex items-center justify-center text-slate-950 font-black text-xl shadow-lg shadow-yellow-500/20 group-hover:scale-105 transition-transform">
+            JS
+          </div>
+          <div>
+            <div class="text-base font-extrabold tracking-tight flex items-center gap-1.5">
+              <span>JavaScript Master Guide</span>
+              <span class="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-500 border border-yellow-500/20">Chapter 08</span>
+            </div>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400">ES6+ Modern Syntax & Architectures</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button class="search-trigger-btn flex items-center gap-2 px-3 py-2 text-xs font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-xl transition">
+          <i class="fa-solid fa-magnifying-glass text-yellow-500"></i>
+          <span class="hidden sm:inline">Search...</span>
+          <kbd class="hidden sm:inline px-1.5 py-0.5 text-[10px] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-slate-400 font-mono">Ctrl+K</kbd>
+        </button>
+        <button class="theme-toggle-btn p-2.5 rounded-xl text-slate-500 hover:text-amber-500 dark:text-slate-400 dark:hover:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+          <i class="fa-solid fa-moon dark:hidden text-base"></i>
+          <i class="fa-solid fa-sun hidden dark:inline text-base text-amber-400"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="sidebar-backdrop" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-30 hidden lg:hidden"></div>
+
+  <!-- Main Layout -->
+  <div class="flex-1 flex w-full max-w-[100vw]">
+    
+    <!-- Left Sidebar -->
+    <aside id="docs-sidebar" class="fixed inset-y-0 left-0 z-40 w-72 pt-16 lg:pt-0 bg-white dark:bg-slate-950 border-r border-slate-200 dark:border-slate-800 flex flex-col transition-transform duration-300 -translate-x-full lg:translate-x-0 lg:static lg:h-[calc(100vh-61px)] lg:sticky lg:top-[61px]">
+      <div class="p-4 border-b border-slate-100 dark:border-slate-800/60">
+        <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Topics Menu</div>
+        <p class="text-[11px] text-slate-500">Select any chapter</p>
+      </div>
+      <nav class="flex-1 overflow-y-auto p-3 space-y-1 text-sm">
+        <a href="index.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition">
+          <i class="fa-solid fa-house text-slate-400 w-5 text-center"></i>
+          <span>Overview</span>
+        </a>
+        <a href="01-variables.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition">
+          <span class="w-6 h-6 rounded-lg bg-amber-500/10 text-amber-500 flex items-center justify-center text-xs font-bold font-mono">01</span>
+          <span class="flex-1">Variables & TDZ</span>
+        </a>
+        <a href="02-data-types.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition">
+          <span class="w-6 h-6 rounded-lg bg-blue-500/10 text-blue-500 flex items-center justify-center text-xs font-bold font-mono">02</span>
+          <span class="flex-1">Data Types Overview</span>
+        </a>
+        <a href="03-primitive.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition">
+          <span class="w-6 h-6 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-xs font-bold font-mono">03</span>
+          <span class="flex-1">Primitive Types</span>
+        </a>
+        <a href="04-non-primitive.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition">
+          <span class="w-6 h-6 rounded-lg bg-purple-500/10 text-purple-500 flex items-center justify-center text-xs font-bold font-mono">04</span>
+          <span class="flex-1">Non-Primitive Types</span>
+        </a>
+        <a href="05-operators.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition">
+          <span class="w-6 h-6 rounded-lg bg-rose-500/10 text-rose-500 flex items-center justify-center text-xs font-bold font-mono">05</span>
+          <span class="flex-1">Operators</span>
+        </a>
+        <a href="06-scope.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition">
+          <span class="w-6 h-6 rounded-lg bg-cyan-500/10 text-cyan-500 flex items-center justify-center text-xs font-bold font-mono">06</span>
+          <span class="flex-1">Scope & Closures</span>
+        </a>
+        <a href="07-hoisting.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition">
+          <span class="w-6 h-6 rounded-lg bg-indigo-500/10 text-indigo-500 flex items-center justify-center text-xs font-bold font-mono">07</span>
+          <span class="flex-1">Hoisting & Context</span>
+        </a>
+        <a href="08-es6-features.html" class="nav-link active flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition">
+          <span class="w-6 h-6 rounded-lg bg-yellow-500/20 text-yellow-500 flex items-center justify-center text-xs font-bold font-mono">08</span>
+          <span class="flex-1 font-semibold">ES6+ Features</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Center Article Area -->
+    <main class="flex-1 min-w-0 max-w-full px-4 sm:px-8 lg:px-12 py-8">
+      
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs text-slate-400 mb-6 font-medium">
+        <a href="index.html" class="hover:text-yellow-500 transition">Docs</a>
+        <i class="fa-solid fa-angle-right text-[10px]"></i>
+        <span class="text-yellow-500">08. ES6+ Modern Features</span>
+      </nav>
+
+      <!-- Topic Heading -->
+      <div class="mb-10 pb-8 border-b border-slate-200 dark:border-slate-800">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-500 border border-yellow-500/20 text-xs font-bold uppercase tracking-wider mb-3">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Chapter 08
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 dark:text-white mb-4">
+          ES6+ Modern JavaScript: Arrow Functions, Destructuring, Spread, Classes & Async
+        </h1>
+        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-4xl">
+          ECMAScript 2015 (ES6) was the most significant update in JavaScript history. It transformed JavaScript from a simple scripting language into an enterprise-grade platform.
+        </p>
+
+        <!-- Tamil Quick Note -->
+        <div class="mt-4 p-4 rounded-xl bg-yellow-500/10 border-l-4 border-yellow-500 text-sm text-yellow-200">
+          <strong class="text-yellow-400 font-bold block mb-1">💡 சுருக்கம் (Summary in Tamil):</strong>
+          ES6 (ECMAScript 2015) ஜாவாஸ்கிரிப்டில் நவீன புரட்சியை ஏற்படுத்தியது. Arrow Functions (Lexical this), Destructuring (தரவுகளை எளிதாக பிரித்தெடுத்தல்), Spread/Rest ஆபரேட்டர்கள் (<code>...</code>), Classes, Modules, மற்றும் Promises/Async-Await போன்ற அம்சங்கள் கோடை மிகச் சுருக்கமாகவும், சுத்தமாகவும் எழுத உதவுகின்றன!
+        </div>
+      </div>
+
+      <!-- Section 1: Arrow Functions & this Binding -->
+      <section id="arrow-functions" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2.5">
+          <span class="text-yellow-500 font-mono">8.1</span> Arrow Functions & Lexical <code>this</code> Binding
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+          Arrow functions provide clean syntax with implicit returns, and they do <strong>NOT</strong> bind their own <code>this</code>, <code>arguments</code>, or <code>prototype</code>:
+        </p>
+
+        <pre><code class="language-javascript">// 1. Syntax Comparison:
+const square = x => x * x; // Concise implicit return
+console.log(square(5));   // 25
+
+// 2. Lexical 'this' resolution inside Objects & Timers:
+const timerApp = {
+  seconds: 0,
+  start() {
+    // Arrow function inherits 'this' from start() method!
+    setInterval(() => {
+      this.seconds++;
+      // console.log("Current seconds:", this.seconds);
+    }, 1000);
+  }
+};</code></pre>
+      </section>
+
+      <!-- Section 2: Destructuring (Objects & Arrays) -->
+      <section id="destructuring" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2.5">
+          <span class="text-yellow-500 font-mono">8.2</span> Destructuring Assignment
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+            <h3 class="font-bold text-yellow-500 mb-2">Object Destructuring</h3>
+            <pre><code class="language-javascript">const user = {
+  fullName: "Rithika",
+  age: 22,
+  location: { city: "Trichy" }
+};
+
+// Aliasing (fullName: name) + Defaults + Nested
+const { fullName: name, location: { city }, role = "Developer" } = user;
+
+console.log(name, city, role); // "Rithika", "Trichy", "Developer"</code></pre>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+            <h3 class="font-bold text-blue-500 mb-2">Array Destructuring</h3>
+            <pre><code class="language-javascript">const colors = ["#FF0000", "#00FF00", "#0000FF"];
+
+// Basic destructuring & skipping indices
+const [primary, , tertiary] = colors;
+console.log(primary, tertiary); // "#FF0000", "#0000FF"
+
+// Variable Swapping in 1 line!
+let a = 1, b = 2;
+[a, b] = [b, a];
+console.log("Swapped:", a, b); // 2, 1</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Rest & Spread Operators -->
+      <section id="spread-rest" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2.5">
+          <span class="text-yellow-500 font-mono">8.3</span> Rest Parameter vs Spread Operator (<code>...</code>)
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+            <h3 class="font-bold text-emerald-500 mb-2">Rest Operator: Gathers into Array</h3>
+            <pre><code class="language-javascript">// Collects indefinite arguments into an Array
+function sumAll(multiplier, ...numbers) {
+  return numbers.reduce((acc, n) => acc + (n * multiplier), 0);
+}
+console.log(sumAll(2, 10, 20, 30)); // 120</code></pre>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+            <h3 class="font-bold text-purple-500 mb-2">Spread Operator: Expands Iterables</h3>
+            <pre><code class="language-javascript">const arr1 = [1, 2];
+const arr2 = [3, 4];
+const combined = [...arr1, ...arr2, 5];
+console.log(combined); // [1, 2, 3, 4, 5]
+
+const baseUser = { id: 1 };
+const activeUser = { ...baseUser, active: true };
+console.log(activeUser); // { id: 1, active: true }</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: ES6 Classes -->
+      <section id="classes" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2.5">
+          <span class="text-yellow-500 font-mono">8.4</span> ES6 Classes & Object-Oriented JavaScript
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+          Classes in JavaScript are syntactic sugar built on top of prototypal inheritance, featuring constructors, inheritance with <code>extends</code> / <code>super</code>, and private class fields (<code>#</code>):
+        </p>
+
+        <pre><code class="language-javascript">class Employee {
+  #salary; // Private field (ES2022)
+
+  constructor(name, salary) {
+    this.name = name;
+    this.#salary = salary;
+  }
+
+  getSalary() {
+    return `$${this.#salary.toLocaleString()}`;
+  }
+}
+
+class Manager extends Employee {
+  constructor(name, salary, department) {
+    super(name, salary); // Calls parent constructor
+    this.department = department;
+  }
+
+  getSummary() {
+    return `${this.name} leads ${this.department} with budget ${this.getSalary()}`;
+  }
+}
+
+const lead = new Manager("Anitha", 120000, "Engineering");
+console.log(lead.getSummary()); // "Anitha leads Engineering with budget $120,000"</code></pre>
+      </section>
+
+      <!-- Section 5: Promises & Async/Await -->
+      <section id="async-await" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2.5">
+          <span class="text-yellow-500 font-mono">8.5</span> Modern Asynchronous: Promises & Async / Await
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+          Eliminating callback hell with clean, synchronous-looking asynchronous flows:
+        </p>
+
+        <pre><code class="language-javascript">// Simulating an API Fetch with Promise
+const fetchUserData = (userId) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (userId > 0) resolve({ id: userId, name: "Gokul", role: "Dev" });
+      else reject(new Error("Invalid User ID"));
+    }, 500);
+  });
+};
+
+// Async / Await with try / catch
+async function loadDashboard() {
+  try {
+    console.log("Fetching user profile...");
+    const user = await fetchUserData(101);
+    console.log("User Loaded:", user.name);
+  } catch (error) {
+    console.error("Failed to load user:", error.message);
+  }
+}
+
+loadDashboard();</code></pre>
+      </section>
+
+      <!-- Bottom Nav -->
+      <div class="pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <a href="07-hoisting.html" class="w-full sm:w-auto px-5 py-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-900 text-xs font-bold transition flex items-center justify-center gap-2 text-slate-600 dark:text-slate-300">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Prev: 07. Hoisting</span>
+        </a>
+        <a href="index.html" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs shadow-md transition flex items-center justify-center gap-2 group">
+          <span>Back to Master Overview</span>
+          <i class="fa-solid fa-house"></i>
+        </a>
+      </div>
+
+    </main>
+
+    <!-- Table of Contents -->
+    <aside class="hidden xl:block w-64 p-6 sticky top-[61px] h-[calc(100vh-61px)] overflow-y-auto border-l border-slate-200 dark:border-slate-800/80 text-xs">
+      <div class="font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4 text-[11px] flex items-center gap-2">
+        <i class="fa-solid fa-list-ul text-yellow-500"></i> On This Page
+      </div>
+      <ul id="toc-list" class="space-y-2.5">
+        <li><a href="#arrow-functions" class="text-slate-500 dark:text-slate-400 hover:text-yellow-500 transition block">8.1 Arrow Functions & this</a></li>
+        <li><a href="#destructuring" class="text-slate-500 dark:text-slate-400 hover:text-yellow-500 transition block">8.2 Destructuring</a></li>
+        <li><a href="#spread-rest" class="text-slate-500 dark:text-slate-400 hover:text-yellow-500 transition block">8.3 Rest & Spread</a></li>
+        <li><a href="#classes" class="text-slate-500 dark:text-slate-400 hover:text-yellow-500 transition block">8.4 Classes & OOP</a></li>
+        <li><a href="#async-await" class="text-slate-500 dark:text-slate-400 hover:text-yellow-500 transition block">8.5 Async / Await</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="assets/js/search-index.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

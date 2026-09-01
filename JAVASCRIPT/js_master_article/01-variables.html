@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01. Variables, Scoping & TDZ | JavaScript Master Guide</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50: '#fffbeb', 500: '#f59e0b', 600: '#d97706', 900: '#78350f' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200 min-h-screen flex flex-col antialiased selection:bg-amber-500 selection:text-slate-950">
+
+  <!-- Top Progress Bar -->
+  <div id="reading-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-400 z-50 w-0"></div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-950/90 border-b border-slate-200 dark:border-slate-800 glass-header">
+    <div class="w-full max-w-[100vw] px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-xl text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+          <i class="fa-solid fa-bars-staggered text-lg"></i>
+        </button>
+        <a href="index.html" class="flex items-center gap-2.5 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-950 font-black text-xl shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
+            JS
+          </div>
+          <div>
+            <div class="text-base font-extrabold tracking-tight flex items-center gap-1.5">
+              <span>JavaScript Master Guide</span>
+              <span class="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-500 border border-amber-500/20">Chapter 01</span>
+            </div>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400">Variables, Memory Lifecycle & TDZ</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button class="search-trigger-btn flex items-center gap-2 px-3 py-2 text-xs font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-xl transition">
+          <i class="fa-solid fa-magnifying-glass text-amber-500"></i>
+          <span class="hidden sm:inline">Search...</span>
+          <kbd class="hidden sm:inline px-1.5 py-0.5 text-[10px] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-slate-400 font-mono">Ctrl+K</kbd>
+        </button>
+        <button class="theme-toggle-btn p-2.5 rounded-xl text-slate-500 hover:text-amber-500 dark:text-slate-400 dark:hover:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+          <i class="fa-solid fa-moon dark:hidden text-base"></i>
+          <i class="fa-solid fa-sun hidden dark:inline text-base text-amber-400"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="sidebar-backdrop" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-30 hidden lg:hidden"></div>
+
+  <!-- Main Layout -->
+  <div class="flex-1 flex w-full max-w-[100vw]">
+    
+    <!-- Left Sidebar -->
+    <aside id="docs-sidebar" class="fixed inset-y-0 left-0 z-40 w-72 pt-16 lg:pt-0 bg-white dark:bg-slate-950 border-r border-slate-200 dark:border-slate-800 flex flex-col transition-transform duration-300 -translate-x-full lg:translate-x-0 lg:static lg:h-[calc(100vh-61px)] lg:sticky lg:top-[61px]">
+      <div class="p-4 border-b border-slate-100 dark:border-slate-800/60">
+        <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Topics Menu</div>
+        <p class="text-[11px] text-slate-500">Select any chapter</p>
+      </div>
+      <nav class="flex-1 overflow-y-auto p-3 space-y-1 text-sm">
+        <a href="index.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition">
+          <i class="fa-solid fa-house text-slate-400 w-5 text-center"></i>
+          <span>Overview</span>
+        </a>
+        <a href="01-variables.html" class="nav-link active flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition">
+          <span class="w-6 h-6 rounded-lg bg-amber-500/20 text-amber-500 flex items-center justify-center text-xs font-bold font-mono">01</span>
+          <span class="flex-1 font-semibold">Variables & TDZ</span>
+        </a>
+        <a href="02-data-types.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition">
+          <span class="w-6 h-6 rounded-lg bg-blue-500/10 text-blue-500 flex items-center justify-center text-xs font-bold font-mono">02</span>
+          <span class="flex-1">Data Types Overview</span>
+        </a>
+        <a href="03-primitive.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition">
+          <span class="w-6 h-6 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-xs font-bold font-mono">03</span>
+          <span class="flex-1">Primitive Types</span>
+        </a>
+        <a href="04-non-primitive.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition">
+          <span class="w-6 h-6 rounded-lg bg-purple-500/10 text-purple-500 flex items-center justify-center text-xs font-bold font-mono">04</span>
+          <span class="flex-1">Non-Primitive Types</span>
+        </a>
+        <a href="05-operators.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition">
+          <span class="w-6 h-6 rounded-lg bg-rose-500/10 text-rose-500 flex items-center justify-center text-xs font-bold font-mono">05</span>
+          <span class="flex-1">Operators</span>
+        </a>
+        <a href="06-scope.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition">
+          <span class="w-6 h-6 rounded-lg bg-cyan-500/10 text-cyan-500 flex items-center justify-center text-xs font-bold font-mono">06</span>
+          <span class="flex-1">Scope & Closures</span>
+        </a>
+        <a href="07-hoisting.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition">
+          <span class="w-6 h-6 rounded-lg bg-indigo-500/10 text-indigo-500 flex items-center justify-center text-xs font-bold font-mono">07</span>
+          <span class="flex-1">Hoisting & Context</span>
+        </a>
+        <a href="08-es6-features.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition">
+          <span class="w-6 h-6 rounded-lg bg-yellow-500/10 text-yellow-500 flex items-center justify-center text-xs font-bold font-mono">08</span>
+          <span class="flex-1">ES6+ Features</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Center Article Area -->
+    <main class="flex-1 min-w-0 max-w-full px-4 sm:px-8 lg:px-12 py-8">
+      
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs text-slate-400 mb-6 font-medium">
+        <a href="index.html" class="hover:text-amber-500 transition">Docs</a>
+        <i class="fa-solid fa-angle-right text-[10px]"></i>
+        <span class="text-amber-500">01. Variables</span>
+      </nav>
+
+      <!-- Topic Heading -->
+      <div class="mb-10 pb-8 border-b border-slate-200 dark:border-slate-800">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-500 border border-amber-500/20 text-xs font-bold uppercase tracking-wider mb-3">
+          <i class="fa-solid fa-cube"></i> Chapter 01
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 dark:text-white mb-4">
+          JavaScript Variables: <code>var</code>, <code>let</code>, <code>const</code> & The Temporal Dead Zone
+        </h1>
+        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-4xl">
+          A variable in JavaScript is a named container used to store data in memory. Understanding how JavaScript allocates memory, manages scope, and initializes variables is fundamental to writing bug-free, modern applications.
+        </p>
+
+        <!-- Tamil Quick Note -->
+        <div class="mt-4 p-4 rounded-xl bg-amber-500/10 border-l-4 border-amber-500 text-sm text-amber-200">
+          <strong class="text-amber-400 font-bold block mb-1">💡 சுருக்கம் (Summary in Tamil):</strong>
+          வேரியபிள் என்பது மெமரியில் தகவல்களை (Data) சேமிக்கப் பயன்படும் ஒரு பெயர் கொண்ட கொள்கலன் (Container). JavaScript-ல் <code>var</code>, <code>let</code>, மற்றும் <code>const</code> என மூன்று வழிகளில் வேரியபிள்களை உருவாக்கலாம். இவற்றின் Scope, Re-assignment மற்றும் Hoisting நடத்தை முற்றிலும் மாறுபட்டவை!
+        </div>
+      </div>
+
+      <!-- Section 1: Declaration vs Initialization -->
+      <section id="overview" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2.5">
+          <span class="text-amber-500 font-mono">1.1</span> Variable Lifecycle & Key Terminology
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+          When the JavaScript engine processes a variable, it undergoes three distinct lifecycle phases:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <span class="text-xs font-bold text-amber-500 uppercase tracking-wider block mb-1">Phase 1</span>
+            <h4 class="font-bold text-slate-900 dark:text-white text-base mb-1">Declaration</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400">The variable identifier is registered in its enclosing scope/environment record.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <span class="text-xs font-bold text-blue-500 uppercase tracking-wider block mb-1">Phase 2</span>
+            <h4 class="font-bold text-slate-900 dark:text-white text-base mb-1">Initialization</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Memory is allocated and the variable is initialized with a default value (e.g. <code>undefined</code>).</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <span class="text-xs font-bold text-emerald-500 uppercase tracking-wider block mb-1">Phase 3</span>
+            <h4 class="font-bold text-slate-900 dark:text-white text-base mb-1">Assignment</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400">The actual developer-specified value is stored in the allocated memory slot.</p>
+          </div>
+        </div>
+
+        <pre><code class="language-javascript">// Example: Lifecycle demonstration
+let userAge;          // Declaration + Initialization (implicitly undefined)
+console.log(userAge); // undefined
+
+userAge = 25;         // Assignment phase
+console.log(userAge); // 25</code></pre>
+      </section>
+
+      <!-- Section 2: Comprehensive Comparison Table -->
+      <section id="comparison" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2.5">
+          <span class="text-amber-500 font-mono">1.2</span> Comprehensive Comparison: <code>var</code> vs <code>let</code> vs <code>const</code>
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+          Before ES6 (2015), <code>var</code> was the only keyword to declare variables. ES6 introduced <code>let</code> and <code>const</code> to solve scoping issues, accidental overwrites, and memory leakage.
+        </p>
+
+        <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 mb-6">
+          <table class="w-full text-left text-xs sm:text-sm">
+            <thead class="bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-200 border-b border-slate-200 dark:border-slate-700">
+              <tr>
+                <th class="p-4 font-bold">Feature</th>
+                <th class="p-4 font-bold text-rose-500"><code>var</code> (Legacy ES5)</th>
+                <th class="p-4 font-bold text-blue-500"><code>let</code> (Modern ES6)</th>
+                <th class="p-4 font-bold text-emerald-500"><code>const</code> (Modern ES6)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+              <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
+                <td class="p-4 font-bold text-slate-900 dark:text-slate-200">Scope Level</td>
+                <td class="p-4 text-slate-600 dark:text-slate-300">Function Scope or Global Scope</td>
+                <td class="p-4 text-slate-600 dark:text-slate-300">Block Scope <code>{ ... }</code></td>
+                <td class="p-4 text-slate-600 dark:text-slate-300">Block Scope <code>{ ... }</code></td>
+              </tr>
+              <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
+                <td class="p-4 font-bold text-slate-900 dark:text-slate-200">Re-declaration</td>
+                <td class="p-4 text-emerald-600 dark:text-emerald-400 font-semibold">Allowed in same scope</td>
+                <td class="p-4 text-rose-600 dark:text-rose-400 font-semibold">❌ SyntaxError</td>
+                <td class="p-4 text-rose-600 dark:text-rose-400 font-semibold">❌ SyntaxError</td>
+              </tr>
+              <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
+                <td class="p-4 font-bold text-slate-900 dark:text-slate-200">Re-assignment</td>
+                <td class="p-4 text-emerald-600 dark:text-emerald-400 font-semibold">Allowed (Mutable)</td>
+                <td class="p-4 text-emerald-600 dark:text-emerald-400 font-semibold">Allowed (Mutable)</td>
+                <td class="p-4 text-rose-600 dark:text-rose-400 font-semibold">❌ TypeError (Immutable binding)</td>
+              </tr>
+              <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
+                <td class="p-4 font-bold text-slate-900 dark:text-slate-200">Must Initialize on Declaration?</td>
+                <td class="p-4 text-slate-600 dark:text-slate-300">No (Defaults to <code>undefined</code>)</td>
+                <td class="p-4 text-slate-600 dark:text-slate-300">No (Defaults to <code>undefined</code>)</td>
+                <td class="p-4 text-amber-600 dark:text-amber-400 font-semibold">Yes (SyntaxError if omitted)</td>
+              </tr>
+              <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
+                <td class="p-4 font-bold text-slate-900 dark:text-slate-200">Hoisting Behavior</td>
+                <td class="p-4 text-slate-600 dark:text-slate-300">Hoisted & initialized as <code>undefined</code></td>
+                <td class="p-4 text-slate-600 dark:text-slate-300">Hoisted, but in <strong>TDZ</strong> (ReferenceError)</td>
+                <td class="p-4 text-slate-600 dark:text-slate-300">Hoisted, but in <strong>TDZ</strong> (ReferenceError)</td>
+              </tr>
+              <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
+                <td class="p-4 font-bold text-slate-900 dark:text-slate-200">Attaches to Window / Global Object?</td>
+                <td class="p-4 text-amber-600 dark:text-amber-400 font-semibold">Yes (<code>window.x</code>)</td>
+                <td class="p-4 text-slate-600 dark:text-slate-300">No</td>
+                <td class="p-4 text-slate-600 dark:text-slate-300">No</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 3: Deep Dive into var, let, const -->
+      <section id="deep-dive" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2.5">
+          <span class="text-amber-500 font-mono">1.3</span> Code Examples & Behavioral Deep Dive
+        </h2>
+
+        <!-- var issue example -->
+        <div class="mb-8">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-rose-500"></span> 1. The Pitfalls of <code>var</code> (Scope Leakage)
+          </h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">
+            <code>var</code> ignores block statements such as <code>if</code> blocks, <code>for</code> loops, and <code>while</code> loops.
+          </p>
+          <pre><code class="language-javascript">// Notice how 'count' leaks outside the if block!
+if (true) {
+  var count = 10;
+}
+console.log("Outside if block with var:", count); // Prints: 10 (Leaked!)
+
+// But with let or const:
+if (true) {
+  let secureCount = 20;
+}
+// console.log(secureCount); // ❌ Uncaught ReferenceError: secureCount is not defined</code></pre>
+        </div>
+
+        <!-- const immutability nuance -->
+        <div class="mb-8">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span> 2. <code>const</code> with Objects & Arrays (Binding vs Mutability)
+          </h3>
+          <div class="p-4 rounded-xl bg-blue-500/10 border-l-4 border-blue-500 text-xs text-blue-200 mb-3">
+            <strong>Important Rule:</strong> <code>const</code> creates an immutable <em>variable identifier binding</em>, NOT an immutable value! You cannot re-assign the variable, but you can mutate internal object/array properties.
+          </div>
+          <pre><code class="language-javascript">const developer = {
+  name: "Arun",
+  role: "Frontend Engineer"
+};
+
+// Valid: Mutating properties
+developer.role = "Full Stack Architect";
+developer.city = "Chennai";
+console.log("Updated object:", developer);
+
+// Invalid: Reassigning the binding throws an Error
+try {
+  developer = { name: "Vijay" }; // ❌ TypeError: Assignment to constant variable.
+} catch (e) {
+  console.error(e.message);
+}
+
+// Freezing an object completely:
+const immutableUser = Object.freeze({ username: "john_doe" });
+// immutableUser.username = "jane"; // Silently fails or throws TypeError in strict mode</code></pre>
+        </div>
+      </section>
+
+      <!-- Section 4: Temporal Dead Zone (TDZ) -->
+      <section id="tdz" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2.5">
+          <span class="text-amber-500 font-mono">1.4</span> The Temporal Dead Zone (TDZ) Explained
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+          The <strong>Temporal Dead Zone (TDZ)</strong> is the specific time window between the entering of a scope and the point where a <code>let</code> or <code>const</code> variable is declared and initialized in code.
+        </p>
+
+        <!-- Visual TDZ Diagram -->
+        <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 mb-6 font-mono text-xs text-slate-300 space-y-3">
+          <div class="text-amber-400 font-bold">// Visual Representation of TDZ Timeline</div>
+          <div class="p-3 bg-red-950/40 border border-red-500/40 rounded-xl text-red-300">
+            <span class="font-bold">─── Scope Starts Here ───</span><br>
+            ⏳ <strong>TEMPORAL DEAD ZONE (TDZ) ACTIVE</strong><br>
+            Any access to variable throws <code>ReferenceError: Cannot access 'x' before initialization</code>
+          </div>
+          <div class="p-3 bg-emerald-950/40 border border-emerald-500/40 rounded-xl text-emerald-300">
+            <span class="font-bold">─── Declaration Line: <code>let x = 42;</code> ───</span><br>
+            ✅ <strong>TDZ ENDS</strong>: Variable 'x' is now safely accessible in memory!
+          </div>
+        </div>
+
+        <pre><code class="language-javascript">// Demonstrating the TDZ in action:
+function testTDZ() {
+  // console.log(heroName); // ❌ ReferenceError: Cannot access 'heroName' before initialization (Inside TDZ)
+  
+  let heroName = "Spider-Man"; // TDZ ends here
+  console.log("After initialization:", heroName); // ✅ Spider-Man
+}
+testTDZ();</code></pre>
+      </section>
+
+      <!-- Section 5: Best Practices -->
+      <section id="best-practices" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2.5">
+          <span class="text-amber-500 font-mono">1.5</span> Modern Industry Best Practices
+        </h2>
+        <div class="space-y-3 text-sm text-slate-600 dark:text-slate-300">
+          <div class="flex items-start gap-3 p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+            <i class="fa-solid fa-circle-check text-emerald-500 text-lg mt-0.5"></i>
+            <div>
+              <strong class="text-slate-900 dark:text-white">Rule 1: Default to <code>const</code></strong>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">90% of your variables in modern JS should be declared with <code>const</code>. This guarantees variable bindings are not accidentally reassigned.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+            <i class="fa-solid fa-circle-check text-blue-500 text-lg mt-0.5"></i>
+            <div>
+              <strong class="text-slate-900 dark:text-white">Rule 2: Use <code>let</code> only when re-assignment is explicitly required</strong>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Use <code>let</code> for accumulators, mathematical counters, and loop iterators (e.g. <code>for (let i = 0; i &lt; len; i++)</code>).</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+            <i class="fa-solid fa-ban text-rose-500 text-lg mt-0.5"></i>
+            <div>
+              <strong class="text-slate-900 dark:text-white">Rule 3: Avoid <code>var</code> in modern codebases</strong>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5"><code>var</code> leads to unpredictable hoisting bugs and pollutes the global object.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom Navigation Footer -->
+      <div class="pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <a href="index.html" class="w-full sm:w-auto px-5 py-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-900 text-xs font-bold transition flex items-center justify-center gap-2 text-slate-600 dark:text-slate-300">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Overview</span>
+        </a>
+        <a href="02-data-types.html" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs shadow-md transition flex items-center justify-center gap-2 group">
+          <span>Next: 02. Data Types Overview</span>
+          <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+        </a>
+      </div>
+
+    </main>
+
+    <!-- Right Side Table of Contents (Desktop) -->
+    <aside class="hidden xl:block w-64 p-6 sticky top-[61px] h-[calc(100vh-61px)] overflow-y-auto border-l border-slate-200 dark:border-slate-800/80 text-xs">
+      <div class="font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4 text-[11px] flex items-center gap-2">
+        <i class="fa-solid fa-list-ul text-amber-500"></i> On This Page
+      </div>
+      <ul id="toc-list" class="space-y-2.5">
+        <li><a href="#overview" class="text-slate-500 dark:text-slate-400 hover:text-amber-500 transition block">1.1 Variable Lifecycle</a></li>
+        <li><a href="#comparison" class="text-slate-500 dark:text-slate-400 hover:text-amber-500 transition block">1.2 var vs let vs const</a></li>
+        <li><a href="#deep-dive" class="text-slate-500 dark:text-slate-400 hover:text-amber-500 transition block">1.3 Behavioral Deep Dive</a></li>
+        <li><a href="#tdz" class="text-slate-500 dark:text-slate-400 hover:text-amber-500 transition block">1.4 Temporal Dead Zone</a></li>
+        <li><a href="#best-practices" class="text-slate-500 dark:text-slate-400 hover:text-amber-500 transition block">1.5 Best Practices</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="assets/js/search-index.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

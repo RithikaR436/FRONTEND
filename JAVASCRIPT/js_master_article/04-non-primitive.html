@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04. Non-Primitive Types & Heap Memory | JavaScript Master Guide</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50: '#fffbeb', 500: '#f59e0b', 600: '#d97706', 900: '#78350f' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200 min-h-screen flex flex-col antialiased selection:bg-purple-500 selection:text-white">
+
+  <div id="reading-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-amber-500 z-50 w-0"></div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-950/90 border-b border-slate-200 dark:border-slate-800 glass-header">
+    <div class="w-full max-w-[100vw] px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-xl text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+          <i class="fa-solid fa-bars-staggered text-lg"></i>
+        </button>
+        <a href="index.html" class="flex items-center gap-2.5 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-purple-500/20 group-hover:scale-105 transition-transform">
+            JS
+          </div>
+          <div>
+            <div class="text-base font-extrabold tracking-tight flex items-center gap-1.5">
+              <span>JavaScript Master Guide</span>
+              <span class="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded bg-purple-500/10 text-purple-500 border border-purple-500/20">Chapter 04</span>
+            </div>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400">Heap Memory, Reference Types & Deep Cloning</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button class="search-trigger-btn flex items-center gap-2 px-3 py-2 text-xs font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-xl transition">
+          <i class="fa-solid fa-magnifying-glass text-purple-500"></i>
+          <span class="hidden sm:inline">Search...</span>
+          <kbd class="hidden sm:inline px-1.5 py-0.5 text-[10px] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-slate-400 font-mono">Ctrl+K</kbd>
+        </button>
+        <button class="theme-toggle-btn p-2.5 rounded-xl text-slate-500 hover:text-amber-500 dark:text-slate-400 dark:hover:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+          <i class="fa-solid fa-moon dark:hidden text-base"></i>
+          <i class="fa-solid fa-sun hidden dark:inline text-base text-amber-400"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="sidebar-backdrop" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-30 hidden lg:hidden"></div>
+
+  <!-- Main Layout -->
+  <div class="flex-1 flex w-full max-w-[100vw]">
+    
+    <!-- Left Sidebar -->
+    <aside id="docs-sidebar" class="fixed inset-y-0 left-0 z-40 w-72 pt-16 lg:pt-0 bg-white dark:bg-slate-950 border-r border-slate-200 dark:border-slate-800 flex flex-col transition-transform duration-300 -translate-x-full lg:translate-x-0 lg:static lg:h-[calc(100vh-61px)] lg:sticky lg:top-[61px]">
+      <div class="p-4 border-b border-slate-100 dark:border-slate-800/60">
+        <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Topics Menu</div>
+        <p class="text-[11px] text-slate-500">Select any chapter</p>
+      </div>
+      <nav class="flex-1 overflow-y-auto p-3 space-y-1 text-sm">
+        <a href="index.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition">
+          <i class="fa-solid fa-house text-slate-400 w-5 text-center"></i>
+          <span>Overview</span>
+        </a>
+        <a href="01-variables.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition">
+          <span class="w-6 h-6 rounded-lg bg-amber-500/10 text-amber-500 flex items-center justify-center text-xs font-bold font-mono">01</span>
+          <span class="flex-1">Variables & TDZ</span>
+        </a>
+        <a href="02-data-types.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition">
+          <span class="w-6 h-6 rounded-lg bg-blue-500/10 text-blue-500 flex items-center justify-center text-xs font-bold font-mono">02</span>
+          <span class="flex-1">Data Types Overview</span>
+        </a>
+        <a href="03-primitive.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition">
+          <span class="w-6 h-6 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-xs font-bold font-mono">03</span>
+          <span class="flex-1">Primitive Types</span>
+        </a>
+        <a href="04-non-primitive.html" class="nav-link active flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition">
+          <span class="w-6 h-6 rounded-lg bg-purple-500/20 text-purple-500 flex items-center justify-center text-xs font-bold font-mono">04</span>
+          <span class="flex-1 font-semibold">Non-Primitive Types</span>
+        </a>
+        <a href="05-operators.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition">
+          <span class="w-6 h-6 rounded-lg bg-rose-500/10 text-rose-500 flex items-center justify-center text-xs font-bold font-mono">05</span>
+          <span class="flex-1">Operators</span>
+        </a>
+        <a href="06-scope.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition">
+          <span class="w-6 h-6 rounded-lg bg-cyan-500/10 text-cyan-500 flex items-center justify-center text-xs font-bold font-mono">06</span>
+          <span class="flex-1">Scope & Closures</span>
+        </a>
+        <a href="07-hoisting.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition">
+          <span class="w-6 h-6 rounded-lg bg-indigo-500/10 text-indigo-500 flex items-center justify-center text-xs font-bold font-mono">07</span>
+          <span class="flex-1">Hoisting & Context</span>
+        </a>
+        <a href="08-es6-features.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition">
+          <span class="w-6 h-6 rounded-lg bg-yellow-500/10 text-yellow-500 flex items-center justify-center text-xs font-bold font-mono">08</span>
+          <span class="flex-1">ES6+ Features</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Center Article Area -->
+    <main class="flex-1 min-w-0 max-w-full px-4 sm:px-8 lg:px-12 py-8">
+      
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs text-slate-400 mb-6 font-medium">
+        <a href="index.html" class="hover:text-purple-500 transition">Docs</a>
+        <i class="fa-solid fa-angle-right text-[10px]"></i>
+        <span class="text-purple-500">04. Non-Primitive Types</span>
+      </nav>
+
+      <!-- Topic Heading -->
+      <div class="mb-10 pb-8 border-b border-slate-200 dark:border-slate-800">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 text-purple-500 border border-purple-500/20 text-xs font-bold uppercase tracking-wider mb-3">
+          <i class="fa-solid fa-cubes"></i> Chapter 04
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 dark:text-white mb-4">
+          Non-Primitive (Reference) Types, Heap Memory & Cloning
+        </h1>
+        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-4xl">
+          Non-primitive types (also known as <strong>Reference Types</strong>) include Objects, Arrays, Functions, Maps, Sets, and Dates. They do not store their data directly in the call stack; instead, they are allocated in the <strong>Memory Heap</strong> and accessed via memory reference addresses.
+        </p>
+
+        <!-- Tamil Quick Note -->
+        <div class="mt-4 p-4 rounded-xl bg-purple-500/10 border-l-4 border-purple-500 text-sm text-purple-200">
+          <strong class="text-purple-400 font-bold block mb-1">💡 சுருக்கம் (Summary in Tamil):</strong>
+          Non-Primitive வகைகள் (Objects, Arrays, Functions போன்றவை) அளவிட முடியாத பெரிய தரவுகளைக் கொண்டிருக்கும் என்பதால், அவை Heap Memory-ல் வைக்கப்படுகின்றன. Call Stack-ல் அவற்றின் Memory Address (Reference pointer) மட்டுமே இருக்கும். எனவே ஒரு ஆப்ஜெக்ட்டை இன்னொரு வேரியபிளுக்கு அசைன் செய்யும் போது, Reference மட்டுமே காப்பியாகும் (Pass by Reference)!
+        </div>
+      </div>
+
+      <!-- Section 1: Types Breakdown -->
+      <section id="types-breakdown" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2.5">
+          <span class="text-purple-500 font-mono">4.1</span> The Core Non-Primitive Structures
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
+          <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+            <h3 class="font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+              <i class="fa-solid fa-brackets-curly text-purple-500"></i> Plain Objects
+            </h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-3">Key-value dictionaries supporting string and symbol keys.</p>
+            <pre><code class="language-javascript">const user = {
+  id: 101,
+  name: "Priya",
+  active: true
+};</code></pre>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+            <h3 class="font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+              <i class="fa-solid fa-list-ol text-blue-500"></i> Arrays
+            </h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-3">Ordered, indexed collections inheriting from <code>Array.prototype</code>.</p>
+            <pre><code class="language-javascript">const skills = ["JS", "React", "Node"];
+skills.push("TypeScript");
+console.log(skills[0]); // "JS"</code></pre>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+            <h3 class="font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+              <i class="fa-solid fa-code text-emerald-500"></i> Functions
+            </h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-3">First-class objects that can be passed as arguments and returned.</p>
+            <pre><code class="language-javascript">function calculateTax(subtotal) {
+  return subtotal * 0.18;
+}
+console.log(calculateTax(1000)); // 180</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Memory Architecture Visual -->
+      <section id="memory-architecture" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2.5">
+          <span class="text-purple-500 font-mono">4.2</span> Stack vs Heap Memory Architecture
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+          When you declare a primitive, its value is placed right on the Call Stack. When you declare an object, the object is placed in the Heap, and only the <strong>reference address pointer</strong> is placed on the Stack:
+        </p>
+
+        <!-- Visual Stack vs Heap Box -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 rounded-2xl bg-slate-950 border border-slate-800 text-xs font-mono mb-6">
+          <div class="p-4 rounded-xl bg-slate-900 border border-blue-500/30">
+            <div class="text-blue-400 font-bold text-sm mb-3 flex items-center gap-2">
+              <i class="fa-solid fa-bars"></i> CALL STACK (Fast, Static Size)
+            </div>
+            <div class="space-y-2 text-slate-300">
+              <div class="p-2 bg-slate-800 rounded flex justify-between">
+                <span><code>let age = 30</code></span>
+                <span class="text-emerald-400">Value: 30</span>
+              </div>
+              <div class="p-2 bg-slate-800 rounded flex justify-between border-l-4 border-purple-500">
+                <span><code>let person</code></span>
+                <span class="text-purple-400 font-bold">Pointer: @0x10A4B</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-900 border border-purple-500/30">
+            <div class="text-purple-400 font-bold text-sm mb-3 flex items-center gap-2">
+              <i class="fa-solid fa-cube"></i> MEMORY HEAP (Dynamic, Flexible)
+            </div>
+            <div class="p-3 bg-purple-950/40 border border-purple-500/40 rounded-lg text-purple-200">
+              <span class="text-xs text-slate-400 font-bold block mb-1">Heap Address: @0x10A4B</span>
+              <code>{ name: "Divya", city: "Madurai" }</code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Pass-by-Reference Pitfall -->
+      <section id="reference-pitfall" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2.5">
+          <span class="text-purple-500 font-mono">4.3</span> Pass-by-Reference Demonstration
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+          Assigning an object to another variable does <strong>not</strong> duplicate the data. It copies the reference pointer!
+        </p>
+
+        <pre><code class="language-javascript">// Notice how modifying obj2 mutates obj1!
+const obj1 = { name: "Anand", score: 90 };
+const obj2 = obj1; // Copies pointer address @0x..., NOT the object!
+
+obj2.score = 100;
+
+console.log("obj1 score:", obj1.score); // 100 ⚠️ (Both variables point to the same heap object)
+console.log("Are they equal?", obj1 === obj2); // true (Identical reference)</code></pre>
+      </section>
+
+      <!-- Section 4: Shallow Copy vs Deep Copy -->
+      <section id="cloning-methods" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2.5">
+          <span class="text-purple-500 font-mono">4.4</span> Shallow Copy vs Deep Copy Techniques
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          
+          <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+            <h3 class="font-bold text-blue-500 mb-2">1. Shallow Copy (1-Level Deep)</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-3">Copies top-level properties by value, but nested objects still share memory references!</p>
+            <pre><code class="language-javascript">const original = {
+  name: "Karan",
+  address: { city: "Salem" }
+};
+
+// Method A: Spread Operator {...}
+const shallowCopy = { ...original };
+
+// Method B: Object.assign
+const shallowCopy2 = Object.assign({}, original);
+
+shallowCopy.address.city = "Coimbatore";
+console.log(original.address.city); // "Coimbatore" ⚠️ Nested object mutated!</code></pre>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+            <h3 class="font-bold text-emerald-500 mb-2">2. Deep Copy (Independent Clone)</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-3">Recursively clones all levels, completely severing all memory connections.</p>
+            <pre><code class="language-javascript">const original = {
+  name: "Karan",
+  address: { city: "Salem" }
+};
+
+// Modern Standard: structuredClone()
+const deepCopy = structuredClone(original);
+
+deepCopy.address.city = "Tiruchirappalli";
+console.log(original.address.city); // "Salem" ✅ (Completely safe!)
+
+// Legacy Fallback: JSON serialization
+const legacyDeep = JSON.parse(JSON.stringify(original));</code></pre>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Section 5: ES6 Keyed Collections -->
+      <section id="es6-collections" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2.5">
+          <span class="text-purple-500 font-mono">4.5</span> ES6 Keyed Collections: Map & Set
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+          ES6 introduced <code>Map</code> and <code>Set</code> for efficient key-value pairs with arbitrary key types (including Objects as keys!) and unique value collections:
+        </p>
+
+        <pre><code class="language-javascript">// 1. Map allows any data type as key:
+const configMap = new Map();
+const keyObj = { role: "admin" };
+
+configMap.set(keyObj, "Full permissions");
+console.log(configMap.get(keyObj)); // "Full permissions"
+console.log(configMap.size);        // 1
+
+// 2. Set guarantees unique entries (deduplication):
+const duplicates = [1, 2, 2, 3, 4, 4, 5];
+const unique = [...new Set(duplicates)];
+console.log("Deduplicated Array:", unique); // [1, 2, 3, 4, 5]</code></pre>
+      </section>
+
+      <!-- Bottom Nav -->
+      <div class="pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <a href="03-primitive.html" class="w-full sm:w-auto px-5 py-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-900 text-xs font-bold transition flex items-center justify-center gap-2 text-slate-600 dark:text-slate-300">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Prev: 03. Primitive Types</span>
+        </a>
+        <a href="05-operators.html" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-2 group">
+          <span>Next: 05. Operators In-Depth</span>
+          <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+        </a>
+      </div>
+
+    </main>
+
+    <!-- Table of Contents -->
+    <aside class="hidden xl:block w-64 p-6 sticky top-[61px] h-[calc(100vh-61px)] overflow-y-auto border-l border-slate-200 dark:border-slate-800/80 text-xs">
+      <div class="font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4 text-[11px] flex items-center gap-2">
+        <i class="fa-solid fa-list-ul text-purple-500"></i> On This Page
+      </div>
+      <ul id="toc-list" class="space-y-2.5">
+        <li><a href="#types-breakdown" class="text-slate-500 dark:text-slate-400 hover:text-purple-500 transition block">4.1 Core Structures</a></li>
+        <li><a href="#memory-architecture" class="text-slate-500 dark:text-slate-400 hover:text-purple-500 transition block">4.2 Stack vs Heap</a></li>
+        <li><a href="#reference-pitfall" class="text-slate-500 dark:text-slate-400 hover:text-purple-500 transition block">4.3 Pass by Reference</a></li>
+        <li><a href="#cloning-methods" class="text-slate-500 dark:text-slate-400 hover:text-purple-500 transition block">4.4 Shallow vs Deep Copy</a></li>
+        <li><a href="#es6-collections" class="text-slate-500 dark:text-slate-400 hover:text-purple-500 transition block">4.5 Map & Set</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="assets/js/search-index.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
