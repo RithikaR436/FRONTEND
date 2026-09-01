@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02. JavaScript Data Types, Type System & Coercion | JavaScript Master Guide</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50: '#f8fafc', 500: '#3b82f6', 600: '#2563eb', 900: '#0f172a' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-white text-slate-900 min-h-screen flex flex-col antialiased selection:bg-blue-100 selection:text-blue-900">
+
+  <!-- Top Progress Bar -->
+  <div id="reading-progress" class="fixed top-0 left-0 h-1 bg-blue-600 z-50 w-0"></div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white/95 border-b border-slate-200 backdrop-blur-md">
+    <div class="w-full max-w-[100vw] px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition">
+          <i class="fa-solid fa-bars-staggered text-lg"></i>
+        </button>
+        <a href="index.html" class="flex items-center gap-2.5 group">
+          <div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white font-black text-lg shadow-sm group-hover:bg-blue-700 transition">
+            JS
+          </div>
+          <div>
+            <div class="text-base font-extrabold tracking-tight text-slate-900 flex items-center gap-2">
+              <span>JavaScript Master Guide</span>
+              <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-blue-50 text-blue-600 border border-blue-200">Chapter 02</span>
+            </div>
+            <p class="text-[11px] text-slate-500">Data Types, Dynamic Typing & Type Coercion</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button class="search-trigger-btn flex items-center gap-2 px-3.5 py-2 text-xs font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-xl transition">
+          <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
+          <span class="hidden sm:inline">Search Guide (Ctrl+K)...</span>
+          <kbd class="hidden sm:inline px-1.5 py-0.5 text-[10px] bg-white border border-slate-200 rounded text-slate-400 font-mono">Ctrl+K</kbd>
+        </button>
+        <a href="../index.html" class="hidden md:flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-slate-600 hover:text-blue-600 transition" title="Back to Project Hub">
+          <i class="fa-solid fa-house text-xs"></i>
+          <span>Hub</span>
+        </a>
+        <button class="theme-toggle-btn p-2.5 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition" title="Toggle Theme">
+          <i class="fa-solid fa-moon text-base"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="sidebar-backdrop" class="fixed inset-0 bg-slate-950/40 backdrop-blur-xs z-30 hidden lg:hidden"></div>
+
+  <!-- Layout Wrapper -->
+  <div class="flex-1 flex w-full max-w-[100vw]">
+    
+    <!-- Left Navigation Sidebar -->
+    <aside id="docs-sidebar" class="fixed inset-y-0 left-0 z-40 w-72 pt-16 lg:pt-0 bg-white border-r border-slate-200 flex flex-col transition-transform duration-300 -translate-x-full lg:translate-x-0 lg:static lg:h-[calc(100vh-65px)] lg:sticky lg:top-[65px]">
+      <div class="p-4 border-b border-slate-100 bg-slate-50/50">
+        <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-0.5">Topics Index</div>
+        <p class="text-[11px] text-slate-500">Chapter 02 of 08</p>
+      </div>
+      <nav class="flex-1 overflow-y-auto p-3 space-y-1 text-sm">
+        <a href="index.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <i class="fa-solid fa-house text-slate-400 w-5 text-center"></i>
+          <span>Overview</span>
+        </a>
+        <a href="01-variables.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">01</span>
+          <span class="flex-1">Variables & TDZ</span>
+        </a>
+        <a href="02-data-types.html" class="nav-link active flex items-center gap-3 px-3 py-2 rounded-xl text-slate-700 transition">
+          <span class="w-6 h-6 rounded-md bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-bold font-mono">02</span>
+          <span class="flex-1 font-bold">Data Types & Coercion</span>
+        </a>
+        <a href="03-primitive.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">03</span>
+          <span class="flex-1">7 Primitive Types</span>
+        </a>
+        <a href="04-non-primitive.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">04</span>
+          <span class="flex-1">Non-Primitive & Heap</span>
+        </a>
+        <a href="05-operators.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">05</span>
+          <span class="flex-1">Operators In-Depth</span>
+        </a>
+        <a href="06-scope.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">06</span>
+          <span class="flex-1">Scope & Closures</span>
+        </a>
+        <a href="07-hoisting.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">07</span>
+          <span class="flex-1">Hoisting & Context</span>
+        </a>
+        <a href="08-es6-features.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">08</span>
+          <span class="flex-1">ES6+ Features</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 min-w-0 max-w-full px-4 sm:px-8 lg:px-12 py-8">
+      
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs text-slate-400 mb-6 font-medium">
+        <a href="index.html" class="hover:text-blue-600 transition">Docs</a>
+        <i class="fa-solid fa-angle-right text-[10px]"></i>
+        <span class="text-blue-600">02. Data Types</span>
+      </nav>
+
+      <!-- Topic Heading -->
+      <div class="mb-10 pb-8 border-b border-slate-200">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200 text-xs font-bold uppercase tracking-wider mb-3">
+          <i class="fa-solid fa-layer-group"></i> Chapter 02
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 mb-4">
+          JavaScript Data Types, Type System & Type Coercion Deep Dive
+        </h1>
+        <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-5xl">
+          JavaScript features a dynamic and weakly typed runtime system. In this chapter, we dissect the 8 canonical data types defined in the ECMAScript specification, investigate the internal <code>typeof</code> implementation quirks, unpack explicit casting mechanisms, and demystify the abstract algorithms powering implicit type coercion.
+        </p>
+      </div>
+
+      <!-- Section 1: Dynamic & Weak Typing -->
+      <section id="type-system" class="mb-14 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2.5">
+          <span class="text-blue-600 font-mono">2.1</span>
+          The Nature of JavaScript's Type System
+        </h2>
+        <p class="text-slate-600 leading-relaxed mb-6">
+          JavaScript is both <strong>dynamically typed</strong> and <strong>weakly typed</strong>:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <h4 class="font-bold text-slate-900 text-base mb-1.5">1. Dynamically Typed</h4>
+            <p class="text-xs text-slate-500 leading-relaxed mb-4">
+              Types are associated with <strong>runtime values</strong>, not with variable identifiers. You do not specify variable types at compile time; variables can be reassigned values of completely different types at any point.
+            </p>
+            <pre><code class="language-javascript">let dynamicRef = 42;          // Currently holds Number
+dynamicRef = "Hello V8";      // Now holds String
+dynamicRef = { id: 101 };     // Now holds Object</code></pre>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <h4 class="font-bold text-slate-900 text-base mb-1.5">2. Weakly Typed (Implicit Conversion)</h4>
+            <p class="text-xs text-slate-500 leading-relaxed mb-4">
+              When an operation involves mismatched types, the engine does not throw a type error immediately; instead, it automatically performs <strong>implicit type coercion</strong> behind the scenes.
+            </p>
+            <pre><code class="language-javascript">const result = "Score: " + 100; // Automatically converts 100 to "100"
+console.log(result);           // "Score: 100" (String concatenation)</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Complete Taxonomy of the 8 Data Types -->
+      <section id="taxonomy" class="mb-14 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2.5">
+          <span class="text-blue-600 font-mono">2.2</span>
+          Complete Taxonomy of the 8 ECMAScript Data Types
+        </h2>
+        <p class="text-slate-600 leading-relaxed mb-6">
+          The ECMAScript standard classifies all values into 8 distinct data types, grouped into <strong>7 Primitives</strong> and <strong>1 Non-Primitive / Reference Type</strong>:
+        </p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+          
+          <!-- Primitives -->
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg"><i class="fa-solid fa-atom"></i></div>
+              <div>
+                <h3 class="font-bold text-slate-900 text-base">Primitive Types (7 Types)</h3>
+                <span class="text-xs text-blue-600 font-semibold">Stored by Value • Stack Memory • Immutable</span>
+              </div>
+            </div>
+            <div class="space-y-2 text-xs">
+              <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between">
+                <span class="font-mono font-bold text-slate-800">1. String</span>
+                <span class="text-slate-500">UTF-16 textual sequences (e.g. <code>"hello"</code>)</span>
+              </div>
+              <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between">
+                <span class="font-mono font-bold text-slate-800">2. Number</span>
+                <span class="text-slate-500">IEEE 754 64-bit float (e.g. <code>42</code>, <code>3.14</code>, <code>NaN</code>)</span>
+              </div>
+              <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between">
+                <span class="font-mono font-bold text-slate-800">3. BigInt</span>
+                <span class="text-slate-500">Arbitrary precision integers (e.g. <code>9007199254740993n</code>)</span>
+              </div>
+              <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between">
+                <span class="font-mono font-bold text-slate-800">4. Boolean</span>
+                <span class="text-slate-500">Logical truth states: <code>true</code> or <code>false</code></span>
+              </div>
+              <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between">
+                <span class="font-mono font-bold text-slate-800">5. Undefined</span>
+                <span class="text-slate-500">Default state of unassigned identifiers</span>
+              </div>
+              <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between">
+                <span class="font-mono font-bold text-slate-800">6. Null</span>
+                <span class="text-slate-500">Explicit intentional absence of object reference</span>
+              </div>
+              <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between">
+                <span class="font-mono font-bold text-slate-800">7. Symbol</span>
+                <span class="text-slate-500">Unique, collision-free object key identifier (ES6)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Non-Primitive -->
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-9 h-9 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-lg"><i class="fa-solid fa-cubes"></i></div>
+              <div>
+                <h3 class="font-bold text-slate-900 text-base">Non-Primitive / Reference Type</h3>
+                <span class="text-xs text-purple-600 font-semibold">Stored by Reference • Heap Memory • Mutable</span>
+              </div>
+            </div>
+            <div class="space-y-2 text-xs">
+              <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between">
+                <span class="font-mono font-bold text-slate-800">Object (Plain)</span>
+                <span class="text-slate-500">Key-value dictionaries (<code>{ key: value }</code>)</span>
+              </div>
+              <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between">
+                <span class="font-mono font-bold text-slate-800">Array</span>
+                <span class="text-slate-500">Indexed ordered lists (<code>[1, 2, 3]</code>)</span>
+              </div>
+              <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between">
+                <span class="font-mono font-bold text-slate-800">Function</span>
+                <span class="text-slate-500">First-class callable executable objects</span>
+              </div>
+              <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between">
+                <span class="font-mono font-bold text-slate-800">Date & RegExp</span>
+                <span class="text-slate-500">Built-in utility standard objects</span>
+              </div>
+              <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between">
+                <span class="font-mono font-bold text-slate-800">Map & Set</span>
+                <span class="text-slate-500">ES6 Keyed hash collections & unique sets</span>
+              </div>
+              <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between">
+                <span class="font-mono font-bold text-slate-800">WeakMap & WeakSet</span>
+                <span class="text-slate-500">Garbage-collectible weak reference collections</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Section 3: typeof Quirks & Advanced Type Checking -->
+      <section id="typeof-operator" class="mb-14 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2.5">
+          <span class="text-blue-600 font-mono">2.3</span>
+          The <code>typeof</code> Operator & Historical Quirks
+        </h2>
+        <p class="text-slate-600 leading-relaxed mb-6">
+          The unary operator <code>typeof</code> returns a string representing the evaluation type of the operand. However, there are famous historical artifacts in its behavior:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div class="p-5 rounded-2xl bg-amber-50 border border-amber-200 text-xs">
+            <h4 class="font-bold text-amber-800 text-sm mb-1.5"><i class="fa-solid fa-triangle-exclamation"></i> 1. The <code>typeof null === "object"</code> Bug</h4>
+            <p class="text-slate-700 leading-relaxed mb-2">
+              In early JavaScript, values were stored with a 32-bit type tag. Objects had a type tag of <code>000</code>. Since <code>null</code> was represented as a NULL pointer (all zeros), <code>typeof null</code> mistakenly identified it as an object. This behavior cannot be fixed now without breaking legacy web applications.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-blue-50 border border-blue-200 text-xs">
+            <h4 class="font-bold text-blue-800 text-sm mb-1.5"><i class="fa-solid fa-circle-info"></i> 2. The <code>typeof NaN === "number"</code> Rule</h4>
+            <p class="text-slate-700 leading-relaxed mb-2">
+              <code>NaN</code> stands for "Not a Number", but in the IEEE 754 floating-point specification, it is a special numeric value representing an unrepresentable mathematical result (e.g. <code>0 / 0</code>). Hence, its type is <code>"number"</code>.
+            </p>
+          </div>
+        </div>
+
+        <pre><code class="language-javascript">// Complete typeof testing suite:
+console.log(typeof "Hello");         // "string"
+console.log(typeof 100);             // "number"
+console.log(typeof 9007199254740991n);// "bigint"
+console.log(typeof true);            // "boolean"
+console.log(typeof undefined);       // "undefined"
+console.log(typeof Symbol("key"));   // "symbol"
+console.log(typeof null);            // "object"  ⚠️ (Historical bug)
+console.log(typeof {});              // "object"
+console.log(typeof [1, 2, 3]);       // "object"  ⚠️ (Arrays are Objects)
+console.log(typeof function() {});   // "function"
+
+// The Bulletproof Type Checker (Production Utility):
+function getExactType(value) {
+  return Object.prototype.toString.call(value).slice(8, -1).toLowerCase();
+}
+
+console.log(getExactType(null));        // "null"        ✅ (Correct!)
+console.log(getExactType([1, 2, 3]));   // "array"       ✅ (Correct!)
+console.log(getExactType(new Date()));  // "date"        ✅ (Correct!)
+console.log(getExactType(/abc/g));      // "regexp"      ✅ (Correct!)</code></pre>
+      </section>
+
+      <!-- Section 4: The 8 Falsy Values Matrix -->
+      <section id="falsy-values" class="mb-14 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2.5">
+          <span class="text-blue-600 font-mono">2.4</span>
+          The 8 Falsy Values in JavaScript
+        </h2>
+        <p class="text-slate-600 leading-relaxed mb-6">
+          When converted to Boolean context (e.g. inside an <code>if</code> condition), <em>only</em> these 8 values evaluate to <code>false</code>. <strong>Every other value in JavaScript is Truthy</strong> (including empty arrays <code>[]</code> and empty objects <code>{}</code>!):
+        </p>
+
+        <div class="overflow-x-auto rounded-2xl border border-slate-200 bg-white mb-8 shadow-xs">
+          <table class="w-full text-left text-xs sm:text-sm">
+            <thead class="bg-slate-50 text-slate-800 border-b border-slate-200">
+              <tr>
+                <th class="p-4 font-bold">Falsy Value</th>
+                <th class="p-4 font-bold">Type</th>
+                <th class="p-4 font-bold"><code>Boolean(val)</code></th>
+                <th class="p-4 font-bold">Explanation</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 font-mono text-xs">
+              <tr>
+                <td class="p-4 text-rose-600 font-bold">false</td>
+                <td class="p-4 text-slate-500">boolean</td>
+                <td class="p-4 text-rose-600 font-bold">false</td>
+                <td class="p-4 font-sans text-slate-600">The boolean literal false.</td>
+              </tr>
+              <tr>
+                <td class="p-4 text-rose-600 font-bold">0</td>
+                <td class="p-4 text-slate-500">number</td>
+                <td class="p-4 text-rose-600 font-bold">false</td>
+                <td class="p-4 font-sans text-slate-600">The numeric zero.</td>
+              </tr>
+              <tr>
+                <td class="p-4 text-rose-600 font-bold">-0</td>
+                <td class="p-4 text-slate-500">number</td>
+                <td class="p-4 text-rose-600 font-bold">false</td>
+                <td class="p-4 font-sans text-slate-600">Negative zero in IEEE 754 floating point.</td>
+              </tr>
+              <tr>
+                <td class="p-4 text-rose-600 font-bold">0n</td>
+                <td class="p-4 text-slate-500">bigint</td>
+                <td class="p-4 text-rose-600 font-bold">false</td>
+                <td class="p-4 font-sans text-slate-600">The BigInt zero literal.</td>
+              </tr>
+              <tr>
+                <td class="p-4 text-rose-600 font-bold">""</td>
+                <td class="p-4 text-slate-500">string</td>
+                <td class="p-4 text-rose-600 font-bold">false</td>
+                <td class="p-4 font-sans text-slate-600">An empty string literal (length 0).</td>
+              </tr>
+              <tr>
+                <td class="p-4 text-rose-600 font-bold">null</td>
+                <td class="p-4 text-slate-500">null</td>
+                <td class="p-4 text-rose-600 font-bold">false</td>
+                <td class="p-4 font-sans text-slate-600">Absence of any object value.</td>
+              </tr>
+              <tr>
+                <td class="p-4 text-rose-600 font-bold">undefined</td>
+                <td class="p-4 text-slate-500">undefined</td>
+                <td class="p-4 text-rose-600 font-bold">false</td>
+                <td class="p-4 font-sans text-slate-600">Uninitialized variable default state.</td>
+              </tr>
+              <tr>
+                <td class="p-4 text-rose-600 font-bold">NaN</td>
+                <td class="p-4 text-slate-500">number</td>
+                <td class="p-4 text-rose-600 font-bold">false</td>
+                <td class="p-4 font-sans text-slate-600">Not-a-Number arithmetic failure.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 5: Top 5 Senior Interview Questions -->
+      <section id="interview-qa" class="mb-14 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2.5">
+          <span class="text-blue-600 font-mono">2.5</span>
+          Top 5 Senior Technical Interview Questions & Answers
+        </h2>
+
+        <div class="space-y-4">
+          
+          <details class="group p-5 rounded-2xl bg-white border border-slate-200 shadow-xs transition">
+            <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm">
+              <span>Q1: What is the output of <code>[] + []</code> and <code>[] + {}</code>?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <div class="pt-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-3 space-y-2">
+              <p><code>[] + []</code> outputs <code>""</code> (empty string) because the <code>+</code> operator triggers <code>ToPrimitive</code>, converting empty arrays to <code>""</code>. <code>[] + {}</code> outputs <code>"[object Object]"</code> because <code>"" + "[object Object]" = "[object Object]"</code>.</p>
+            </div>
+          </details>
+
+          <details class="group p-5 rounded-2xl bg-white border border-slate-200 shadow-xs transition">
+            <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm">
+              <span>Q2: How do you accurately distinguish between an Array, an Object, and null?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <div class="pt-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-3 space-y-2">
+              <p>Because <code>typeof</code> returns <code>"object"</code> for all three, we must use: <code>Array.isArray(val)</code> for Arrays, <code>val === null</code> for null, and <code>typeof val === "object" &amp;&amp; val !== null &amp;&amp; !Array.isArray(val)</code> for plain objects. Alternatively, use <code>Object.prototype.toString.call(val)</code>.</p>
+            </div>
+          </details>
+
+          <details class="group p-5 rounded-2xl bg-white border border-slate-200 shadow-xs transition">
+            <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm">
+              <span>Q3: What is the difference between explicit casting and implicit coercion?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <div class="pt-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-3 space-y-2">
+              <p>Explicit casting occurs when the developer deliberately invokes conversion constructors like <code>Number("42")</code>, <code>String(100)</code>, or <code>Boolean(0)</code>. Implicit coercion occurs automatically behind the scenes during operations like <code>"5" * 2</code> (evaluates to 10) or <code>if ("hello")</code> (evaluates to true).</p>
+            </div>
+          </details>
+
+          <details class="group p-5 rounded-2xl bg-white border border-slate-200 shadow-xs transition">
+            <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm">
+              <span>Q4: Why does <code>NaN === NaN</code> evaluate to false?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <div class="pt-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-3 space-y-2">
+              <p>Under IEEE 754 specification rules, <code>NaN</code> represents an unspecifiable calculation error. Two distinct calculation failures (e.g. <code>0 / 0</code> vs <code>Math.sqrt(-1)</code>) cannot be considered equal to one another. To safely test for NaN, use <code>Number.isNaN(val)</code> or <code>Object.is(val, NaN)</code>.</p>
+            </div>
+          </details>
+
+          <details class="group p-5 rounded-2xl bg-white border border-slate-200 shadow-xs transition">
+            <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm">
+              <span>Q5: What is the BigInt type and why can it not be mixed with Numbers?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <div class="pt-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-3 space-y-2">
+              <p><code>BigInt</code> represents arbitrarily large integers beyond <code>Number.MAX_SAFE_INTEGER</code> (\( 2^{53}-1 \)). JavaScript strictly prevents implicit arithmetic mixing between <code>BigInt</code> and <code>Number</code> (throwing a <code>TypeError</code>) to prevent silent precision degradation bugs.</p>
+            </div>
+          </details>
+
+        </div>
+      </section>
+
+      <!-- Bottom Nav -->
+      <div class="pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <a href="01-variables.html" class="w-full sm:w-auto px-5 py-3 rounded-xl border border-slate-200 hover:bg-slate-100 text-xs font-bold transition flex items-center justify-center gap-2 text-slate-600">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Prev: 01. Variables</span>
+        </a>
+        <a href="03-primitive.html" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-xs transition flex items-center justify-center gap-2 group">
+          <span>Next: 03. Primitive Types & Stack Memory</span>
+          <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+        </a>
+      </div>
+
+    </main>
+
+    <!-- Right Side Table of Contents -->
+    <aside class="hidden xl:block w-64 p-6 sticky top-[65px] h-[calc(100vh-65px)] overflow-y-auto border-l border-slate-200 text-xs">
+      <div class="font-bold text-slate-900 uppercase tracking-wider mb-4 text-[11px] flex items-center gap-2">
+        <i class="fa-solid fa-list-ul text-blue-600"></i> On This Page
+      </div>
+      <ul id="toc-list" class="space-y-2.5">
+        <li><a href="#type-system" class="text-slate-500 hover:text-blue-600 transition block">2.1 Type System Nature</a></li>
+        <li><a href="#taxonomy" class="text-slate-500 hover:text-blue-600 transition block">2.2 Complete Taxonomy</a></li>
+        <li><a href="#typeof-operator" class="text-slate-500 hover:text-blue-600 transition block">2.3 typeof & Quirks</a></li>
+        <li><a href="#falsy-values" class="text-slate-500 hover:text-blue-600 transition block">2.4 8 Falsy Values Matrix</a></li>
+        <li><a href="#interview-qa" class="text-slate-500 hover:text-blue-600 transition block">2.5 Top 5 Interview Q&As</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="assets/js/search-index.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

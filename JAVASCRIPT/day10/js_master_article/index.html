@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Master Handbook | Clean & Comprehensive Reference Guide</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50: '#f8fafc', 500: '#3b82f6', 600: '#2563eb', 900: '#0f172a' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-white text-slate-900 min-h-screen flex flex-col antialiased selection:bg-blue-100 selection:text-blue-900">
+
+  <!-- Top Progress Bar -->
+  <div id="reading-progress" class="fixed top-0 left-0 h-1 bg-blue-600 z-50 w-0"></div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white/95 border-b border-slate-200 backdrop-blur-md">
+    <div class="w-full max-w-[100vw] px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition">
+          <i class="fa-solid fa-bars-staggered text-lg"></i>
+        </button>
+        <a href="index.html" class="flex items-center gap-2.5 group">
+          <div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white font-black text-lg shadow-sm group-hover:bg-blue-700 transition">
+            JS
+          </div>
+          <div>
+            <div class="text-base font-extrabold tracking-tight text-slate-900 flex items-center gap-2">
+              <span>JavaScript Master Guide</span>
+              <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-blue-50 text-blue-600 border border-blue-200">8 Chapters</span>
+            </div>
+            <p class="text-[11px] text-slate-500">Clean, In-Depth Technical Manual</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button class="search-trigger-btn flex items-center gap-2 px-3.5 py-2 text-xs font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-xl transition">
+          <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
+          <span class="hidden sm:inline">Search Guide (Ctrl+K)...</span>
+          <kbd class="hidden sm:inline px-1.5 py-0.5 text-[10px] bg-white border border-slate-200 rounded text-slate-400 font-mono">Ctrl+K</kbd>
+        </button>
+
+        <a href="../index.html" class="hidden md:flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-slate-600 hover:text-blue-600 transition" title="Back to Project Hub">
+          <i class="fa-solid fa-house text-xs"></i>
+          <span>Hub</span>
+        </a>
+
+        <button class="theme-toggle-btn p-2.5 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition" title="Toggle Theme">
+          <i class="fa-solid fa-moon text-base"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="sidebar-backdrop" class="fixed inset-0 bg-slate-950/40 backdrop-blur-xs z-30 hidden lg:hidden"></div>
+
+  <!-- Layout Wrapper -->
+  <div class="flex-1 flex w-full max-w-[100vw]">
+    
+    <!-- Left Navigation Sidebar -->
+    <aside id="docs-sidebar" class="fixed inset-y-0 left-0 z-40 w-72 pt-16 lg:pt-0 bg-white border-r border-slate-200 flex flex-col transition-transform duration-300 -translate-x-full lg:translate-x-0 lg:static lg:h-[calc(100vh-65px)] lg:sticky lg:top-[65px]">
+      
+      <div class="p-4 border-b border-slate-100 bg-slate-50/50">
+        <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-0.5">Curriculum Index</div>
+        <p class="text-[11px] text-slate-500">8 Comprehensive Chapters</p>
+      </div>
+
+      <nav class="flex-1 overflow-y-auto p-3 space-y-1 text-sm">
+        <a href="index.html" class="nav-link active flex items-center gap-3 px-3 py-2.5 rounded-xl transition">
+          <i class="fa-solid fa-house-chimney text-blue-600 w-5 text-center"></i>
+          <span class="flex-1 font-bold">Master Overview</span>
+        </a>
+
+        <div class="pt-4 pb-1 px-3 text-[11px] font-bold uppercase tracking-wider text-slate-400">Chapters</div>
+
+        <a href="01-variables.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-700 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-700 flex items-center justify-center text-xs font-bold font-mono">01</span>
+          <span class="flex-1">Variables & TDZ</span>
+        </a>
+
+        <a href="02-data-types.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-700 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-700 flex items-center justify-center text-xs font-bold font-mono">02</span>
+          <span class="flex-1">Data Types & Coercion</span>
+        </a>
+
+        <a href="03-primitive.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-700 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-700 flex items-center justify-center text-xs font-bold font-mono">03</span>
+          <span class="flex-1">7 Primitive Types</span>
+        </a>
+
+        <a href="04-non-primitive.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-700 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-700 flex items-center justify-center text-xs font-bold font-mono">04</span>
+          <span class="flex-1">Non-Primitive & Heap</span>
+        </a>
+
+        <a href="05-operators.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-700 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-700 flex items-center justify-center text-xs font-bold font-mono">05</span>
+          <span class="flex-1">Operators In-Depth</span>
+        </a>
+
+        <a href="06-scope.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-700 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-700 flex items-center justify-center text-xs font-bold font-mono">06</span>
+          <span class="flex-1">Scope & Closures</span>
+        </a>
+
+        <a href="07-hoisting.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-700 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-700 flex items-center justify-center text-xs font-bold font-mono">07</span>
+          <span class="flex-1">Hoisting & Context</span>
+        </a>
+
+        <a href="08-es6-features.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-700 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-700 flex items-center justify-center text-xs font-bold font-mono">08</span>
+          <span class="flex-1">ES6+ Features</span>
+        </a>
+      </nav>
+
+      <div class="p-4 border-t border-slate-200 bg-slate-50">
+        <div class="text-[11px] text-slate-500 flex items-center justify-between">
+          <span>8 Chapters • 80+ Topics</span>
+          <span class="text-blue-600 font-bold">Comprehensive</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 min-w-0 max-w-full px-4 sm:px-8 lg:px-12 py-8">
+      
+      <!-- Clean Simple Hero Banner -->
+      <div class="bg-slate-50 border border-slate-200 rounded-3xl p-8 sm:p-12 mb-10">
+        <div class="max-w-4xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold uppercase tracking-wider mb-4">
+            <i class="fa-solid fa-book-open"></i> Full JavaScript Handbook
+          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 mb-4 leading-tight">
+            JavaScript Fundamentals & Advanced Engineering Guide
+          </h1>
+          <p class="text-base sm:text-lg text-slate-600 leading-relaxed mb-6 font-normal">
+            A clean, highly detailed technical manual covering the 8 foundational pillars of JavaScript: Variables, Data Types, Primitives, Non-Primitives, Operators, Scope, Hoisting, and ES6+ Modern Syntax.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4">
+            <a href="01-variables.html" class="px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-sm transition flex items-center gap-2">
+              <span>Start Chapter 1: Variables</span>
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+            <button class="search-trigger-btn px-6 py-3.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 font-semibold text-sm border border-slate-300 shadow-xs transition flex items-center gap-2">
+              <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
+              <span>Quick Search (Ctrl+K)</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chapter Grid -->
+      <section class="mb-14">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <h2 class="text-2xl font-extrabold text-slate-900">Chapters Roadmap</h2>
+            <p class="text-sm text-slate-500">Click any card below to navigate directly to that chapter</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
+          
+          <!-- Card 1 -->
+          <a href="01-variables.html" class="hover-lift bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between group transition">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 font-black font-mono flex items-center justify-center text-sm border border-blue-200">01</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-600">Basics</span>
+              </div>
+              <h3 class="font-bold text-lg text-slate-900 group-hover:text-blue-600 transition mb-2">Variables & TDZ</h3>
+              <p class="text-xs text-slate-500 leading-relaxed mb-4">
+                <code>var</code> vs <code>let</code> vs <code>const</code> 10-dimension comparison, Temporal Dead Zone, and scoping.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-blue-600">
+              <span>Read Chapter</span>
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </div>
+          </a>
+
+          <!-- Card 2 -->
+          <a href="02-data-types.html" class="hover-lift bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between group transition">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 font-black font-mono flex items-center justify-center text-sm border border-blue-200">02</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-600">Type System</span>
+              </div>
+              <h3 class="font-bold text-lg text-slate-900 group-hover:text-blue-600 transition mb-2">Data Types & Coercion</h3>
+              <p class="text-xs text-slate-500 leading-relaxed mb-4">
+                8 Data Types, <code>typeof</code> quirks (`typeof null === 'object'`), and the 8 Falsy values matrix.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-blue-600">
+              <span>Read Chapter</span>
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </div>
+          </a>
+
+          <!-- Card 3 -->
+          <a href="03-primitive.html" class="hover-lift bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between group transition">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 font-black font-mono flex items-center justify-center text-sm border border-blue-200">03</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-600">Stack Memory</span>
+              </div>
+              <h3 class="font-bold text-lg text-slate-900 group-hover:text-blue-600 transition mb-2">7 Primitive Types</h3>
+              <p class="text-xs text-slate-500 leading-relaxed mb-4">
+                String, Number, BigInt, Boolean, Undefined, Null, Symbol, Stack memory, and Autoboxing.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-blue-600">
+              <span>Read Chapter</span>
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </div>
+          </a>
+
+          <!-- Card 4 -->
+          <a href="04-non-primitive.html" class="hover-lift bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between group transition">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 font-black font-mono flex items-center justify-center text-sm border border-blue-200">04</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-600">Heap Memory</span>
+              </div>
+              <h3 class="font-bold text-lg text-slate-900 group-hover:text-blue-600 transition mb-2">Non-Primitive & Heap</h3>
+              <p class="text-xs text-slate-500 leading-relaxed mb-4">
+                Objects, Arrays, Functions, Pass-by-Reference, and <code>structuredClone()</code> deep copy.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-blue-600">
+              <span>Read Chapter</span>
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </div>
+          </a>
+
+          <!-- Card 5 -->
+          <a href="05-operators.html" class="hover-lift bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between group transition">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 font-black font-mono flex items-center justify-center text-sm border border-blue-200">05</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-600">Logic & Math</span>
+              </div>
+              <h3 class="font-bold text-lg text-slate-900 group-hover:text-blue-600 transition mb-2">Operators In-Depth</h3>
+              <p class="text-xs text-slate-500 leading-relaxed mb-4">
+                <code>==</code> vs <code>===</code>, short-circuiting, Nullish Coalescing <code>??</code>, and Optional Chaining <code>?.</code>.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-blue-600">
+              <span>Read Chapter</span>
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </div>
+          </a>
+
+          <!-- Card 6 -->
+          <a href="06-scope.html" class="hover-lift bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between group transition">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 font-black font-mono flex items-center justify-center text-sm border border-blue-200">06</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-600">Architecture</span>
+              </div>
+              <h3 class="font-bold text-lg text-slate-900 group-hover:text-blue-600 transition mb-2">Scope & Closures</h3>
+              <p class="text-xs text-slate-500 leading-relaxed mb-4">
+                Global, function, and block scope. Scope chain resolution, shadowing, and practical closures.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-blue-600">
+              <span>Read Chapter</span>
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </div>
+          </a>
+
+          <!-- Card 7 -->
+          <a href="07-hoisting.html" class="hover-lift bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between group transition">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 font-black font-mono flex items-center justify-center text-sm border border-blue-200">07</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-600">V8 Internals</span>
+              </div>
+              <h3 class="font-bold text-lg text-slate-900 group-hover:text-blue-600 transition mb-2">Hoisting & Context</h3>
+              <p class="text-xs text-slate-500 leading-relaxed mb-4">
+                Memory Creation Phase vs Execution Phase, function declaration vs expression, interview puzzles.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-blue-600">
+              <span>Read Chapter</span>
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </div>
+          </a>
+
+          <!-- Card 8 -->
+          <a href="08-es6-features.html" class="hover-lift bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between group transition">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 font-black font-mono flex items-center justify-center text-sm border border-blue-200">08</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-600">Modern ES6+</span>
+              </div>
+              <h3 class="font-bold text-lg text-slate-900 group-hover:text-blue-600 transition mb-2">ES6+ Features</h3>
+              <p class="text-xs text-slate-500 leading-relaxed mb-4">
+                Arrow functions, destructuring, spread/rest, ES6 classes with private fields, and async/await.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-blue-600">
+              <span>Read Chapter</span>
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </div>
+          </a>
+
+        </div>
+      </section>
+
+      <!-- Bottom Next CTA -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-8 bg-slate-50 border border-slate-200 rounded-2xl">
+        <div>
+          <span class="text-xs font-bold text-blue-600 uppercase tracking-wider block mb-1">Start Reading</span>
+          <h4 class="text-lg font-bold text-slate-900">Chapter 01: JavaScript Variables, Scopes & The Temporal Dead Zone</h4>
+        </div>
+        <a href="01-variables.html" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm rounded-xl transition flex items-center gap-2 shadow-xs">
+          <span>Launch Chapter 01</span>
+          <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="assets/js/search-index.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

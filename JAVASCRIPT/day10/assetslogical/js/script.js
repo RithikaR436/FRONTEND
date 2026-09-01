@@ -100,10 +100,40 @@
 
 
 
+// 7.SWAP
+// let a = 5;
+// let b = 10;
+// a = a + b;   
+// b = a - b;   
+// a = a - b;
+// console.log("a="+a,"b="+b);
 
-let a = 5;
-let b = 10;
-a = a + b;   
-b = a - b;   
-a = a - b;
-console.log("a="+a,"b="+b);
+
+
+// 8.Duplicate
+// function removeDuplicates(arr) {
+//     return [...new Set(arr)];
+// }
+
+// const numbers = [1, 2, 2, 3, 4, 4, 5, 1];
+// console.log(removeDuplicates(numbers)); 
+
+
+
+function twoSum(arr, target) {
+    let map = new Map(); 
+    for (let i = 0; i < arr.length; i++) {
+        let complement = target - arr[i]; 
+        if (map.has(complement)) {
+            return [map.get(complement), i];
+        }
+
+        map.set(arr[i], i);
+    }
+
+    return []; 
+}
+
+console.log(twoSum([2, 7, 11, 15], 9)); 
+console.log(twoSum([3, 2, 4], 6));     
+console.log(twoSum([3, 3], 6));         

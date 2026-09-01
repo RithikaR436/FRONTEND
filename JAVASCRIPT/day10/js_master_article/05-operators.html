@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05. JavaScript Operators: Computation, Equality, ?? & ?. Safety | JavaScript Master Guide</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50: '#f8fafc', 500: '#3b82f6', 600: '#2563eb', 900: '#0f172a' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-white text-slate-900 min-h-screen flex flex-col antialiased selection:bg-blue-100 selection:text-blue-900">
+
+  <!-- Top Progress Bar -->
+  <div id="reading-progress" class="fixed top-0 left-0 h-1 bg-blue-600 z-50 w-0"></div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white/95 border-b border-slate-200 backdrop-blur-md">
+    <div class="w-full max-w-[100vw] px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition">
+          <i class="fa-solid fa-bars-staggered text-lg"></i>
+        </button>
+        <a href="index.html" class="flex items-center gap-2.5 group">
+          <div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white font-black text-lg shadow-sm group-hover:bg-blue-700 transition">
+            JS
+          </div>
+          <div>
+            <div class="text-base font-extrabold tracking-tight text-slate-900 flex items-center gap-2">
+              <span>JavaScript Master Guide</span>
+              <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-blue-50 text-blue-600 border border-blue-200">Chapter 05</span>
+            </div>
+            <p class="text-[11px] text-slate-500">Operators, Equality, ?? & ?. Safety</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button class="search-trigger-btn flex items-center gap-2 px-3.5 py-2 text-xs font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-xl transition">
+          <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
+          <span class="hidden sm:inline">Search Guide (Ctrl+K)...</span>
+          <kbd class="hidden sm:inline px-1.5 py-0.5 text-[10px] bg-white border border-slate-200 rounded text-slate-400 font-mono">Ctrl+K</kbd>
+        </button>
+        <a href="../index.html" class="hidden md:flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-slate-600 hover:text-blue-600 transition" title="Back to Project Hub">
+          <i class="fa-solid fa-house text-xs"></i>
+          <span>Hub</span>
+        </a>
+        <button class="theme-toggle-btn p-2.5 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition" title="Toggle Theme">
+          <i class="fa-solid fa-moon text-base"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="sidebar-backdrop" class="fixed inset-0 bg-slate-950/40 backdrop-blur-xs z-30 hidden lg:hidden"></div>
+
+  <!-- Layout Wrapper -->
+  <div class="flex-1 flex w-full max-w-[100vw]">
+    
+    <!-- Left Navigation Sidebar -->
+    <aside id="docs-sidebar" class="fixed inset-y-0 left-0 z-40 w-72 pt-16 lg:pt-0 bg-white border-r border-slate-200 flex flex-col transition-transform duration-300 -translate-x-full lg:translate-x-0 lg:static lg:h-[calc(100vh-65px)] lg:sticky lg:top-[65px]">
+      <div class="p-4 border-b border-slate-100 bg-slate-50/50">
+        <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-0.5">Topics Index</div>
+        <p class="text-[11px] text-slate-500">Chapter 05 of 08</p>
+      </div>
+      <nav class="flex-1 overflow-y-auto p-3 space-y-1 text-sm">
+        <a href="index.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <i class="fa-solid fa-house text-slate-400 w-5 text-center"></i>
+          <span>Overview</span>
+        </a>
+        <a href="01-variables.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">01</span>
+          <span class="flex-1">Variables & TDZ</span>
+        </a>
+        <a href="02-data-types.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">02</span>
+          <span class="flex-1">Data Types & Coercion</span>
+        </a>
+        <a href="03-primitive.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">03</span>
+          <span class="flex-1">7 Primitive Types</span>
+        </a>
+        <a href="04-non-primitive.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">04</span>
+          <span class="flex-1">Non-Primitive & Heap</span>
+        </a>
+        <a href="05-operators.html" class="nav-link active flex items-center gap-3 px-3 py-2 rounded-xl text-slate-700 transition">
+          <span class="w-6 h-6 rounded-md bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-bold font-mono">05</span>
+          <span class="flex-1 font-bold">Operators In-Depth</span>
+        </a>
+        <a href="06-scope.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">06</span>
+          <span class="flex-1">Scope & Closures</span>
+        </a>
+        <a href="07-hoisting.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">07</span>
+          <span class="flex-1">Hoisting & Context</span>
+        </a>
+        <a href="08-es6-features.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">08</span>
+          <span class="flex-1">ES6+ Features</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 min-w-0 max-w-full px-4 sm:px-8 lg:px-12 py-8">
+      
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs text-slate-400 mb-6 font-medium">
+        <a href="index.html" class="hover:text-blue-600 transition">Docs</a>
+        <i class="fa-solid fa-angle-right text-[10px]"></i>
+        <span class="text-blue-600">05. Operators</span>
+      </nav>
+
+      <!-- Topic Heading -->
+      <div class="mb-10 pb-8 border-b border-slate-200">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200 text-xs font-bold uppercase tracking-wider mb-3">
+          <i class="fa-solid fa-calculator"></i> Chapter 05
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 mb-4">
+          JavaScript Operators: Computation, Equality Algorithms, Short-Circuiting & Safety
+        </h1>
+        <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-5xl">
+          Operators form the core computational engine of JavaScript. In this chapter, we explore mathematical operations, investigate the internal type-coercion algorithms behind Loose (<code>==</code>) vs Strict (<code>===</code>) equality, master short-circuit evaluation patterns, and examine modern ECMAScript operators like Nullish Coalescing (<code>??</code>) and Optional Chaining (<code>?.</code>).
+        </p>
+      </div>
+
+      <!-- Section 1: Comparison Operators (== vs ===) -->
+      <section id="equality-algorithms" class="mb-14 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2.5">
+          <span class="text-blue-600 font-mono">5.1</span>
+          Equality Algorithms: Loose (<code>==</code>) vs Strict (<code>===</code>) vs <code>Object.is()</code>
+        </h2>
+        <p class="text-slate-600 leading-relaxed mb-6">
+          JavaScript provides three distinct equality comparison mechanisms defined in the ECMAScript specification:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <h4 class="font-bold text-amber-700 text-base mb-2">1. Loose Equality (<code>==</code>)</h4>
+            <p class="text-xs text-slate-500 mb-3">
+              Applies the <strong>Abstract Equality Comparison Algorithm</strong>. If types differ, it coerces operands to common primitives before comparison.
+            </p>
+            <pre><code class="language-javascript">console.log(5 == "5");       // true
+console.log(0 == false);     // true
+console.log(null == undefined); // true</code></pre>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <h4 class="font-bold text-emerald-700 text-base mb-2">2. Strict Equality (<code>===</code>)</h4>
+            <p class="text-xs text-slate-500 mb-3">
+              Applies the <strong>Strict Equality Comparison Algorithm</strong>. If types differ, it immediately evaluates to <code>false</code> without coercion.
+            </p>
+            <pre><code class="language-javascript">console.log(5 === "5");      // false
+console.log(0 === false);    // false
+console.log(null === undefined); // false</code></pre>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <h4 class="font-bold text-blue-700 text-base mb-2">3. SameValue (<code>Object.is()</code>)</h4>
+            <p class="text-xs text-slate-500 mb-3">
+              Distinguishes signed zeros (<code>+0</code> vs <code>-0</code>) and accurately equates <code>NaN</code> with <code>NaN</code>.
+            </p>
+            <pre><code class="language-javascript">console.log(Object.is(NaN, NaN)); // true
+console.log(Object.is(+0, -0));   // false
+console.log(+0 === -0);           // true</code></pre>
+          </div>
+        </div>
+
+        <!-- Detailed Coercion Matrix Table -->
+        <h4 class="font-bold text-slate-900 mb-3 text-sm">The Exhaustive Equality Coercion Matrix</h4>
+        <div class="overflow-x-auto rounded-2xl border border-slate-200 bg-white mb-8 shadow-xs">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-slate-50 text-slate-800 border-b border-slate-200">
+              <tr>
+                <th class="p-3.5">Expression</th>
+                <th class="p-3.5">Result</th>
+                <th class="p-3.5">Internal Engine Coercion Steps</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 font-mono">
+              <tr>
+                <td class="p-3.5"><code>[] == 0</code></td>
+                <td class="p-3.5 text-emerald-600 font-bold">true</td>
+                <td class="p-3.5 font-sans text-slate-600">Array <code>[]</code> converts via <code>ToPrimitive</code> to <code>""</code>, and <code>Number("")</code> converts to <code>0</code>.</td>
+              </tr>
+              <tr>
+                <td class="p-3.5"><code>[] == ![]</code></td>
+                <td class="p-3.5 text-emerald-600 font-bold">true</td>
+                <td class="p-3.5 font-sans text-slate-600"><code>![]</code> evaluates to boolean <code>false</code>. <code>[] == false</code> becomes <code>0 == 0</code>.</td>
+              </tr>
+              <tr>
+                <td class="p-3.5"><code>"0" == false</code></td>
+                <td class="p-3.5 text-emerald-600 font-bold">true</td>
+                <td class="p-3.5 font-sans text-slate-600">Both sides coerce to numeric value <code>0</code> (<code>0 == 0</code>).</td>
+              </tr>
+              <tr>
+                <td class="p-3.5"><code>null == 0</code></td>
+                <td class="p-3.5 text-rose-600 font-bold">false</td>
+                <td class="p-3.5 font-sans text-slate-600">Under specification rules, <code>null</code> only loosely equals <code>undefined</code> and nothing else.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 2: Logical Operators & Short-Circuit Evaluation -->
+      <section id="short-circuiting" class="mb-14 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2.5">
+          <span class="text-blue-600 font-mono">5.2</span>
+          Logical Operators & Short-Circuit Evaluation
+        </h2>
+        <p class="text-slate-600 leading-relaxed mb-6">
+          In JavaScript, the logical operators <code>&&</code> (AND) and <code>||</code> (OR) do not necessarily return boolean values—they return the <strong>exact value of the determining operand</strong>:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <h4 class="font-bold text-amber-700 text-base mb-2">Logical OR (<code>||</code>) Pattern</h4>
+            <p class="text-xs text-slate-500 mb-3">Returns the <em>first truthy value</em>, or the final operand if all are falsy.</p>
+            <pre><code class="language-javascript">const username = inputUsername || "Anonymous Guest";
+console.log("" || "Fallback");      // "Fallback"
+console.log("Admin" || "Fallback"); // "Admin"</code></pre>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <h4 class="font-bold text-blue-700 text-base mb-2">Logical AND (<code>&&</code>) Pattern</h4>
+            <p class="text-xs text-slate-500 mb-3">Returns the <em>first falsy value</em>, or the final operand if all are truthy.</p>
+            <pre><code class="language-javascript">const user = { loggedIn: true, token: "JWT_SECURE_TOKEN" };
+const authToken = user.loggedIn && user.token;
+console.log(authToken); // "JWT_SECURE_TOKEN"</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Modern Operators: ?? and ?. -->
+      <section id="modern-operators" class="mb-14 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2.5">
+          <span class="text-blue-600 font-mono">5.3</span>
+          Modern Safety: Nullish Coalescing (<code>??</code>) & Optional Chaining (<code>?.</code>)
+        </h2>
+
+        <div class="space-y-6 mb-8">
+          
+          <!-- Nullish Coalescing -->
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <h3 class="font-bold text-slate-900 text-base mb-2">1. The <code>||</code> vs <code>??</code> Problem (Preserving 0 and false)</h3>
+            <p class="text-xs text-slate-500 mb-4 leading-relaxed">
+              <code>||</code> checks for <em>falsy</em> values, which inadvertently overwrites valid <code>0</code>, <code>""</code>, and <code>false</code> inputs! <code>??</code> checks <strong>strictly for <code>null</code> or <code>undefined</code></strong>.
+            </p>
+            <pre><code class="language-javascript">const customTimeout = 0; // Valid setting (0 milliseconds)
+
+// Flawed approach using || :
+const delay1 = customTimeout || 3000;
+console.log("Using || :", delay1); // 3000 ❌ (Overwrote valid 0!)
+
+// Robust approach using ?? :
+const delay2 = customTimeout ?? 3000;
+console.log("Using ?? :", delay2); // 0    ✅ (Accurately preserved!)</code></pre>
+          </div>
+
+          <!-- Optional Chaining -->
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <h3 class="font-bold text-slate-900 text-base mb-2">2. Optional Chaining (<code>?.</code>)</h3>
+            <p class="text-xs text-slate-500 mb-4 leading-relaxed">
+              Enables safe property navigation, function calls, and array lookups without throwing runtime <code>TypeError: Cannot read properties of undefined</code>.
+            </p>
+            <pre><code class="language-javascript">const customerOrder = {
+  id: 99401,
+  customer: {
+    name: "Arun"
+    // address is omitted
+  }
+};
+
+// Safe property lookup:
+console.log(customerOrder.customer?.address?.zipCode); // undefined (No crash!)
+
+// Safe method invocation:
+customerOrder.printInvoice?.(); // Safely ignored if method doesn't exist
+
+// Safe array index access:
+const matrix = null;
+console.log(matrix?.[0]?.[1]); // undefined</code></pre>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Section 4: Top 5 Senior Interview Questions -->
+      <section id="interview-qa" class="mb-14 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2.5">
+          <span class="text-blue-600 font-mono">5.4</span>
+          Top 5 Senior Technical Interview Questions & Answers
+        </h2>
+
+        <div class="space-y-4">
+          
+          <details class="group p-5 rounded-2xl bg-white border border-slate-200 shadow-xs transition">
+            <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm">
+              <span>Q1: What are the Logical Assignment operators introduced in ES2021?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <div class="pt-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-3 space-y-2">
+              <p>ES2021 introduced three logical assignment shorthands: <code>x &amp;&amp;= y</code> (assigns <code>y</code> only if <code>x</code> is truthy), <code>x ||= y</code> (assigns <code>y</code> only if <code>x</code> is falsy), and <code>x ??= y</code> (assigns <code>y</code> only if <code>x</code> is null or undefined). They avoid redundant setter invocations when values do not require updates.</p>
+            </div>
+          </details>
+
+          <details class="group p-5 rounded-2xl bg-white border border-slate-200 shadow-xs transition">
+            <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm">
+              <span>Q2: What is the difference between <code>typeof</code> and <code>instanceof</code>?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <div class="pt-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-3 space-y-2">
+              <p><code>typeof</code> is a unary operator that returns a primitive type string (e.g. <code>"string"</code>, <code>"number"</code>). <code>instanceof</code> is a binary operator that traverses an object's prototype chain to verify whether the constructor's <code>prototype</code> property appears anywhere along the prototype chain (e.g. <code>[] instanceof Array === true</code>).</p>
+            </div>
+          </details>
+
+          <details class="group p-5 rounded-2xl bg-white border border-slate-200 shadow-xs transition">
+            <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm">
+              <span>Q3: What does the <code>void</code> operator do in JavaScript?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <div class="pt-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-3 space-y-2">
+              <p>The <code>void</code> operator evaluates the given expression and unconditionally returns the primitive value <code>undefined</code>. Commonly used in legacy HTML hyperlinks like <code>javascript:void(0)</code> to prevent page reloads, and in arrow functions to ensure a function explicitly returns <code>undefined</code>.</p>
+            </div>
+          </details>
+
+          <details class="group p-5 rounded-2xl bg-white border border-slate-200 shadow-xs transition">
+            <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm">
+              <span>Q4: What is the unary plus (<code>+</code>) operator used for?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <div class="pt-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-3 space-y-2">
+              <p>The unary plus operator precedes its operand and attempts to convert it into a numeric primitive. It is the fastest, cleanest idiomatic way in JavaScript to cast numeric strings into Numbers (e.g., <code>+"42" === 42</code>, <code>+true === 1</code>, <code>+false === 0</code>).</p>
+            </div>
+          </details>
+
+          <details class="group p-5 rounded-2xl bg-white border border-slate-200 shadow-xs transition">
+            <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm">
+              <span>Q5: How does the Comma Operator (<code>,</code>) function?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <div class="pt-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-3 space-y-2">
+              <p>The comma operator evaluates each of its operands from left to right and returns the evaluated value of the <em>last operand</em> (e.g., <code>let x = (1, 2, 3); // x === 3</code>). It is frequently used to execute multiple expressions in <code>for</code> loop updates.</p>
+            </div>
+          </details>
+
+        </div>
+      </section>
+
+      <!-- Bottom Nav -->
+      <div class="pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <a href="04-non-primitive.html" class="w-full sm:w-auto px-5 py-3 rounded-xl border border-slate-200 hover:bg-slate-100 text-xs font-bold transition flex items-center justify-center gap-2 text-slate-600">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Prev: 04. Non-Primitive Types</span>
+        </a>
+        <a href="06-scope.html" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-xs transition flex items-center justify-center gap-2 group">
+          <span>Next: 06. Scope & Closures</span>
+          <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+        </a>
+      </div>
+
+    </main>
+
+    <!-- Right Side Table of Contents -->
+    <aside class="hidden xl:block w-64 p-6 sticky top-[65px] h-[calc(100vh-65px)] overflow-y-auto border-l border-slate-200 text-xs">
+      <div class="font-bold text-slate-900 uppercase tracking-wider mb-4 text-[11px] flex items-center gap-2">
+        <i class="fa-solid fa-list-ul text-blue-600"></i> On This Page
+      </div>
+      <ul id="toc-list" class="space-y-2.5">
+        <li><a href="#equality-algorithms" class="text-slate-500 hover:text-blue-600 transition block">5.1 Equality Algorithms</a></li>
+        <li><a href="#short-circuiting" class="text-slate-500 hover:text-blue-600 transition block">5.2 Short-Circuiting</a></li>
+        <li><a href="#modern-operators" class="text-slate-500 hover:text-blue-600 transition block">5.3 ?? & ?. Safety</a></li>
+        <li><a href="#interview-qa" class="text-slate-500 hover:text-blue-600 transition block">5.4 Top 5 Interview Q&As</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="assets/js/search-index.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07. Hoisting, Execution Context & TDZ Mechanics | JavaScript Master Guide</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50: '#f8fafc', 500: '#3b82f6', 600: '#2563eb', 900: '#0f172a' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-white text-slate-900 min-h-screen flex flex-col antialiased selection:bg-blue-100 selection:text-blue-900">
+
+  <!-- Top Progress Bar -->
+  <div id="reading-progress" class="fixed top-0 left-0 h-1 bg-blue-600 z-50 w-0"></div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white/95 border-b border-slate-200 backdrop-blur-md">
+    <div class="w-full max-w-[100vw] px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition">
+          <i class="fa-solid fa-bars-staggered text-lg"></i>
+        </button>
+        <a href="index.html" class="flex items-center gap-2.5 group">
+          <div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white font-black text-lg shadow-sm group-hover:bg-blue-700 transition">
+            JS
+          </div>
+          <div>
+            <div class="text-base font-extrabold tracking-tight text-slate-900 flex items-center gap-2">
+              <span>JavaScript Master Guide</span>
+              <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-blue-50 text-blue-600 border border-blue-200">Chapter 07</span>
+            </div>
+            <p class="text-[11px] text-slate-500">Execution Context & Hoisting Mechanics</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button class="search-trigger-btn flex items-center gap-2 px-3.5 py-2 text-xs font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-xl transition">
+          <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
+          <span class="hidden sm:inline">Search Guide (Ctrl+K)...</span>
+          <kbd class="hidden sm:inline px-1.5 py-0.5 text-[10px] bg-white border border-slate-200 rounded text-slate-400 font-mono">Ctrl+K</kbd>
+        </button>
+        <a href="../index.html" class="hidden md:flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-slate-600 hover:text-blue-600 transition" title="Back to Project Hub">
+          <i class="fa-solid fa-house text-xs"></i>
+          <span>Hub</span>
+        </a>
+        <button class="theme-toggle-btn p-2.5 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition" title="Toggle Theme">
+          <i class="fa-solid fa-moon text-base"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="sidebar-backdrop" class="fixed inset-0 bg-slate-950/40 backdrop-blur-xs z-30 hidden lg:hidden"></div>
+
+  <!-- Layout Wrapper -->
+  <div class="flex-1 flex w-full max-w-[100vw]">
+    
+    <!-- Left Navigation Sidebar -->
+    <aside id="docs-sidebar" class="fixed inset-y-0 left-0 z-40 w-72 pt-16 lg:pt-0 bg-white border-r border-slate-200 flex flex-col transition-transform duration-300 -translate-x-full lg:translate-x-0 lg:static lg:h-[calc(100vh-65px)] lg:sticky lg:top-[65px]">
+      <div class="p-4 border-b border-slate-100 bg-slate-50/50">
+        <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-0.5">Topics Index</div>
+        <p class="text-[11px] text-slate-500">Chapter 07 of 08</p>
+      </div>
+      <nav class="flex-1 overflow-y-auto p-3 space-y-1 text-sm">
+        <a href="index.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <i class="fa-solid fa-house text-slate-400 w-5 text-center"></i>
+          <span>Overview</span>
+        </a>
+        <a href="01-variables.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">01</span>
+          <span class="flex-1">Variables & TDZ</span>
+        </a>
+        <a href="02-data-types.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">02</span>
+          <span class="flex-1">Data Types & Coercion</span>
+        </a>
+        <a href="03-primitive.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">03</span>
+          <span class="flex-1">7 Primitive Types</span>
+        </a>
+        <a href="04-non-primitive.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">04</span>
+          <span class="flex-1">Non-Primitive & Heap</span>
+        </a>
+        <a href="05-operators.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">05</span>
+          <span class="flex-1">Operators In-Depth</span>
+        </a>
+        <a href="06-scope.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">06</span>
+          <span class="flex-1">Scope & Closures</span>
+        </a>
+        <a href="07-hoisting.html" class="nav-link active flex items-center gap-3 px-3 py-2 rounded-xl text-slate-700 transition">
+          <span class="w-6 h-6 rounded-md bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-bold font-mono">07</span>
+          <span class="flex-1 font-bold">Hoisting & Context</span>
+        </a>
+        <a href="08-es6-features.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">08</span>
+          <span class="flex-1">ES6+ Features</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 min-w-0 max-w-full px-4 sm:px-8 lg:px-12 py-8">
+      
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs text-slate-400 mb-6 font-medium">
+        <a href="index.html" class="hover:text-blue-600 transition">Docs</a>
+        <i class="fa-solid fa-angle-right text-[10px]"></i>
+        <span class="text-blue-600">07. Hoisting</span>
+      </nav>
+
+      <!-- Topic Heading -->
+      <div class="mb-10 pb-8 border-b border-slate-200">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200 text-xs font-bold uppercase tracking-wider mb-3">
+          <i class="fa-solid fa-arrow-up-from-bracket"></i> Chapter 07
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 mb-4">
+          JavaScript Hoisting, Execution Context & Memory Creation Phase
+        </h1>
+        <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-5xl">
+          <strong>Hoisting</strong> is a compile-time artifact of JavaScript's two-phase Execution Context architecture. In this masterclass, we dissect how the V8 engine scans code during the <strong>Memory Creation Phase</strong>, analyze why Function Declarations are fully hoisted while Function Expressions fail, and deconstruct classic senior interview puzzles.
+        </p>
+      </div>
+
+      <!-- Section 1: Execution Context Phases -->
+      <section id="execution-context" class="mb-14 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2.5">
+          <span class="text-blue-600 font-mono">7.1</span>
+          The Two Phases of the JavaScript Execution Context
+        </h2>
+        <p class="text-slate-600 leading-relaxed mb-6">
+          Whenever JavaScript executes a script or invokes a function, it instantiates an <strong>Execution Context</strong> consisting of two sequential phases:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <h4 class="font-bold text-indigo-700 text-base mb-2 flex items-center gap-2">
+              <i class="fa-solid fa-memory"></i> Phase 1: Memory Creation Phase (Compile Step)
+            </h4>
+            <ul class="text-xs text-slate-600 space-y-2.5 list-disc list-inside leading-relaxed">
+              <li>Engine scans the entire scope without executing statements.</li>
+              <li>Allocates memory for all variable and function identifiers.</li>
+              <li><code>var</code> identifiers are initialized to primitive <code>undefined</code>.</li>
+              <li><code>function</code> declarations are stored in memory with their complete implementation body.</li>
+              <li><code>let</code> and <code>const</code> bindings are registered but left uninitialized in the <strong>TDZ</strong>.</li>
+            </ul>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <h4 class="font-bold text-emerald-700 text-base mb-2 flex items-center gap-2">
+              <i class="fa-solid fa-play"></i> Phase 2: Code Execution Phase (Runtime Step)
+            </h4>
+            <ul class="text-xs text-slate-600 space-y-2.5 list-disc list-inside leading-relaxed">
+              <li>Engine interprets code line-by-line from top to bottom.</li>
+              <li>Assigns evaluated runtime values into the memory slots allocated in Phase 1.</li>
+              <li>Invokes functions, evaluates math expressions, and manages Call Stack frames.</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Section 2: Function Declaration vs Expression Hoisting -->
+      <section id="function-hoisting" class="mb-14 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2.5">
+          <span class="text-blue-600 font-mono">7.2</span>
+          Function Declarations vs Function Expressions vs Arrow Functions
+        </h2>
+        <p class="text-slate-600 leading-relaxed mb-6">
+          The way a function is declared fundamentally determines its hoisting lifecycle:
+        </p>
+
+        <pre><code class="language-javascript">// 1. Function Declaration (Fully Hoisted with Body)
+invokeSuccess(); // ✅ Output: "Function executed successfully!"
+
+function invokeSuccess() {
+  console.log("Function executed successfully!");
+}
+
+// 2. Function Expression with var
+try {
+  invokeVarExpression(); // ❌ TypeError: invokeVarExpression is not a function (It is currently undefined!)
+} catch (e) {
+  console.error("var expression error:", e.message);
+}
+
+var invokeVarExpression = function() {
+  console.log("I am a function expression");
+};
+
+// 3. Arrow Function with let or const
+try {
+  invokeArrow(); // ❌ ReferenceError: Cannot access 'invokeArrow' before initialization (Inside TDZ)
+} catch (e) {
+  console.error("Arrow TDZ error:", e.message);
+}
+
+const invokeArrow = () => {
+  console.log("I am an arrow function");
+};</code></pre>
+      </section>
+
+      <!-- Section 3: Tricky Senior Interview Hoisting Puzzles -->
+      <section id="interview-puzzles" class="mb-14 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2.5">
+          <span class="text-blue-600 font-mono">7.3</span>
+          Deconstructed Senior Technical Hoisting Puzzles
+        </h2>
+
+        <div class="space-y-6 mb-8">
+          
+          <!-- Puzzle 1 -->
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <h3 class="font-bold text-slate-900 text-base mb-2">Puzzle #1: Function Declaration vs Variable Overwriting</h3>
+            <pre><code class="language-javascript">var testIdentifier = 100;
+
+function testIdentifier() {
+  console.log("I am a function");
+}
+
+console.log(typeof testIdentifier); // Output: "number"
+
+// Step-by-step Execution Proof:
+// Phase 1 (Memory Creation): Function declaration hoists first -> testIdentifier = [Function]
+// Phase 2 (Code Execution): var testIdentifier = 100 overwrites the reference with number 100!</code></pre>
+          </div>
+
+          <!-- Puzzle 2 -->
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <h3 class="font-bold text-slate-900 text-base mb-2">Puzzle #2: Hoisted Local Variable Shadowing Global</h3>
+            <pre><code class="language-javascript">var activeCity = "Chennai";
+
+function displayCity() {
+  console.log("Local city before assignment:", activeCity); // Output: undefined ⚠️
+  var activeCity = "Bangalore";
+  console.log("Local city after assignment:", activeCity);   // Output: "Bangalore"
+}
+
+displayCity();
+
+// Step-by-step Execution Proof:
+// Inside displayCity, local 'var activeCity' hoists to top of function scope as undefined, shadowing global "Chennai"!</code></pre>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Section 4: Top 5 Senior Interview Questions -->
+      <section id="interview-qa" class="mb-14 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2.5">
+          <span class="text-blue-600 font-mono">7.4</span>
+          Top 5 Senior Technical Interview Questions & Answers
+        </h2>
+
+        <div class="space-y-4">
+          
+          <details class="group p-5 rounded-2xl bg-white border border-slate-200 shadow-xs transition">
+            <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm">
+              <span>Q1: Are ES6 Classes hoisted in JavaScript?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <div class="pt-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-3 space-y-2">
+              <p>Like <code>let</code> and <code>const</code>, ES6 <code>class</code> declarations are hoisted during the Memory Creation Phase, but they remain uninitialized in the Temporal Dead Zone (TDZ). Attempting to instantiate a class via <code>new MyClass()</code> before its declaration statement throws a <code>ReferenceError: Cannot access 'MyClass' before initialization</code>.</p>
+            </div>
+          </details>
+
+          <details class="group p-5 rounded-2xl bg-white border border-slate-200 shadow-xs transition">
+            <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm">
+              <span>Q2: What happens when two function declarations have the exact same name?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <div class="pt-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-3 space-y-2">
+              <p>During the Memory Creation Phase, the later function declaration completely overwrites the earlier function declaration in memory. When invoked, only the final declared function definition will execute.</p>
+            </div>
+          </details>
+
+          <details class="group p-5 rounded-2xl bg-white border border-slate-200 shadow-xs transition">
+            <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm">
+              <span>Q3: What is the Call Stack and how does it relate to Execution Contexts?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <div class="pt-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-3 space-y-2">
+              <p>The Call Stack is a LIFO (Last In, First Out) data structure that tracks active execution contexts. The Global Execution Context is pushed first at script start. Whenever a function is invoked, its new Function Execution Context is pushed onto the stack. When the function returns, its frame is popped off the top of the stack.</p>
+            </div>
+          </details>
+
+          <details class="group p-5 rounded-2xl bg-white border border-slate-200 shadow-xs transition">
+            <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm">
+              <span>Q4: Why does calling a <code>var</code> function expression throw a TypeError instead of a ReferenceError?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <div class="pt-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-3 space-y-2">
+              <p>Because the identifier was hoisted and initialized to <code>undefined</code> during Phase 1. The variable identifier exists in scope (so no ReferenceError), but attempting to invoke <code>undefined()</code> violates the callable contract, triggering <code>TypeError: ... is not a function</code>.</p>
+            </div>
+          </details>
+
+          <details class="group p-5 rounded-2xl bg-white border border-slate-200 shadow-xs transition">
+            <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm">
+              <span>Q5: Does hoisting physically move lines of code to the top of the file?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <div class="pt-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-3 space-y-2">
+              <p>No. Hoisting is a conceptual mental model. The JavaScript engine never modifies your physical source code; instead, it parses and allocates declarations into memory records during the compile/creation phase before interpreting statements in the execution phase.</p>
+            </div>
+          </details>
+
+        </div>
+      </section>
+
+      <!-- Bottom Nav -->
+      <div class="pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <a href="06-scope.html" class="w-full sm:w-auto px-5 py-3 rounded-xl border border-slate-200 hover:bg-slate-100 text-xs font-bold transition flex items-center justify-center gap-2 text-slate-600">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Prev: 06. Scope</span>
+        </a>
+        <a href="08-es6-features.html" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-xs transition flex items-center justify-center gap-2 group">
+          <span>Next: 08. ES6+ Modern JavaScript</span>
+          <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+        </a>
+      </div>
+
+    </main>
+
+    <!-- Right Side Table of Contents -->
+    <aside class="hidden xl:block w-64 p-6 sticky top-[65px] h-[calc(100vh-65px)] overflow-y-auto border-l border-slate-200 text-xs">
+      <div class="font-bold text-slate-900 uppercase tracking-wider mb-4 text-[11px] flex items-center gap-2">
+        <i class="fa-solid fa-list-ul text-blue-600"></i> On This Page
+      </div>
+      <ul id="toc-list" class="space-y-2.5">
+        <li><a href="#execution-context" class="text-slate-500 hover:text-blue-600 transition block">7.1 Execution Context Phases</a></li>
+        <li><a href="#function-hoisting" class="text-slate-500 hover:text-blue-600 transition block">7.2 Function vs Expression</a></li>
+        <li><a href="#interview-puzzles" class="text-slate-500 hover:text-blue-600 transition block">7.3 Deconstructed Puzzles</a></li>
+        <li><a href="#interview-qa" class="text-slate-500 hover:text-blue-600 transition block">7.4 Top 5 Interview Q&As</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="assets/js/search-index.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

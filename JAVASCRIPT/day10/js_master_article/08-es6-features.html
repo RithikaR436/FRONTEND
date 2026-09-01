@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08. ES6+ Modern JavaScript Architecture & Features | JavaScript Master Guide</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50: '#f8fafc', 500: '#3b82f6', 600: '#2563eb', 900: '#0f172a' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-white text-slate-900 min-h-screen flex flex-col antialiased selection:bg-blue-100 selection:text-blue-900">
+
+  <!-- Top Progress Bar -->
+  <div id="reading-progress" class="fixed top-0 left-0 h-1 bg-blue-600 z-50 w-0"></div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white/95 border-b border-slate-200 backdrop-blur-md">
+    <div class="w-full max-w-[100vw] px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition">
+          <i class="fa-solid fa-bars-staggered text-lg"></i>
+        </button>
+        <a href="index.html" class="flex items-center gap-2.5 group">
+          <div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white font-black text-lg shadow-sm group-hover:bg-blue-700 transition">
+            JS
+          </div>
+          <div>
+            <div class="text-base font-extrabold tracking-tight text-slate-900 flex items-center gap-2">
+              <span>JavaScript Master Guide</span>
+              <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-blue-50 text-blue-600 border border-blue-200">Chapter 08</span>
+            </div>
+            <p class="text-[11px] text-slate-500">ES6+ Modern Syntax & Architectures</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button class="search-trigger-btn flex items-center gap-2 px-3.5 py-2 text-xs font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-xl transition">
+          <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
+          <span class="hidden sm:inline">Search Guide (Ctrl+K)...</span>
+          <kbd class="hidden sm:inline px-1.5 py-0.5 text-[10px] bg-white border border-slate-200 rounded text-slate-400 font-mono">Ctrl+K</kbd>
+        </button>
+        <a href="../index.html" class="hidden md:flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-slate-600 hover:text-blue-600 transition" title="Back to Project Hub">
+          <i class="fa-solid fa-house text-xs"></i>
+          <span>Hub</span>
+        </a>
+        <button class="theme-toggle-btn p-2.5 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition" title="Toggle Theme">
+          <i class="fa-solid fa-moon text-base"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="sidebar-backdrop" class="fixed inset-0 bg-slate-950/40 backdrop-blur-xs z-30 hidden lg:hidden"></div>
+
+  <!-- Layout Wrapper -->
+  <div class="flex-1 flex w-full max-w-[100vw]">
+    
+    <!-- Left Navigation Sidebar -->
+    <aside id="docs-sidebar" class="fixed inset-y-0 left-0 z-40 w-72 pt-16 lg:pt-0 bg-white border-r border-slate-200 flex flex-col transition-transform duration-300 -translate-x-full lg:translate-x-0 lg:static lg:h-[calc(100vh-65px)] lg:sticky lg:top-[65px]">
+      <div class="p-4 border-b border-slate-100 bg-slate-50/50">
+        <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-0.5">Topics Index</div>
+        <p class="text-[11px] text-slate-500">Chapter 08 of 08</p>
+      </div>
+      <nav class="flex-1 overflow-y-auto p-3 space-y-1 text-sm">
+        <a href="index.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <i class="fa-solid fa-house text-slate-400 w-5 text-center"></i>
+          <span>Overview</span>
+        </a>
+        <a href="01-variables.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">01</span>
+          <span class="flex-1">Variables & TDZ</span>
+        </a>
+        <a href="02-data-types.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">02</span>
+          <span class="flex-1">Data Types & Coercion</span>
+        </a>
+        <a href="03-primitive.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">03</span>
+          <span class="flex-1">7 Primitive Types</span>
+        </a>
+        <a href="04-non-primitive.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">04</span>
+          <span class="flex-1">Non-Primitive & Heap</span>
+        </a>
+        <a href="05-operators.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">05</span>
+          <span class="flex-1">Operators In-Depth</span>
+        </a>
+        <a href="06-scope.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">06</span>
+          <span class="flex-1">Scope & Closures</span>
+        </a>
+        <a href="07-hoisting.html" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <span class="w-6 h-6 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold font-mono">07</span>
+          <span class="flex-1">Hoisting & Context</span>
+        </a>
+        <a href="08-es6-features.html" class="nav-link active flex items-center gap-3 px-3 py-2 rounded-xl text-slate-700 transition">
+          <span class="w-6 h-6 rounded-md bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-bold font-mono">08</span>
+          <span class="flex-1 font-bold">ES6+ Features</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 min-w-0 max-w-full px-4 sm:px-8 lg:px-12 py-8">
+      
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs text-slate-400 mb-6 font-medium">
+        <a href="index.html" class="hover:text-blue-600 transition">Docs</a>
+        <i class="fa-solid fa-angle-right text-[10px]"></i>
+        <span class="text-blue-600">08. ES6+ Modern Features</span>
+      </nav>
+
+      <!-- Topic Heading -->
+      <div class="mb-10 pb-8 border-b border-slate-200">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200 text-xs font-bold uppercase tracking-wider mb-3">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Chapter 08
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 mb-4">
+          ES6+ Modern JavaScript Architecture, Syntax & Asynchronous Features
+        </h1>
+        <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-5xl">
+          ECMAScript 2015 (ES6) and subsequent standards revolutionized the JavaScript ecosystem. In this concluding masterclass, we explore Arrow Functions and lexical <code>this</code> resolution, deep destructuring patterns, rest and spread mechanics, modern ES6 Classes with private fields, and the asynchronous evolution from Callbacks to Promises and <code>async</code> / <code>await</code>.
+        </p>
+      </div>
+
+      <!-- Section 1: Arrow Functions & Lexical this -->
+      <section id="arrow-functions" class="mb-14 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2.5">
+          <span class="text-blue-600 font-mono">8.1</span>
+          Arrow Functions & Lexical <code>this</code> Binding
+        </h2>
+        <p class="text-slate-600 leading-relaxed mb-6">
+          Arrow functions provide clean, concise syntax, support implicit returns, and—most importantly—do <strong>NOT</strong> create their own <code>this</code>, <code>arguments</code>, <code>super</code>, or <code>new.target</code> bindings:
+        </p>
+
+        <pre><code class="language-javascript">// 1. Syntax Variations:
+const double = n => n * 2;                       // Single param, implicit return
+const add = (a, b) => a + b;                     // Multi params, implicit return
+const makeUser = (id, name) => ({ id, name });  // Returning object literal (wrapped in parentheses)
+
+// 2. Lexical 'this' resolution inside asynchronous timers:
+const analyticsDashboard = {
+  activeUsers: 450,
+  startLiveFeed() {
+    // Arrow function captures 'this' from surrounding startLiveFeed() method:
+    setInterval(() => {
+      this.activeUsers += Math.floor(Math.random() * 5);
+      // console.log("Live Active Users:", this.activeUsers);
+    }, 1000);
+  }
+};</code></pre>
+      </section>
+
+      <!-- Section 2: Destructuring Assignment -->
+      <section id="destructuring" class="mb-14 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2.5">
+          <span class="text-blue-600 font-mono">8.2</span>
+          Destructuring Assignment: Objects & Arrays
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <h3 class="font-bold text-slate-900 text-base mb-2">Object Destructuring</h3>
+            <pre><code class="language-javascript">const userProfile = {
+  fullName: "Rithika",
+  age: 22,
+  address: { city: "Trichy", zip: 620001 }
+};
+
+// Aliasing (fullName: name), Defaults (role), and Nested:
+const { 
+  fullName: name, 
+  address: { city }, 
+  role = "Frontend Developer" 
+} = userProfile;
+
+console.log(name, city, role); // "Rithika", "Trichy", "Frontend Developer"</code></pre>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <h3 class="font-bold text-slate-900 text-base mb-2">Array Destructuring</h3>
+            <pre><code class="language-javascript">const rgbValues = [255, 128, 0];
+
+// Positional destructuring & skipping items:
+const [red, , blue] = rgbValues;
+console.log(red, blue); // 255, 0
+
+// 1-Line Variable Swapping:
+let x = 10, y = 20;
+[x, y] = [y, x];
+console.log("Swapped:", x, y); // 20, 10</code></pre>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Section 3: Rest vs Spread Operators -->
+      <section id="spread-rest" class="mb-14 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2.5">
+          <span class="text-blue-600 font-mono">8.3</span>
+          Rest Parameter vs Spread Operator (<code>...</code>)
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <h4 class="font-bold text-emerald-700 text-base mb-2">Rest Operator: Gathers into Array</h4>
+            <p class="text-xs text-slate-500 mb-3">Used in function parameters and destructuring patterns to collect remaining values.</p>
+            <pre><code class="language-javascript">function aggregateTotals(taxRate, ...prices) {
+  const subtotal = prices.reduce((acc, p) => acc + p, 0);
+  return subtotal * (1 + taxRate);
+}
+console.log(aggregateTotals(0.18, 100, 200, 300)); // 708</code></pre>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <h4 class="font-bold text-purple-700 text-base mb-2">Spread Operator: Expands into Elements</h4>
+            <p class="text-xs text-slate-500 mb-3">Used to expand iterable elements into function calls, array literals, or object properties.</p>
+            <pre><code class="language-javascript">const baseConfig = { env: "production", retries: 3 };
+const fullConfig = { ...baseConfig, debug: false, timeout: 5000 };
+
+const numbers = [10, 50, 8, 99];
+console.log(Math.max(...numbers)); // 99</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: ES6 Classes & Inheritance -->
+      <section id="classes" class="mb-14 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2.5">
+          <span class="text-blue-600 font-mono">8.4</span>
+          ES6 Classes, Private Fields (<code>#</code>) & Inheritance
+        </h2>
+        <p class="text-slate-600 leading-relaxed mb-6">
+          Classes in JavaScript are syntactic sugar built on top of prototypal inheritance, offering clean object-oriented abstractions:
+        </p>
+
+        <pre><code class="language-javascript">class BankAccount {
+  #internalBalance; // Private field (Enforced at language level!)
+
+  constructor(accountHolder, openingBalance) {
+    this.accountHolder = accountHolder;
+    this.#internalBalance = openingBalance;
+  }
+
+  deposit(amount) {
+    if (amount > 0) this.#internalBalance += amount;
+    return this.#internalBalance;
+  }
+
+  get balance() {
+    return `$${this.#internalBalance.toLocaleString()}`;
+  }
+}
+
+class PremiumAccount extends BankAccount {
+  constructor(accountHolder, openingBalance, creditLimit) {
+    super(accountHolder, openingBalance); // Calls parent constructor
+    this.creditLimit = creditLimit;
+  }
+
+  getDetails() {
+    return `${this.accountHolder} holds a Premium Account with balance ${this.balance}`;
+  }
+}
+
+const myVIP = new PremiumAccount("Anitha", 50000, 10000);
+console.log(myVIP.getDetails()); // "Anitha holds a Premium Account with balance $50,000"</code></pre>
+      </section>
+
+      <!-- Section 5: Promises & Async / Await -->
+      <section id="async-await" class="mb-14 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2.5">
+          <span class="text-blue-600 font-mono">8.5</span>
+          Modern Asynchronous: Promises & <code>async</code> / <code>await</code>
+        </h2>
+        <p class="text-slate-600 leading-relaxed mb-6">
+          Eliminating callback hell with clean, synchronous-looking asynchronous flows powered by the Microtask Queue:
+        </p>
+
+        <pre><code class="language-javascript">// Simulating an asynchronous database fetch:
+const queryDatabase = (recordId) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (recordId > 0) {
+        resolve({ id: recordId, title: "Modern JavaScript Mastery", status: "PUBLISHED" });
+      } else {
+        reject(new Error("Record Not Found in Database"));
+      }
+    }, 400);
+  });
+};
+
+// Async / Await with robust error handling:
+async function loadArticleData() {
+  try {
+    console.log("Fetching record from database...");
+    const article = await queryDatabase(101);
+    console.log("Article Title:", article.title);
+    console.log("Status:", article.status);
+  } catch (error) {
+    console.error("Database Query Failed:", error.message);
+  } finally {
+    console.log("Database connection closed.");
+  }
+}
+
+loadArticleData();</code></pre>
+      </section>
+
+      <!-- Section 6: Top 5 Senior Interview Questions -->
+      <section id="interview-qa" class="mb-14 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2.5">
+          <span class="text-blue-600 font-mono">8.6</span>
+          Top 5 Senior Technical Interview Questions & Answers
+        </h2>
+
+        <div class="space-y-4">
+          
+          <details class="group p-5 rounded-2xl bg-white border border-slate-200 shadow-xs transition">
+            <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm">
+              <span>Q1: Why can Arrow Functions not be used as Constructors with <code>new</code>?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <div class="pt-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-3 space-y-2">
+              <p>Arrow functions lack an internal <code>[[Construct]]</code> method and do not have a <code>prototype</code> property. Attempting to call <code>new (() => {})()</code> throws a <code>TypeError: ... is not a constructor</code>.</p>
+            </div>
+          </details>
+
+          <details class="group p-5 rounded-2xl bg-white border border-slate-200 shadow-xs transition">
+            <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm">
+              <span>Q2: What is the difference between <code>Promise.all()</code> and <code>Promise.allSettled()</code>?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <div class="pt-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-3 space-y-2">
+              <p><code>Promise.all()</code> rejects immediately if any single promise rejects (fail-fast). <code>Promise.allSettled()</code> waits for all promises to either resolve or reject, returning an array of objects describing the outcome (<code>{ status: "fulfilled", value }</code> or <code>{ status: "rejected", reason }</code>) for each promise.</p>
+            </div>
+          </details>
+
+          <details class="group p-5 rounded-2xl bg-white border border-slate-200 shadow-xs transition">
+            <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm">
+              <span>Q3: What are Tagged Template Literals and where are they used?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <div class="pt-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-3 space-y-2">
+              <p>Tagged templates allow you to parse template literals with a custom function (e.g. <code>tag`Hello ${name}`</code>). The tag function receives raw string fragments and evaluated expressions, enabling XSS sanitization, internationalization, and CSS-in-JS libraries like <code>styled-components</code>.</p>
+            </div>
+          </details>
+
+          <details class="group p-5 rounded-2xl bg-white border border-slate-200 shadow-xs transition">
+            <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm">
+              <span>Q4: How do Private Class Fields (<code>#field</code>) differ from closure-based privacy?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <div class="pt-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-3 space-y-2">
+              <p>Private fields prefixed with <code>#</code> are enforced natively at the JavaScript engine syntax level. They are non-enumerable, cannot be accessed or inspected from outside the class (even via <code>Object.keys()</code> or <code>Object.getOwnPropertyNames()</code>), and do not require recreating methods in factory functions for each instance.</p>
+            </div>
+          </details>
+
+          <details class="group p-5 rounded-2xl bg-white border border-slate-200 shadow-xs transition">
+            <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm">
+              <span>Q5: What are ES Modules (ESM) and how do they differ from CommonJS (CJS)?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <div class="pt-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-3 space-y-2">
+              <p>ESM uses static <code>import</code> and <code>export</code> statements analyzed at compile time, enabling tree-shaking (dead-code elimination) and asynchronous browser loading. CommonJS uses dynamic, synchronous <code>require()</code> and <code>module.exports</code> evaluated at runtime in Node.js.</p>
+            </div>
+          </details>
+
+        </div>
+      </section>
+
+      <!-- Bottom Nav -->
+      <div class="pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <a href="07-hoisting.html" class="w-full sm:w-auto px-5 py-3 rounded-xl border border-slate-200 hover:bg-slate-100 text-xs font-bold transition flex items-center justify-center gap-2 text-slate-600">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Prev: 07. Hoisting</span>
+        </a>
+        <a href="index.html" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-xs transition flex items-center justify-center gap-2 group">
+          <span>Back to Master Dashboard</span>
+          <i class="fa-solid fa-house"></i>
+        </a>
+      </div>
+
+    </main>
+
+    <!-- Right Side Table of Contents -->
+    <aside class="hidden xl:block w-64 p-6 sticky top-[65px] h-[calc(100vh-65px)] overflow-y-auto border-l border-slate-200 text-xs">
+      <div class="font-bold text-slate-900 uppercase tracking-wider mb-4 text-[11px] flex items-center gap-2">
+        <i class="fa-solid fa-list-ul text-blue-600"></i> On This Page
+      </div>
+      <ul id="toc-list" class="space-y-2.5">
+        <li><a href="#arrow-functions" class="text-slate-500 hover:text-blue-600 transition block">8.1 Arrow Functions & this</a></li>
+        <li><a href="#destructuring" class="text-slate-500 hover:text-blue-600 transition block">8.2 Destructuring</a></li>
+        <li><a href="#spread-rest" class="text-slate-500 hover:text-blue-600 transition block">8.3 Rest & Spread</a></li>
+        <li><a href="#classes" class="text-slate-500 hover:text-blue-600 transition block">8.4 Classes & OOP</a></li>
+        <li><a href="#async-await" class="text-slate-500 hover:text-blue-600 transition block">8.5 Async / Await</a></li>
+        <li><a href="#interview-qa" class="text-slate-500 hover:text-blue-600 transition block">8.6 Top 5 Interview Q&As</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="assets/js/search-index.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

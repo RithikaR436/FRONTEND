@@ -15,8 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
    ========================================================================== */
 function initTheme() {
   const themeToggleButtons = document.querySelectorAll('.theme-toggle-btn');
-  const storedTheme = localStorage.getItem('js-docs-theme') || 
-                      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const storedTheme = localStorage.getItem('js-docs-theme') || 'light';
 
   applyTheme(storedTheme);
 
