@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT in 2030 — A Working Perspective & Personal Roadmap</title>
+
+  <!-- Google Fonts: Newsreader (Editorial Serif) & Plus Jakarta Sans (Body) & JetBrains Mono (Technical Meta) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            // Sophisticated, comfortable reading palette (Warm Alabaster canvas, not harsh white)
+            canvas: '#F7F8FA',         // Soft tactile Alabaster background
+            surface: '#FFFFFF',        // Pure white card reading plates
+            borderLine: '#E2E6EC',     // Architectural crisp border dividers
+            ink: '#111827',            // Deep reading ink (Optimal contrast for reading)
+            inkMuted: '#4B5563',       // Highly legible secondary body text
+            inkLight: '#6B7280',       // Crisp tertiary annotations & metadata
+            brand: '#1D4ED8',          // Deep editorial cobalt accent
+            brandSoft: '#EFF4FF',      // Subtle accent container tint
+            
+            // Thought Experiment Contrast Theme (Slide 2 - Archival Slate Tone)
+            contrastBg: '#ECEEF1',     // Slide 2 weathered slate background
+            contrastSurface: '#F6F8FA',// Slide 2 card surface
+            contrastBorder: '#D3D8E0', // Slide 2 structural borders
+            contrastInk: '#0F172A',     // Slide 2 deep text
+            contrastMuted: '#475569'   // Slide 2 legible body text
+          },
+          fontFamily: {
+            serif: ['"Newsreader"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Editorial Layout Reset & Optimal Typography */
+    * {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #F7F8FA;
+      color: #111827;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow: hidden; /* Locked outer screen container for 3-slide presentation */
+    }
+
+    /* Slideshow Track Container */
+    .slide-viewport {
+      width: 100vw;
+      height: calc(100vh - 72px - 68px); /* Optimal height between top header and bottom controls */
+      margin-top: 72px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slide-track {
+      display: flex;
+      width: 300vw;
+      height: 100%;
+      transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+    }
+
+    .slide-item {
+      width: 100vw;
+      height: 100%;
+      flex-shrink: 0;
+      overflow-y: auto;
+      padding-top: 2.5rem;
+      padding-bottom: 4rem;
+      scroll-behavior: smooth;
+    }
+
+    /* Refined Custom Scrollbar */
+    .slide-item::-webkit-scrollbar {
+      width: 7px;
+    }
+    .slide-item::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .slide-item::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 4px;
+    }
+    .slide-item::-webkit-scrollbar-thumb:hover {
+      background: #94A3B8;
+    }
+
+    /* Subtle Architectural Hairline Blueprint Pattern */
+    .blueprint-pattern {
+      background-image: 
+        radial-gradient(rgba(17, 24, 39, 0.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+  </style>
+</head>
+<body class="h-full w-full bg-canvas text-ink flex flex-col justify-between">
+
+  <!-- ========================================================================= -->
+  <!-- TOP HEADER WITH UNIQUE BESPOKE LOGO & EDITORIAL NAVIGATION                -->
+  <!-- ========================================================================= -->
+  <header class="fixed top-0 left-0 right-0 z-50 h-[72px] bg-white/95 backdrop-blur-md border-b border-borderLine px-4 sm:px-8 lg:px-12 flex items-center justify-between">
+    
+    <!-- Unique Bespoke Brand Logo (Architectural Hexagonal Neural Nexus) -->
+    <div class="flex items-center space-x-3.5 group cursor-pointer" onclick="goToSlide(0)">
+      <div class="relative w-11 h-11 flex items-center justify-center bg-ink text-white rounded-lg shadow-sm border border-black/10 transition-transform group-hover:scale-105">
+        <!-- Bespoke Vector SVG: Hexagonal Architectural Cube & Node Network -->
+        <svg class="w-6 h-6" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 3L27 9.5V22.5L16 29L5 22.5V9.5L16 3Z" stroke="#F1F5F9" stroke-width="1.75" stroke-linejoin="round"/>
+          <path d="M16 3V16M27 9.5L16 16M5 9.5L16 16" stroke="#93C5FD" stroke-width="1.5" stroke-linejoin="round"/>
+          <circle cx="16" cy="16" r="2.75" fill="#3B82F6"/>
+          <circle cx="16" cy="3" r="1.5" fill="#93C5FD"/>
+          <circle cx="27" cy="9.5" r="1.5" fill="#93C5FD"/>
+          <circle cx="27" cy="22.5" r="1.5" fill="#93C5FD"/>
+          <circle cx="16" cy="29" r="1.5" fill="#93C5FD"/>
+          <circle cx="5" cy="22.5" r="1.5" fill="#93C5FD"/>
+          <circle cx="5" cy="9.5" r="1.5" fill="#93C5FD"/>
+        </svg>
+      </div>
+      <div class="flex flex-col">
+        <div class="flex items-center space-x-2">
+          <span class="font-mono text-sm sm:text-base font-bold tracking-wider text-ink uppercase">NEXUS // 2030</span>
+          <span class="px-1.5 py-0.5 bg-brandSoft text-brand text-[10px] font-mono font-semibold rounded border border-brand/20">OUTLOOK</span>
+        </div>
+        <span class="text-[11px] text-inkLight tracking-tight font-medium hidden sm:inline">The Future of Software & Full Stack Engineering</span>
+      </div>
+    </div>
+
+    <!-- Editorial Named Navigation Tabs (Professional, Human Design) -->
+    <nav class="flex items-center space-x-1.5 sm:space-x-2" aria-label="Topic Navigation">
+      <button onclick="goToSlide(0)" id="tab-0" class="px-3.5 py-2 text-xs sm:text-sm font-semibold transition-all rounded-md border border-brand bg-brandSoft text-brand font-mono">
+        Outlook 2030
+      </button>
+      <button onclick="goToSlide(1)" id="tab-1" class="px-3.5 py-2 text-xs sm:text-sm font-medium transition-all rounded-md border border-transparent text-inkLight hover:text-ink hover:bg-black/5 font-mono">
+        The Zero-IT Contrast
+      </button>
+      <button onclick="goToSlide(2)" id="tab-2" class="px-3.5 py-2 text-xs sm:text-sm font-medium transition-all rounded-md border border-transparent text-inkLight hover:text-ink hover:bg-black/5 font-mono">
+        The Developer's Path
+      </button>
+    </nav>
+
+    <!-- Reading Progress Section Indicator -->
+    <div class="hidden lg:flex items-center space-x-3 font-mono text-xs text-inkLight border border-borderLine px-3 py-1.5 rounded-md bg-canvas">
+      <span class="text-[11px] uppercase tracking-wider text-inkLight">SECTION</span>
+      <span id="active-step-label" class="font-bold text-ink">01 OF 03</span>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- SLIDESHOW VIEWPORT                                                        -->
+  <!-- ========================================================================= -->
+  <main class="slide-viewport" id="carousel-viewport">
+    <div class="slide-track" id="carousel-track">
+
+      <!-- ===================================================================== -->
+      <!-- PAGE 1: WHAT IT LOOKS LIKE BY 2030                                    -->
+      <!-- ===================================================================== -->
+      <section class="slide-item bg-canvas blueprint-pattern px-5 sm:px-10 lg:px-20" aria-label="Page 1: What IT looks like by 2030">
+        <div class="max-w-6xl mx-auto">
+          
+          <!-- Eyebrow -->
+          <div class="flex items-center space-x-2.5 mb-4">
+            <span class="text-xs sm:text-sm font-mono font-bold uppercase tracking-wider text-brand bg-brandSoft px-3 py-1.5 border border-brand/20 rounded">
+              A working view of where IT is going
+            </span>
+            <span class="text-xs font-mono text-inkLight hidden sm:inline">| RESEARCH ESSAY</span>
+          </div>
+
+          <!-- Headline (Upgraded, impactful serif display typography) -->
+          <h1 class="font-serif text-4xl sm:text-5xl lg:text-[58px] text-ink leading-[1.12] mb-4 font-normal tracking-tight">
+            What IT looks like by 2030
+          </h1>
+
+          <!-- Subheadline (Large, warm editorial italic) -->
+          <p class="font-serif text-xl sm:text-2xl text-inkMuted leading-relaxed italic max-w-4xl mb-10">
+            Four years out from where the industry stands today — and where a full stack developer building alongside AI will need to stand.
+          </p>
+
+          <!-- 8 Core Points in a balanced, highly legible 2-column grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 mb-10">
+            
+            <!-- Point 1 -->
+            <article class="bg-surface border border-borderLine p-6 sm:p-7 rounded-lg hover:border-brand/50 transition-colors">
+              <div class="flex items-baseline space-x-2.5 mb-3">
+                <span class="font-mono text-sm font-bold text-brand">01.</span>
+                <h2 class="text-lg sm:text-xl font-bold text-ink">Development becomes direction, not typing</h2>
+              </div>
+              <p class="text-[15.5px] sm:text-[16.5px] text-inkMuted leading-[1.75]">
+                By 2030, writing every line of code by hand will be a minority activity. AI agents already generate a majority of new code in leading teams, and that share keeps climbing. The developer's real job shifts to specifying what needs to be built, reviewing what AI produces, and deciding what's correct enough to ship. Coding skill still matters — but it becomes the floor, not the whole job.
+              </p>
+            </article>
+
+            <!-- Point 2 -->
+            <article class="bg-surface border border-borderLine p-6 sm:p-7 rounded-lg hover:border-brand/50 transition-colors">
+              <div class="flex items-baseline space-x-2.5 mb-3">
+                <span class="font-mono text-sm font-bold text-brand">02.</span>
+                <h2 class="text-lg sm:text-xl font-bold text-ink">"Full stack" gets a third layer</h2>
+              </div>
+              <p class="text-[15.5px] sm:text-[16.5px] text-inkMuted leading-[1.75]">
+                Front end and back end used to be enough to call yourself full stack. By 2030, a model/AI layer becomes a required third piece — knowing how to integrate AI features, call and fine-tune models, and design AI-assisted workflows inside an app. A developer who only knows Django or React without this layer is only two-thirds full stack.
+              </p>
+            </article>
+
+            <!-- Point 3 -->
+            <article class="bg-surface border border-borderLine p-6 sm:p-7 rounded-lg hover:border-brand/50 transition-colors">
+              <div class="flex items-baseline space-x-2.5 mb-3">
+                <span class="font-mono text-sm font-bold text-brand">03.</span>
+                <h2 class="text-lg sm:text-xl font-bold text-ink">Teams get smaller, not bigger</h2>
+              </div>
+              <p class="text-[15.5px] sm:text-[16.5px] text-inkMuted leading-[1.75]">
+                Large engineering teams with many junior coders are already shrinking. Companies are restructuring into small, AI-augmented teams where a handful of senior-minded developers, supported by AI agents, do the work that used to need twenty people. This means fewer entry-level coding roles — and more pressure on juniors to prove judgment, not just syntax knowledge.
+              </p>
+            </article>
+
+            <!-- Point 4 -->
+            <article class="bg-surface border border-borderLine p-6 sm:p-7 rounded-lg hover:border-brand/50 transition-colors">
+              <div class="flex items-baseline space-x-2.5 mb-3">
+                <span class="font-mono text-sm font-bold text-brand">04.</span>
+                <h2 class="text-lg sm:text-xl font-bold text-ink">Testing, debugging, and deployment go autonomous</h2>
+              </div>
+              <p class="text-[15.5px] sm:text-[16.5px] text-inkMuted leading-[1.75]">
+                Multi-agent systems handle testing, debugging, and documentation in parallel, without constant human triggering. Deployment pipelines move toward autonomous operation — AI monitors, catches regressions, and even rolls back changes, with humans stepping in mainly for sign-off and edge cases.
+              </p>
+            </article>
+
+            <!-- Point 5 -->
+            <article class="bg-surface border border-borderLine p-6 sm:p-7 rounded-lg hover:border-brand/50 transition-colors">
+              <div class="flex items-baseline space-x-2.5 mb-3">
+                <span class="font-mono text-sm font-bold text-brand">05.</span>
+                <h2 class="text-lg sm:text-xl font-bold text-ink">Speed compresses hard</h2>
+              </div>
+              <p class="text-[15.5px] sm:text-[16.5px] text-inkMuted leading-[1.75]">
+                What took weeks to prototype now takes days. This isn't a minor productivity boost — it changes what "competitive" means. The bottleneck stops being "how fast can we write this" and becomes "how fast can we decide what's worth building."
+              </p>
+            </article>
+
+            <!-- Point 6 -->
+            <article class="bg-surface border border-borderLine p-6 sm:p-7 rounded-lg hover:border-brand/50 transition-colors">
+              <div class="flex items-baseline space-x-2.5 mb-3">
+                <span class="font-mono text-sm font-bold text-brand">06.</span>
+                <h2 class="text-lg sm:text-xl font-bold text-ink">Review and trust become the scarce skill</h2>
+              </div>
+              <p class="text-[15.5px] sm:text-[16.5px] text-inkMuted leading-[1.75]">
+                Anyone can generate working code with AI now — that part is no longer rare. What's rare is being able to look at AI-generated code and know whether it's secure, correct, and won't break in production. This judgment is the actual hire-able skill of 2030, and it's built through experience, not shortcuts.
+              </p>
+            </article>
+
+            <!-- Point 7 -->
+            <article class="bg-surface border border-borderLine p-6 sm:p-7 rounded-lg hover:border-brand/50 transition-colors">
+              <div class="flex items-baseline space-x-2.5 mb-3">
+                <span class="font-mono text-sm font-bold text-brand">07.</span>
+                <h2 class="text-lg sm:text-xl font-bold text-ink">Basic tools disappear, specialized tools grow</h2>
+              </div>
+              <p class="text-[15.5px] sm:text-[16.5px] text-inkMuted leading-[1.75]">
+                Generic SaaS tools — simple CRMs, survey tools, basic task managers — get absorbed or replaced by AI agents, because they have no real moat. Meanwhile, specialized, industry-specific AI tools (healthcare, finance, legal, etc.) grow fast, because domain depth is something AI still needs humans to shape correctly.
+              </p>
+            </article>
+
+            <!-- Point 8 -->
+            <article class="bg-surface border border-borderLine p-6 sm:p-7 rounded-lg hover:border-brand/50 transition-colors">
+              <div class="flex items-baseline space-x-2.5 mb-3">
+                <span class="font-mono text-sm font-bold text-brand">08.</span>
+                <h2 class="text-lg sm:text-xl font-bold text-ink">The role has a new name in practice</h2>
+              </div>
+              <p class="text-[15.5px] sm:text-[16.5px] text-inkMuted leading-[1.75]">
+                Less "coder," more "AI-augmented system designer." The people who succeed by 2030 aren't the ones who resisted AI or the ones who used it lazily — they're the ones who learned to direct it precisely, question its output, and combine it with real engineering judgment.
+              </p>
+            </article>
+
+          </div>
+
+          <!-- Real Industry Benchmark Data Box (Ground Truth Context) -->
+          <div class="border border-borderLine bg-white p-6 rounded-lg mb-8">
+            <div class="flex items-center justify-between mb-4 border-b border-borderLine pb-3">
+              <div class="flex items-center space-x-2.5">
+                <span class="w-2.5 h-2.5 bg-brand rounded-none"></span>
+                <span class="font-mono text-xs sm:text-sm font-bold text-ink uppercase tracking-wider">Ground Truth: Real Industry Reports & Research Data</span>
+              </div>
+              <span class="text-[11px] font-mono text-inkLight uppercase">VERIFIED CITATIONS</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono text-xs text-inkMuted">
+              <div class="p-4 bg-canvas border border-borderLine rounded">
+                <span class="text-ink font-bold block mb-1.5 text-[13px]">GARTNER (OCT 2025)</span>
+                <span class="leading-relaxed block">60% new code AI-generated by end of 2026; 80% orgs shifting to small AI-augmented squads by 2030.</span>
+              </div>
+              <div class="p-4 bg-canvas border border-borderLine rounded">
+                <span class="text-ink font-bold block mb-1.5 text-[13px]">DELOITTE 2026</span>
+                <span class="leading-relaxed block">30%–35% direct productivity compression across the entire software development lifecycle.</span>
+              </div>
+              <div class="p-4 bg-canvas border border-borderLine rounded">
+                <span class="text-ink font-bold block mb-1.5 text-[13px]">HIRING SHIFTS</span>
+                <span class="leading-relaxed block">KPMG cut entry-level hiring 29%, Deloitte 18%, EY 11% (Fortune report) — syntax alone is no longer hired.</span>
+              </div>
+              <div class="p-4 bg-canvas border border-borderLine rounded">
+                <span class="text-ink font-bold block mb-1.5 text-[13px]">VERTICAL AI</span>
+                <span class="leading-relaxed block">Menlo / Bessemer report vertical domain AI tripled to $3.5B, growing 400% YoY over generic SaaS.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Footer Tag for Page 1 -->
+          <div class="flex items-center justify-between border-t border-borderLine pt-5 font-mono text-xs sm:text-sm text-inkLight">
+            <span>01 — Outlook · 03 pages</span>
+            <button onclick="goToSlide(1)" class="text-brand font-semibold hover:underline">
+              NEXT: THE ZERO-IT CONTRAST →
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===================================================================== -->
+      <!-- PAGE 2: WHAT THE WORLD LOOKS LIKE WITHOUT IT (CONTRAST EXPERIMENT)     -->
+      <!-- ===================================================================== -->
+      <section class="slide-item bg-contrastBg px-5 sm:px-10 lg:px-20" aria-label="Page 2: What the world looks like without IT">
+        <div class="max-w-6xl mx-auto">
+          
+          <!-- Eyebrow (Archival Contrast Style) -->
+          <div class="flex items-center space-x-2.5 mb-4">
+            <span class="text-xs sm:text-sm font-mono font-bold uppercase tracking-wider text-[#6B21A8] bg-[#FAF5FF] px-3 py-1.5 border border-[#E9D5FF] rounded">
+              A thought experiment
+            </span>
+            <span class="text-xs font-mono text-contrastMuted hidden sm:inline">| COUNTERFACTUAL ANALYSIS</span>
+          </div>
+
+          <!-- Headline -->
+          <h1 class="font-serif text-4xl sm:text-5xl lg:text-[58px] text-contrastInk leading-[1.12] mb-4 font-normal tracking-tight">
+            What the world looks like without IT
+          </h1>
+
+          <!-- Subheadline -->
+          <p class="font-serif text-xl sm:text-2xl text-contrastMuted leading-relaxed italic max-w-4xl mb-10">
+            Before looking at where IT is headed, it's worth remembering what quietly disappears the moment it's taken away.
+          </p>
+
+          <!-- 10 Thought Experiment Points in a Clean 2-Column Responsive Layout -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 mb-10">
+            
+            <!-- Point 1 -->
+            <article class="bg-contrastSurface border border-contrastBorder p-6 sm:p-7 rounded-lg hover:border-gray-400 transition-colors">
+              <div class="flex items-baseline space-x-2.5 mb-3">
+                <span class="font-mono text-sm font-bold text-[#6B21A8]">01.</span>
+                <h2 class="text-lg sm:text-xl font-bold text-contrastInk">Money stops moving</h2>
+              </div>
+              <p class="text-[15.5px] sm:text-[16.5px] text-contrastMuted leading-[1.75]">
+                No online banking, no UPI, no card payments, no payment apps. Every transaction needs a physical bank visit, a queue, a paper passbook update by hand. Salary disbursal happens in cash or by cheque, cleared over days. Paying a bill means standing in line at an office. A single missed banking hour means the transaction waits until tomorrow.
+              </p>
+            </article>
+
+            <!-- Point 2 -->
+            <article class="bg-contrastSurface border border-contrastBorder p-6 sm:p-7 rounded-lg hover:border-gray-400 transition-colors">
+              <div class="flex items-baseline space-x-2.5 mb-3">
+                <span class="font-mono text-sm font-bold text-[#6B21A8]">02.</span>
+                <h2 class="text-lg sm:text-xl font-bold text-contrastInk">Communication collapses to local and slow</h2>
+              </div>
+              <p class="text-[15.5px] sm:text-[16.5px] text-contrastMuted leading-[1.75]">
+                No email, no WhatsApp, no video calls, no instant messaging. A message to someone in another city travels by letter, taking days, or by a landline call that may not even connect. Coordinating a meeting across two cities means fixing a date weeks in advance and hoping nothing changes. Teams can't collaborate in real time — everything is sequential, one message at a time, with long gaps in between.
+              </p>
+            </article>
+
+            <!-- Point 3 -->
+            <article class="bg-contrastSurface border border-contrastBorder p-6 sm:p-7 rounded-lg hover:border-gray-400 transition-colors">
+              <div class="flex items-baseline space-x-2.5 mb-3">
+                <span class="font-mono text-sm font-bold text-[#6B21A8]">03.</span>
+                <h2 class="text-lg sm:text-xl font-bold text-contrastInk">Healthcare loses its memory</h2>
+              </div>
+              <p class="text-[15.5px] sm:text-[16.5px] text-contrastMuted leading-[1.75]">
+                No digital records, no online appointment booking, no telemedicine, no shared patient history between hospitals. Every visit starts from a blank paper file unless the patient physically carries their own records. A patient moving cities effectively starts their medical history over. Emergency care loses precious time because doctors don't know allergies, past conditions, or current medication without asking — or without records that may not exist at all.
+              </p>
+            </article>
+
+            <!-- Point 4 -->
+            <article class="bg-contrastSurface border border-contrastBorder p-6 sm:p-7 rounded-lg hover:border-gray-400 transition-colors">
+              <div class="flex items-baseline space-x-2.5 mb-3">
+                <span class="font-mono text-sm font-bold text-[#6B21A8]">04.</span>
+                <h2 class="text-lg sm:text-xl font-bold text-contrastInk">Information takes days, not seconds</h2>
+              </div>
+              <p class="text-[15.5px] sm:text-[16.5px] text-contrastMuted leading-[1.75]">
+                No search engines, no online research, no instant fact-checking. Finding an answer means a library, a reference book, or asking someone who might know — and trusting whatever they say, with no quick way to verify it. Students research from whatever books their library has, not the world's knowledge. Misinformation spreads and stays uncorrected far longer, because nothing moves fast enough to catch it.
+              </p>
+            </article>
+
+            <!-- Point 5 -->
+            <article class="bg-contrastSurface border border-contrastBorder p-6 sm:p-7 rounded-lg hover:border-gray-400 transition-colors">
+              <div class="flex items-baseline space-x-2.5 mb-3">
+                <span class="font-mono text-sm font-bold text-[#6B21A8]">05.</span>
+                <h2 class="text-lg sm:text-xl font-bold text-contrastInk">Businesses run blind</h2>
+              </div>
+              <p class="text-[15.5px] sm:text-[16.5px] text-contrastMuted leading-[1.75]">
+                No inventory systems, no real-time sales data, no automation of orders or restocking. Stock counts happen by hand, once a week if lucky. A shortage is discovered only when a shelf is already empty, not before. Decisions are made on guesswork and outdated reports instead of live numbers, and small errors compound because no one can see what's happening until someone physically checks.
+              </p>
+            </article>
+
+            <!-- Point 6 -->
+            <article class="bg-contrastSurface border border-contrastBorder p-6 sm:p-7 rounded-lg hover:border-gray-400 transition-colors">
+              <div class="flex items-baseline space-x-2.5 mb-3">
+                <span class="font-mono text-sm font-bold text-[#6B21A8]">06.</span>
+                <h2 class="text-lg sm:text-xl font-bold text-contrastInk">Reach shrinks to what one building can handle</h2>
+              </div>
+              <p class="text-[15.5px] sm:text-[16.5px] text-contrastMuted leading-[1.75]">
+                No e-commerce, no remote work, no global teams, no online marketplaces. A shop can only serve people who walk through its door. A service can only reach the people in its own city. A skilled person in a small town has no way to work for a company three states away. Opportunity becomes entirely a function of geography again.
+              </p>
+            </article>
+
+            <!-- Point 7 -->
+            <article class="bg-contrastSurface border border-contrastBorder p-6 sm:p-7 rounded-lg hover:border-gray-400 transition-colors">
+              <div class="flex items-baseline space-x-2.5 mb-3">
+                <span class="font-mono text-sm font-bold text-[#6B21A8]">07.</span>
+                <h2 class="text-lg sm:text-xl font-bold text-contrastInk">Government and paperwork slow to a crawl</h2>
+              </div>
+              <p class="text-[15.5px] sm:text-[16.5px] text-contrastMuted leading-[1.75]">
+                No online applications, no digital IDs, no e-governance portals. Every form, certificate, or approval means standing in a physical line, often across multiple offices, often across multiple days. A process that takes minutes online — checking a status, submitting a document — takes a trip, a wait, and sometimes a return trip because something was missing.
+              </p>
+            </article>
+
+            <!-- Point 8 -->
+            <article class="bg-contrastSurface border border-contrastBorder p-6 sm:p-7 rounded-lg hover:border-gray-400 transition-colors">
+              <div class="flex items-baseline space-x-2.5 mb-3">
+                <span class="font-mono text-sm font-bold text-[#6B21A8]">08.</span>
+                <h2 class="text-lg sm:text-xl font-bold text-contrastInk">Education stays local and rigid</h2>
+              </div>
+              <p class="text-[15.5px] sm:text-[16.5px] text-contrastMuted leading-[1.75]">
+                No online courses, no recorded lectures, no global classrooms. Learning is limited to what's physically available nearby — the teachers in that town, the books in that library. A student without access to a good local school has no digital alternative. Skills that don't exist locally simply aren't learnable without relocating.
+              </p>
+            </article>
+
+            <!-- Point 9 -->
+            <article class="bg-contrastSurface border border-contrastBorder p-6 sm:p-7 rounded-lg hover:border-gray-400 transition-colors">
+              <div class="flex items-baseline space-x-2.5 mb-3">
+                <span class="font-mono text-sm font-bold text-[#6B21A8]">09.</span>
+                <h2 class="text-lg sm:text-xl font-bold text-contrastInk">Entertainment and culture stay fragmented</h2>
+              </div>
+              <p class="text-[15.5px] sm:text-[16.5px] text-contrastMuted leading-[1.75]">
+                No streaming, no instant access to music, films, or shows from anywhere in the world. What's available is what's physically distributed — a cinema's current release, a shop's current stock. Cultural exchange across countries happens slowly, through physical media, if at all.
+              </p>
+            </article>
+
+            <!-- Point 10 -->
+            <article class="bg-contrastSurface border border-contrastBorder p-6 sm:p-7 rounded-lg hover:border-gray-400 transition-colors">
+              <div class="flex items-baseline space-x-2.5 mb-3">
+                <span class="font-mono text-sm font-bold text-[#6B21A8]">10.</span>
+                <h2 class="text-lg sm:text-xl font-bold text-contrastInk">Time itself moves slower</h2>
+              </div>
+              <p class="text-[15.5px] sm:text-[16.5px] text-contrastMuted leading-[1.75]">
+                Tasks that take seconds today — booking a ticket, checking a balance, sending a signed document, applying for something — take hours or days. Errors take longer to notice and longer to fix. The compounding effect across an entire economy: a week's worth of work today would realistically take a month without IT underneath it.
+              </p>
+            </article>
+
+          </div>
+
+          <!-- Page 2 Editorial Closing Banner -->
+          <div class="border-l-4 border-gray-800 bg-white p-7 mb-8 rounded-r-lg border-y border-r border-contrastBorder">
+            <p class="text-base sm:text-lg text-contrastInk font-medium leading-relaxed">
+              <span class="font-bold text-ink">Closing line:</span>
+              This isn't nostalgia for a simpler time — it's a reminder of how much of daily life now runs on IT, invisibly, everywhere at once. Which is exactly why the shift happening in IT by 2030 matters: the systems everything else quietly depends on are the ones being rebuilt right now.
+            </p>
+          </div>
+
+          <!-- Footer Tag for Page 2 -->
+          <div class="flex items-center justify-between border-t border-contrastBorder pt-5 font-mono text-xs sm:text-sm text-contrastMuted">
+            <span>02 — Contrast · 03 pages</span>
+            <button onclick="goToSlide(2)" class="text-brand font-semibold hover:underline">
+              NEXT: THE DEVELOPER'S ROADMAP →
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===================================================================== -->
+      <!-- PAGE 3: WHAT HAPPENS TO DEVELOPERS LIKE ME, IF THIS SHIFT CONTINUES     -->
+      <!-- ===================================================================== -->
+      <section class="slide-item bg-canvas blueprint-pattern px-5 sm:px-10 lg:px-20" aria-label="Page 3: What happens to developers like me">
+        <div class="max-w-6xl mx-auto">
+          
+          <!-- Eyebrow -->
+          <div class="flex items-center space-x-2.5 mb-4">
+            <span class="text-xs sm:text-sm font-mono font-bold uppercase tracking-wider text-brand bg-brandSoft px-3 py-1.5 border border-brand/20 rounded">
+              Personal outlook & strategy
+            </span>
+            <span class="text-xs font-mono text-inkLight hidden sm:inline">| FULL STACK & GENAI EVOLUTION</span>
+          </div>
+
+          <!-- Headline -->
+          <h1 class="font-serif text-4xl sm:text-5xl lg:text-[58px] text-ink leading-[1.12] mb-4 font-normal tracking-tight">
+            What happens to developers like me, if this shift continues
+          </h1>
+
+          <!-- Subheadline -->
+          <p class="font-serif text-xl sm:text-2xl text-inkMuted leading-relaxed italic max-w-4xl mb-10">
+            Navigating the transition with Python, Django, and Generative AI — moving from manual coding to high-leverage architectural judgment.
+          </p>
+
+          <!-- 7 Practical Points Formatted with Clear Visual Hierarchy -->
+          <div class="space-y-5 mb-10">
+            
+            <!-- Point 1 -->
+            <article class="bg-surface border border-borderLine p-6 sm:p-7 rounded-lg hover:border-brand/50 transition-colors">
+              <div class="flex items-baseline space-x-2.5 mb-3">
+                <span class="font-mono text-sm font-bold text-brand">01.</span>
+                <h2 class="text-lg sm:text-xl font-bold text-ink">I don't disappear — my role gets redefined</h2>
+              </div>
+              <p class="text-[15.5px] sm:text-[16.5px] text-inkMuted leading-[1.75]">
+                Coding jobs won't go to zero, and neither will mine. What shrinks is the "just type code" version of the job. My role shifts toward being an AI supervisor, a system architect, and someone who designs how AI agents work together — not just someone who writes lines of code.
+              </p>
+            </article>
+
+            <!-- Point 2 (With Detailed Sub-Roles Grid) -->
+            <article class="bg-surface border border-borderLine p-6 sm:p-7 rounded-lg hover:border-brand/50 transition-colors">
+              <div class="flex items-baseline space-x-2.5 mb-3">
+                <span class="font-mono text-sm font-bold text-brand">02.</span>
+                <h2 class="text-lg sm:text-xl font-bold text-ink">New roles open up for me to grow into</h2>
+              </div>
+              <p class="text-[15.5px] sm:text-[16.5px] text-inkMuted leading-[1.75] mb-5">
+                These are the specific high-leverage specializations I can grow into, built directly on top of my Python, Django, and GenAI foundation:
+              </p>
+
+              <!-- 4 Sub-Roles Cards -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+                <div class="bg-canvas border border-borderLine p-4 sm:p-5 rounded">
+                  <div class="font-mono text-sm sm:text-base font-bold text-brand mb-1.5">AI Output Validator / Reviewer</div>
+                  <p class="text-sm sm:text-[15px] text-inkMuted leading-relaxed">
+                    Checking whether AI-generated code is correct, secure, and production-ready before it touches customers.
+                  </p>
+                </div>
+                <div class="bg-canvas border border-borderLine p-4 sm:p-5 rounded">
+                  <div class="font-mono text-sm sm:text-base font-bold text-brand mb-1.5">AI Orchestration Engineer</div>
+                  <p class="text-sm sm:text-[15px] text-inkMuted leading-relaxed">
+                    Coordinating multiple specialized AI agents, tool calls, and API pipelines to build complex, scalable web systems.
+                  </p>
+                </div>
+                <div class="bg-canvas border border-borderLine p-4 sm:p-5 rounded">
+                  <div class="font-mono text-sm sm:text-base font-bold text-brand mb-1.5">Prompt / Context Engineer</div>
+                  <p class="text-sm sm:text-[15px] text-inkMuted leading-relaxed">
+                    Translating ambiguous real-world requirements into deterministic instructions and structured schemas AI can act on reliably.
+                  </p>
+                </div>
+                <div class="bg-canvas border border-borderLine p-4 sm:p-5 rounded">
+                  <div class="font-mono text-sm sm:text-base font-bold text-brand mb-1.5">AI Governance & Trust Specialist</div>
+                  <p class="text-sm sm:text-[15px] text-inkMuted leading-relaxed">
+                    Ensuring that automated model workflows, embeddings, and decisions remain safe, auditable, and compliant with privacy standards.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Point 3 -->
+            <article class="bg-surface border border-borderLine p-6 sm:p-7 rounded-lg hover:border-brand/50 transition-colors">
+              <div class="flex items-baseline space-x-2.5 mb-3">
+                <span class="font-mono text-sm font-bold text-brand">03.</span>
+                <h2 class="text-lg sm:text-xl font-bold text-ink">My entry-level path changes, it doesn't close</h2>
+              </div>
+              <p class="text-[15.5px] sm:text-[16.5px] text-inkMuted leading-[1.75]">
+                Simple coding tasks shrink for someone starting out like me, but opportunity grows for developers who can show they learn fast and use AI tools correctly. What gets evaluated is how quickly I learn and apply tools — not just raw coding speed.
+              </p>
+            </article>
+
+            <!-- Point 4 -->
+            <article class="bg-surface border border-borderLine p-6 sm:p-7 rounded-lg hover:border-brand/50 transition-colors">
+              <div class="flex items-baseline space-x-2.5 mb-3">
+                <span class="font-mono text-sm font-bold text-brand">04.</span>
+                <h2 class="text-lg sm:text-xl font-bold text-ink">I gain more leverage working solo or in small teams</h2>
+              </div>
+              <p class="text-[15.5px] sm:text-[16.5px] text-inkMuted leading-[1.75]">
+                Using AI agents well, I can build things that used to need a team of 5-10 people. This means I don't need to wait for a big company or a big team to build something real — I can start now, on my own.
+              </p>
+            </article>
+
+            <!-- Point 5 (With Visual Shift Matrix) -->
+            <article class="bg-surface border border-borderLine p-6 sm:p-7 rounded-lg hover:border-brand/50 transition-colors">
+              <div class="flex items-baseline space-x-2.5 mb-3">
+                <span class="font-mono text-sm font-bold text-brand">05.</span>
+                <h2 class="text-lg sm:text-xl font-bold text-ink">The way I work shifts too</h2>
+              </div>
+              <p class="text-[15.5px] sm:text-[16.5px] text-inkMuted leading-[1.75] mb-5">
+                The day-to-day workflow evolves from manual repetition to high-leverage evaluation across every stage:
+              </p>
+
+              <!-- Matrix comparison -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 font-mono text-xs sm:text-sm">
+                <div class="p-3.5 bg-canvas border border-borderLine rounded flex items-center justify-between">
+                  <span class="text-inkLight">Manual testing</span>
+                  <span class="text-brand font-bold">→ AI automated testing</span>
+                </div>
+                <div class="p-3.5 bg-canvas border border-borderLine rounded flex items-center justify-between">
+                  <span class="text-inkLight">Manual deployment</span>
+                  <span class="text-brand font-bold">→ Autonomous pipelines</span>
+                </div>
+                <div class="p-3.5 bg-canvas border border-borderLine rounded flex items-center justify-between">
+                  <span class="text-inkLight">Writing by hand</span>
+                  <span class="text-brand font-bold">→ Review & refine AI code</span>
+                </div>
+                <div class="p-3.5 bg-canvas border border-borderLine rounded flex items-center justify-between">
+                  <span class="text-inkLight">Manual documentation</span>
+                  <span class="text-brand font-bold">→ Auto-generated & verified</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Point 6 -->
+            <article class="bg-surface border border-borderLine p-6 sm:p-7 rounded-lg hover:border-brand/50 transition-colors">
+              <div class="flex items-baseline space-x-2.5 mb-3">
+                <span class="font-mono text-sm font-bold text-brand">06.</span>
+                <h2 class="text-lg sm:text-xl font-bold text-ink">My value stops being about lines of code</h2>
+              </div>
+              <p class="text-[15.5px] sm:text-[16.5px] text-inkMuted leading-[1.75]">
+                It becomes about the decisions I make, the problems I solve, and the judgment I show when AI gets something wrong. This is exactly the skill I need to build now, while I'm training — not later.
+              </p>
+            </article>
+
+            <!-- Point 7 -->
+            <article class="bg-surface border border-borderLine p-6 sm:p-7 rounded-lg hover:border-brand/50 transition-colors">
+              <div class="flex items-baseline space-x-2.5 mb-3">
+                <span class="font-mono text-sm font-bold text-brand">07.</span>
+                <h2 class="text-lg sm:text-xl font-bold text-ink">My title may change over time</h2>
+              </div>
+              <p class="text-[15.5px] sm:text-[16.5px] text-inkMuted leading-[1.75]">
+                "Full stack developer" could become "AI-native builder" or "digital systems architect" for people like me — same core skill, different name, different day-to-day work.
+              </p>
+            </article>
+
+          </div>
+
+          <!-- Page 3 Personal Closing Climax Banner -->
+          <div class="border-l-4 border-brand bg-brandSoft/80 p-7 mb-8 rounded-r-lg border-y border-r border-brand/20">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-3">
+              <span class="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-brand">Closing Line & Personal Trajectory</span>
+              <span class="font-mono text-xs text-inkLight uppercase">TARGET: AI FULL STACK DEVELOPER</span>
+            </div>
+            <p class="text-lg sm:text-xl text-ink font-medium leading-relaxed font-serif">
+              "This isn't a reason for me to stop learning to code — it's the opposite. Combining strong fundamentals, AI integration skill, and real judgment is exactly what positions me well for this shift — which is exactly why I'm building my skills in Python, Django, and Generative AI right now."
+            </p>
+          </div>
+
+          <!-- Footer Tag for Page 3 -->
+          <div class="flex items-center justify-between border-t border-borderLine pt-5 font-mono text-xs sm:text-sm text-inkLight">
+            <span>03 — Strategy · 03 pages</span>
+            <span class="text-brand font-semibold">ROADMAP COMPLETE</span>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- BOTTOM NAVIGATION BAR WITH ARROWS & CLEAN INDICATORS                      -->
+  <!-- ========================================================================= -->
+  <footer class="fixed bottom-0 left-0 right-0 z-50 h-[68px] bg-white/95 backdrop-blur-md border-t border-borderLine px-4 sm:px-8 lg:px-12 flex items-center justify-between">
+    
+    <!-- Previous Button -->
+    <button 
+      id="prev-btn" 
+      onclick="prevSlide()" 
+      class="flex items-center space-x-2 px-4 py-2 text-xs sm:text-sm font-mono text-inkMuted border border-borderLine hover:text-ink hover:border-ink disabled:opacity-30 disabled:cursor-not-allowed transition-colors bg-surface rounded-md"
+      aria-label="Previous Page">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      <span class="hidden sm:inline font-semibold">PREVIOUS</span>
+    </button>
+
+    <!-- Dot Indicators with Section Titles -->
+    <div class="flex items-center space-x-3.5" role="tablist" aria-label="Slideshow Indicators">
+      <button 
+        onclick="goToSlide(0)" 
+        id="dot-0" 
+        class="flex items-center space-x-2 focus:outline-none" 
+        aria-label="Jump to Slide 1">
+        <span class="dot-bar h-2 w-8 bg-brand rounded-full transition-all duration-300"></span>
+        <span class="text-xs font-mono font-semibold text-ink hidden md:inline">Outlook</span>
+      </button>
+
+      <button 
+        onclick="goToSlide(1)" 
+        id="dot-1" 
+        class="flex items-center space-x-2 focus:outline-none" 
+        aria-label="Jump to Slide 2">
+        <span class="dot-bar h-2 w-3.5 bg-borderLine rounded-full transition-all duration-300"></span>
+        <span class="text-xs font-mono text-inkLight hidden md:inline">Contrast</span>
+      </button>
+
+      <button 
+        onclick="goToSlide(2)" 
+        id="dot-2" 
+        class="flex items-center space-x-2 focus:outline-none" 
+        aria-label="Jump to Slide 3">
+        <span class="dot-bar h-2 w-3.5 bg-borderLine rounded-full transition-all duration-300"></span>
+        <span class="text-xs font-mono text-inkLight hidden md:inline">Roadmap</span>
+      </button>
+    </div>
+
+    <!-- Next Button -->
+    <button 
+      id="next-btn" 
+      onclick="nextSlide()" 
+      class="flex items-center space-x-2 px-4 py-2 text-xs sm:text-sm font-mono text-inkMuted border border-borderLine hover:text-ink hover:border-ink disabled:opacity-30 disabled:cursor-not-allowed transition-colors bg-surface rounded-md"
+      aria-label="Next Page">
+      <span class="hidden sm:inline font-semibold">NEXT</span>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- VANILLA JAVASCRIPT CONTROLLER                                             -->
+  <!-- ========================================================================= -->
+  <script>
+    let currentSlide = 0;
+    const totalSlides = 3;
+
+    const track = document.getElementById('carousel-track');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const stepLabel = document.getElementById('active-step-label');
+
+    const tabLabels = ['01 OF 03', '02 OF 03', '03 OF 03'];
+
+    function updateSlideUI() {
+      // 1. Move slide track horizontally
+      const offsetPercent = currentSlide * (100 / totalSlides);
+      track.style.transform = `translateX(-${offsetPercent}%)`;
+
+      // 2. Automatically scroll active slide content back to top upon navigating
+      const currentSlideElement = document.querySelectorAll('.slide-item')[currentSlide];
+      if (currentSlideElement) {
+        currentSlideElement.scrollTop = 0;
+      }
+
+      // 3. Update Header Tabs
+      for (let i = 0; i < totalSlides; i++) {
+        const tab = document.getElementById(`tab-${i}`);
+        const dot = document.getElementById(`dot-${i}`);
+        const dotBar = dot.querySelector('.dot-bar');
+        const dotText = dot.querySelector('span:nth-child(2)');
+
+        if (i === currentSlide) {
+          // Active Tab Styling
+          tab.className = "px-3.5 py-2 text-xs sm:text-sm font-semibold transition-all rounded-md border border-brand bg-brandSoft text-brand font-mono shadow-xs";
+          // Active Dot
+          dotBar.className = "dot-bar h-2 w-8 bg-brand rounded-full transition-all duration-300";
+          if (dotText) dotText.className = "text-xs font-mono font-semibold text-ink hidden md:inline";
+        } else {
+          // Inactive Tab Styling
+          tab.className = "px-3.5 py-2 text-xs sm:text-sm font-medium transition-all rounded-md border border-transparent text-inkLight hover:text-ink hover:bg-black/5 font-mono";
+          // Inactive Dot
+          dotBar.className = "dot-bar h-2 w-3.5 bg-borderLine rounded-full transition-all duration-300";
+          if (dotText) dotText.className = "text-xs font-mono text-inkLight hidden md:inline";
+        }
+      }
+
+      // 4. Update Section Counter Label
+      if (stepLabel) {
+        stepLabel.textContent = tabLabels[currentSlide];
+      }
+
+      // 5. Update Prev/Next Button states
+      prevBtn.disabled = (currentSlide === 0);
+      nextBtn.disabled = (currentSlide === totalSlides - 1);
+    }
+
+    function goToSlide(index) {
+      if (index >= 0 && index < totalSlides) {
+        currentSlide = index;
+        updateSlideUI();
+      }
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides - 1) {
+        currentSlide++;
+        updateSlideUI();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlideUI();
+      }
+    }
+
+    // Keyboard Arrow Navigation (← / →)
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        prevSlide();
+      }
+    });
+
+    // Touch Swipe Gesture for Mobile and Tablets
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const viewport = document.getElementById('carousel-viewport');
+
+    viewport.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    viewport.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const swipeDistance = 45;
+      if (touchEndX < touchStartX - swipeDistance) {
+        nextSlide();
+      }
+      if (touchEndX > touchStartX + swipeDistance) {
+        prevSlide();
+      }
+    }
+
+    // Initial run
+    updateSlideUI();
+  </script>
+</body>
+</html>
