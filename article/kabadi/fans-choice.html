@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fan's Choice - Pro Kabaddi League</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <aside class="top-bar">
+        <div class="container top-bar-inner">
+            <div class="live-ticker">
+                <span class="live-dot"></span>
+                <span><strong>FAN'S CHOICE AWARDS:</strong> Vote now for your favorite raiders, tackles, and post on the Cheer Wall!</span>
+            </div>
+            <div class="top-social-icons">
+                <a href="https://www.facebook.com/ProKabaddi" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/ProKabaddi" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/prokabaddi/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/ProKabaddi" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </aside>
+
+    <header class="main-header">
+        <div class="header-container">
+            <a href="index.html" class="brand-logo"><img src="images/logo.png" alt="PKL Logo"></a>
+            <button class="mobile-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="matches.html" class="nav-link">Matches</a>
+                <a href="teams.html" class="nav-link">Teams</a>
+                <a href="videos.html" class="nav-link">Video Hub</a>
+                <a href="unplugged.html" class="nav-link">PKL Unplugged</a>
+                <a href="standings.html" class="nav-link">Standings</a>
+                <a href="stats.html" class="nav-link">Stats</a>
+                <a href="updates.html" class="nav-link">Latest Updates</a>
+                <a href="fans-choice.html" class="nav-link active">Fan's Choice</a>
+                <a href="photos.html" class="nav-link">Photos</a>
+                <a href="about.html" class="nav-link">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-banner">
+            <div class="container page-banner-content">
+                <div>
+                    <h1 class="page-banner-title">PKL Fan's Choice Awards</h1>
+                    <div class="breadcrumb">
+                        <a href="index.html">Home</a>
+                        <span class="sep">/</span>
+                        <span class="current">Fan's Choice</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="padding: 50px 0 80px;">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-badge"><i class="fas fa-vote-yea"></i> Interactive Polls</span>
+                    <h2 class="section-heading">Cast Your <span>Official Vote</span></h2>
+                    <p class="section-subtitle">Real-time voting powered by PKL fans. Select your champions and see live results instantly!</p>
+                </div>
+
+                <!-- Polls Grid -->
+                <div class="poll-grid">
+                    <!-- Poll 1: Best Raider -->
+                    <div class="poll-card" data-poll-id="raider_of_season">
+                        <h3 class="poll-question">🔥 Raider of the Season 11</h3>
+                        <p class="poll-sub">Who has been the most unstoppable attacking weapon on the mat?</p>
+
+                        <div class="poll-options">
+                            <label class="poll-option" data-value="ashu">
+                                <div class="poll-progress-bar"></div>
+                                <div class="poll-option-inner">
+                                    <div class="poll-label-side">
+                                        <input type="radio" name="poll_raider" value="ashu">
+                                        <span>Ashu Malik (Dabang Delhi)</span>
+                                    </div>
+                                    <div class="poll-stat-side">
+                                        <span class="poll-count"></span>
+                                        <span class="poll-percent">0%</span>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="poll-option" data-value="arjun">
+                                <div class="poll-progress-bar"></div>
+                                <div class="poll-option-inner">
+                                    <div class="poll-label-side">
+                                        <input type="radio" name="poll_raider" value="arjun">
+                                        <span>Arjun Deshwal (Pink Panthers)</span>
+                                    </div>
+                                    <div class="poll-stat-side">
+                                        <span class="poll-count"></span>
+                                        <span class="poll-percent">0%</span>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="poll-option" data-value="pawan">
+                                <div class="poll-progress-bar"></div>
+                                <div class="poll-option-inner">
+                                    <div class="poll-label-side">
+                                        <input type="radio" name="poll_raider" value="pawan">
+                                        <span>Pawan Sehrawat (Telugu Titans)</span>
+                                    </div>
+                                    <div class="poll-stat-side">
+                                        <span class="poll-count"></span>
+                                        <span class="poll-percent">0%</span>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="poll-option" data-value="sachin">
+                                <div class="poll-progress-bar"></div>
+                                <div class="poll-option-inner">
+                                    <div class="poll-label-side">
+                                        <input type="radio" name="poll_raider" value="sachin">
+                                        <span>Sachin Tanwar (Patna Pirates)</span>
+                                    </div>
+                                    <div class="poll-stat-side">
+                                        <span class="poll-count"></span>
+                                        <span class="poll-percent">0%</span>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="poll-footer">
+                            <span class="poll-total-votes">Total votes: 0</span>
+                            <button class="btn btn-primary btn-sm btn-vote"><i class="fas fa-check"></i> Submit Vote</button>
+                        </div>
+                    </div>
+
+                    <!-- Poll 2: Best Defender -->
+                    <div class="poll-card" data-poll-id="defender_of_season">
+                        <h3 class="poll-question">🛡️ Defensive Beast of the Year</h3>
+                        <p class="poll-sub">Which defender instilled absolute terror into opposing raiding units?</p>
+
+                        <div class="poll-options">
+                            <label class="poll-option" data-value="shadloui">
+                                <div class="poll-progress-bar"></div>
+                                <div class="poll-option-inner">
+                                    <div class="poll-label-side">
+                                        <input type="radio" name="poll_defender" value="shadloui">
+                                        <span>Mohammadreza Shadloui (Pune)</span>
+                                    </div>
+                                    <div class="poll-stat-side">
+                                        <span class="poll-count"></span>
+                                        <span class="poll-percent">0%</span>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="poll-option" data-value="sagar">
+                                <div class="poll-progress-bar"></div>
+                                <div class="poll-option-inner">
+                                    <div class="poll-label-side">
+                                        <input type="radio" name="poll_defender" value="sagar">
+                                        <span>Sagar Rathee (Tamil Thalaivas)</span>
+                                    </div>
+                                    <div class="poll-stat-side">
+                                        <span class="poll-count"></span>
+                                        <span class="poll-percent">0%</span>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="poll-option" data-value="fazel">
+                                <div class="poll-progress-bar"></div>
+                                <div class="poll-option-inner">
+                                    <div class="poll-label-side">
+                                        <input type="radio" name="poll_defender" value="fazel">
+                                        <span>Fazel Atrachali (Gujarat Giants)</span>
+                                    </div>
+                                    <div class="poll-stat-side">
+                                        <span class="poll-count"></span>
+                                        <span class="poll-percent">0%</span>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="poll-option" data-value="krishan">
+                                <div class="poll-progress-bar"></div>
+                                <div class="poll-option-inner">
+                                    <div class="poll-label-side">
+                                        <input type="radio" name="poll_defender" value="krishan">
+                                        <span>Krishan Dhull (Patna Pirates)</span>
+                                    </div>
+                                    <div class="poll-stat-side">
+                                        <span class="poll-count"></span>
+                                        <span class="poll-percent">0%</span>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="poll-footer">
+                            <span class="poll-total-votes">Total votes: 0</span>
+                            <button class="btn btn-primary btn-sm btn-vote"><i class="fas fa-check"></i> Submit Vote</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Fan Cheer Wall -->
+                <div class="cheer-section">
+                    <div class="section-title-wrap" style="text-align: left; margin-bottom: 25px;">
+                        <span class="section-badge"><i class="fas fa-bullhorn"></i> Live Fan Wall</span>
+                        <h2 class="section-heading" style="font-size: 1.8rem;">Cheer For <span>Your Franchise</span></h2>
+                        <p class="section-subtitle" style="margin: 0;">Drop an encouraging message for your players, team coaches, and fellow kabaddi fans!</p>
+                    </div>
+
+                    <div class="cheer-layout">
+                        <!-- Post Cheer Form -->
+                        <div class="cheer-form-wrap">
+                            <form id="cheer-form">
+                                <div class="form-group">
+                                    <label for="cheer-name"><i class="fas fa-user"></i> Your Name</label>
+                                    <input type="text" id="cheer-name" placeholder="Enter your full name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cheer-team"><i class="fas fa-shield-alt"></i> Select Your Team</label>
+                                    <select id="cheer-team">
+                                        <option value="Tamil Thalaivas">Tamil Thalaivas</option>
+                                        <option value="Puneri Paltan">Puneri Paltan</option>
+                                        <option value="Patna Pirates">Patna Pirates</option>
+                                        <option value="Jaipur Pink Panthers">Jaipur Pink Panthers</option>
+                                        <option value="Bengaluru Bulls">Bengaluru Bulls</option>
+                                        <option value="Dabang Delhi K.C.">Dabang Delhi K.C.</option>
+                                        <option value="U Mumba">U Mumba</option>
+                                        <option value="Bengal Warriors">Bengal Warriors</option>
+                                        <option value="Gujarat Giants">Gujarat Giants</option>
+                                        <option value="Haryana Steelers">Haryana Steelers</option>
+                                        <option value="UP Yoddhas">UP Yoddhas</option>
+                                        <option value="Telugu Titans">Telugu Titans</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cheer-text"><i class="fas fa-comment"></i> Your Cheer Message</label>
+                                    <textarea id="cheer-text" rows="4" placeholder="e.g., Thalaivas are going all the way to the finals this year!" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Post My Cheer</button>
+                            </form>
+                        </div>
+
+                        <!-- Live Feed of Cheers -->
+                        <div class="cheer-feed-wrap">
+                            <div class="cheer-feed" id="cheer-feed">
+                                <!-- Populated dynamically by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="brand-logo"><img src="images/logo.png" alt="PKL Logo"></a>
+                    <p>Powered by the passion of millions of kabaddi fans across India and the globe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Fan Zone</h4>
+                    <div class="footer-links">
+                        <a href="fans-choice.html">Polls & Voting</a>
+                        <a href="fans-choice.html">Fan Cheer Wall</a>
+                        <a href="photos.html">Match Gallery</a>
+                        <a href="videos.html">Highlights</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Tournament</h4>
+                    <div class="footer-links">
+                        <a href="matches.html">Schedule</a>
+                        <a href="teams.html">Teams</a>
+                        <a href="standings.html">Standings</a>
+                        <a href="stats.html">Stats</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Fan Policy</h4>
+                    <p style="color:var(--text-muted); font-size:0.88rem;">Votes are tallied live and verified through secure local session tokens.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024–2026 Pro Kabaddi League. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

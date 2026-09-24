@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Updates & News - Pro Kabaddi League</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <aside class="top-bar">
+        <div class="container top-bar-inner">
+            <div class="live-ticker">
+                <span class="live-dot"></span>
+                <span><strong>NEWSWIRE:</strong> Stay informed with daily press releases, auction updates, and injury reports.</span>
+            </div>
+            <div class="top-social-icons">
+                <a href="https://www.facebook.com/ProKabaddi" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/ProKabaddi" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/prokabaddi/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/ProKabaddi" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </aside>
+
+    <header class="main-header">
+        <div class="header-container">
+            <a href="index.html" class="brand-logo"><img src="images/logo.png" alt="PKL Logo"></a>
+            <button class="mobile-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="matches.html" class="nav-link">Matches</a>
+                <a href="teams.html" class="nav-link">Teams</a>
+                <a href="videos.html" class="nav-link">Video Hub</a>
+                <a href="unplugged.html" class="nav-link">PKL Unplugged</a>
+                <a href="standings.html" class="nav-link">Standings</a>
+                <a href="stats.html" class="nav-link">Stats</a>
+                <a href="updates.html" class="nav-link active">Latest Updates</a>
+                <a href="fans-choice.html" class="nav-link">Fan's Choice</a>
+                <a href="photos.html" class="nav-link">Photos</a>
+                <a href="about.html" class="nav-link">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-banner">
+            <div class="container page-banner-content">
+                <div>
+                    <h1 class="page-banner-title">PKL News & Latest Updates</h1>
+                    <div class="breadcrumb">
+                        <a href="index.html">Home</a>
+                        <span class="sep">/</span>
+                        <span class="current">Latest Updates</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="padding: 50px 0 80px;">
+            <div class="container">
+                <!-- Filter Tabs -->
+                <div class="filter-bar" data-filter-group="news" data-filter-target="news-container">
+                    <button class="filter-btn active" data-filter="all">All News</button>
+                    <button class="filter-btn" data-filter="reports">Match Reports</button>
+                    <button class="filter-btn" data-filter="auctions">Auctions & Transfers</button>
+                    <button class="filter-btn" data-filter="interviews">Interviews</button>
+                    <button class="filter-btn" data-filter="injuries">Injury Updates</button>
+                </div>
+
+                <div class="stories-grid" id="news-container">
+                    <!-- News 1 -->
+                    <div class="story-card" data-category="reports">
+                        <div class="story-img-wrap">
+                            <img src="images/image2.webp" alt="Match Report">
+                        </div>
+                        <div class="story-body">
+                            <span class="story-tag"><i class="fas fa-newspaper"></i> Match Report</span>
+                            <h3 class="story-title">Puneri Paltan Outclass Thalaivas in High-Scoring Thriller</h3>
+                            <p class="story-snippet">A ruthless display by Shadloui in the left corner sealed a memorable victory for Pune in front of a packed stadium crowd.</p>
+                            <span style="color:var(--text-dim); font-size:0.8rem;"><i class="far fa-calendar-alt"></i> Today &bull; By PKL Editorial Desk</span>
+                        </div>
+                    </div>
+
+                    <!-- News 2 -->
+                    <div class="story-card" data-category="auctions">
+                        <div class="story-img-wrap">
+                            <img src="images/image4.webp" alt="Auction Buzz">
+                        </div>
+                        <div class="story-body">
+                            <span class="story-tag"><i class="fas fa-gavel"></i> Auction Buzz</span>
+                            <h3 class="story-title">Record-Breaking Bids Expected as Season 12 Player Purse Expands</h3>
+                            <p class="story-snippet">The league committee confirms an elevated franchise purse limit, opening avenues for historic ₹2.5 Crore+ player bids in Mumbai.</p>
+                            <span style="color:var(--text-dim); font-size:0.8rem;"><i class="far fa-calendar-alt"></i> Yesterday &bull; By PKL Insider</span>
+                        </div>
+                    </div>
+
+                    <!-- News 3 -->
+                    <div class="story-card" data-category="interviews">
+                        <div class="story-img-wrap">
+                            <img src="images/image6.webp" alt="Naveen Interview">
+                        </div>
+                        <div class="story-body">
+                            <span class="story-tag"><i class="fas fa-microphone"></i> Exclusive</span>
+                            <h3 class="story-title">"Our Aim Is Nothing Less Than The Trophy": Naveen Kumar</h3>
+                            <p class="story-snippet">Dabang Delhi's captain reflects on his recovery, physical conditioning, and tactical drills under coach Rambir Singh Khokhar.</p>
+                            <span style="color:var(--text-dim); font-size:0.8rem;"><i class="far fa-calendar-alt"></i> 2 days ago &bull; Special Correspondent</span>
+                        </div>
+                    </div>
+
+                    <!-- News 4 -->
+                    <div class="story-card" data-category="injuries">
+                        <div class="story-img-wrap">
+                            <img src="images/image3.webp" alt="Medical Update">
+                        </div>
+                        <div class="story-body">
+                            <span class="story-tag"><i class="fas fa-user-doctor"></i> Medical Update</span>
+                            <h3 class="story-title">Sagar Rathee Declared Match-Fit for Upcoming Southern Derby</h3>
+                            <p class="story-snippet">Tamil Thalaivas medical team gives green signal to defensive stalwart Sagar following recovery from a minor ankle sprain.</p>
+                            <span style="color:var(--text-dim); font-size:0.8rem;"><i class="far fa-calendar-alt"></i> 3 days ago &bull; Team Bulletin</span>
+                        </div>
+                    </div>
+
+                    <!-- News 5 -->
+                    <div class="story-card" data-category="reports">
+                        <div class="story-img-wrap">
+                            <img src="images/image5.webp" alt="Pirates Clench Win">
+                        </div>
+                        <div class="story-body">
+                            <span class="story-tag"><i class="fas fa-newspaper"></i> Match Report</span>
+                            <h3 class="story-title">Patna Pirates Seal Playoff Spot with Commanding Victory Over U Mumba</h3>
+                            <p class="story-snippet">Three-time champions Patna deliver masterclass in do-or-die situations to climb to fourth place on the standings table.</p>
+                            <span style="color:var(--text-dim); font-size:0.8rem;"><i class="far fa-calendar-alt"></i> 4 days ago &bull; PKL Editorial</span>
+                        </div>
+                    </div>
+
+                    <!-- News 6 -->
+                    <div class="story-card" data-category="auctions">
+                        <div class="story-img-wrap">
+                            <img src="images/image7.webp" alt="Youth Academy">
+                        </div>
+                        <div class="story-body">
+                            <span class="story-tag"><i class="fas fa-seedling"></i> New Young Players (NYP)</span>
+                            <h3 class="story-title">12 Emerging Grassroots Heroes Scouted Across 8 States for Next Season</h3>
+                            <p class="story-snippet">The PKL Future Stars talent hunt unearths phenomenal raiding prodigies from Haryana, Maharashtra, Tamil Nadu, and Karnataka.</p>
+                            <span style="color:var(--text-dim); font-size:0.8rem;"><i class="far fa-calendar-alt"></i> 5 days ago &bull; Youth Development</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="brand-logo"><img src="images/logo.png" alt="PKL Logo"></a>
+                    <p>Official news and media releases for Pro Kabaddi League supporters worldwide.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Categories</h4>
+                    <div class="footer-links">
+                        <a href="updates.html">Match Reports</a>
+                        <a href="updates.html">Player Transfers</a>
+                        <a href="updates.html">Press Releases</a>
+                        <a href="updates.html">Medical Bulletins</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="matches.html">Matches</a>
+                        <a href="teams.html">Teams</a>
+                        <a href="standings.html">Standings</a>
+                        <a href="photos.html">Photos</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Media Inquiries</h4>
+                    <p style="color:var(--text-muted); font-size:0.88rem;">Accredited media houses can contact media@prokabaddi.com for press passes.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024–2026 Pro Kabaddi League. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

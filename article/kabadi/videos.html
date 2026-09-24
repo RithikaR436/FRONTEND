@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Hub & Highlights - Pro Kabaddi League</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <aside class="top-bar">
+        <div class="container top-bar-inner">
+            <div class="live-ticker">
+                <span class="live-dot"></span>
+                <span><strong>VIDEO HUB:</strong> Match recaps, top 10 super tackles, dubki raids, and post-match interviews.</span>
+            </div>
+            <div class="top-social-icons">
+                <a href="https://www.facebook.com/ProKabaddi" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/ProKabaddi" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/prokabaddi/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/ProKabaddi" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </aside>
+
+    <header class="main-header">
+        <div class="header-container">
+            <a href="index.html" class="brand-logo"><img src="images/logo.png" alt="PKL Logo"></a>
+            <button class="mobile-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="matches.html" class="nav-link">Matches</a>
+                <a href="teams.html" class="nav-link">Teams</a>
+                <a href="videos.html" class="nav-link active">Video Hub</a>
+                <a href="unplugged.html" class="nav-link">PKL Unplugged</a>
+                <a href="standings.html" class="nav-link">Standings</a>
+                <a href="stats.html" class="nav-link">Stats</a>
+                <a href="updates.html" class="nav-link">Latest Updates</a>
+                <a href="fans-choice.html" class="nav-link">Fan's Choice</a>
+                <a href="photos.html" class="nav-link">Photos</a>
+                <a href="about.html" class="nav-link">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-banner">
+            <div class="container page-banner-content">
+                <div>
+                    <h1 class="page-banner-title">Pro Kabaddi Video Hub</h1>
+                    <div class="breadcrumb">
+                        <a href="index.html">Home</a>
+                        <span class="sep">/</span>
+                        <span class="current">Video Hub</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="padding: 50px 0 80px;">
+            <div class="container">
+                <!-- Filter Tabs -->
+                <div class="filter-bar" data-filter-group="videos" data-filter-target="videos-container">
+                    <button class="filter-btn active" data-filter="all">All Videos</button>
+                    <button class="filter-btn" data-filter="raids">Super Raids</button>
+                    <button class="filter-btn" data-filter="tackles">Top Tackles</button>
+                    <button class="filter-btn" data-filter="highlights">Match Highlights</button>
+                    <button class="filter-btn" data-filter="interviews">Interviews</button>
+                </div>
+
+                <div class="video-grid" id="videos-container">
+                    <!-- Video 1 -->
+                    <div class="video-card video-card-trigger" data-category="raids" data-title="Pawan Sehrawat's Unbelievable 6-Point Super Raid" data-video-url="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                        <div class="video-thumb">
+                            <img src="images/image2.webp" alt="Pawan Sehrawat Super Raid">
+                            <div class="video-play-btn"><i class="fas fa-play"></i></div>
+                            <span class="video-duration">03:45</span>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-category">Super Raid</div>
+                            <h3 class="video-title">Pawan Sehrawat's Unbelievable 6-Point Super Raid</h3>
+                            <div class="video-meta">
+                                <span><i class="far fa-eye"></i> 1.2M Views</span>
+                                <span>2 days ago</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 2 -->
+                    <div class="video-card video-card-trigger" data-category="tackles" data-title="Top 5 Super Tackles of Week 4 | Mohammadreza Shadloui Masterclass" data-video-url="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                        <div class="video-thumb">
+                            <img src="images/image3.webp" alt="Super Tackle Highlights">
+                            <div class="video-play-btn"><i class="fas fa-play"></i></div>
+                            <span class="video-duration">04:12</span>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-category">Top Tackles</div>
+                            <h3 class="video-title">Top 5 Super Tackles of Week 4 | Shadloui Masterclass</h3>
+                            <div class="video-meta">
+                                <span><i class="far fa-eye"></i> 890K Views</span>
+                                <span>3 days ago</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 3 -->
+                    <div class="video-card video-card-trigger" data-category="highlights" data-title="Puneri Paltan vs Tamil Thalaivas | High Voltage Thriller Highlights" data-video-url="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                        <div class="video-thumb">
+                            <img src="images/image5.webp" alt="Match Highlights">
+                            <div class="video-play-btn"><i class="fas fa-play"></i></div>
+                            <span class="video-duration">08:20</span>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-category">Match Highlights</div>
+                            <h3 class="video-title">Puneri Paltan vs Tamil Thalaivas | High Voltage Thriller</h3>
+                            <div class="video-meta">
+                                <span><i class="far fa-eye"></i> 2.4M Views</span>
+                                <span>4 days ago</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 4 -->
+                    <div class="video-card video-card-trigger" data-category="raids" data-title="Pardeep Narwal: The Dubki King Iconic Moves Compilation" data-video-url="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                        <div class="video-thumb">
+                            <img src="images/image4.webp" alt="Pardeep Narwal Dubki">
+                            <div class="video-play-btn"><i class="fas fa-play"></i></div>
+                            <span class="video-duration">05:55</span>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-category">Super Raid</div>
+                            <h3 class="video-title">Pardeep Narwal: The Dubki King Iconic Moves Compilation</h3>
+                            <div class="video-meta">
+                                <span><i class="far fa-eye"></i> 3.8M Views</span>
+                                <span>1 week ago</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 5 -->
+                    <div class="video-card video-card-trigger" data-category="interviews" data-title="Post-Match Presser: Captain Aslam Inamdar on Season Championship Dreams" data-video-url="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                        <div class="video-thumb">
+                            <img src="images/image6.webp" alt="Player Interview">
+                            <div class="video-play-btn"><i class="fas fa-play"></i></div>
+                            <span class="video-duration">06:30</span>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-category">Interviews</div>
+                            <h3 class="video-title">Post-Match Presser: Aslam Inamdar on Title Dreams</h3>
+                            <div class="video-meta">
+                                <span><i class="far fa-eye"></i> 410K Views</span>
+                                <span>5 days ago</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 6 -->
+                    <div class="video-card video-card-trigger" data-category="tackles" data-title="Unstoppable Defense: Fazel Atrachali's Best Ankle & Thigh Holds" data-video-url="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                        <div class="video-thumb">
+                            <img src="images/image7.webp" alt="Fazel Atrachali Defense">
+                            <div class="video-play-btn"><i class="fas fa-play"></i></div>
+                            <span class="video-duration">04:48</span>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-category">Top Tackles</div>
+                            <h3 class="video-title">Unstoppable Defense: Fazel Atrachali's Best Tackles</h3>
+                            <div class="video-meta">
+                                <span><i class="far fa-eye"></i> 1.5M Views</span>
+                                <span>1 week ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Video Modal Player -->
+    <div id="video-modal" class="custom-modal">
+        <div class="modal-dialog video-modal-dialog">
+            <div class="modal-header">
+                <h3 class="modal-title video-modal-title">Watch Video</h3>
+                <button class="modal-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body" style="padding: 0;">
+                <div class="video-wrapper">
+                    <iframe src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="brand-logo"><img src="images/logo.png" alt="PKL Logo"></a>
+                    <p>Watch official highlight reels, top plays, and exclusive player locker room moments.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Video Channels</h4>
+                    <div class="footer-links">
+                        <a href="videos.html">Super Raids</a>
+                        <a href="videos.html">Top Tackles</a>
+                        <a href="videos.html">Highlights</a>
+                        <a href="videos.html">Interviews</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <div class="footer-links">
+                        <a href="matches.html">Matches</a>
+                        <a href="teams.html">Teams</a>
+                        <a href="unplugged.html">PKL Unplugged</a>
+                        <a href="photos.html">Photo Hub</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Official Streaming</h4>
+                    <p style="color:var(--text-muted); font-size:0.88rem;">Stream all live matches anytime on Disney+ Hotstar.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024–2026 Pro Kabaddi League. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

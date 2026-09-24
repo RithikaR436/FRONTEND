@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Image Hub - Pro Kabaddi League</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <aside class="top-bar">
+        <div class="container top-bar-inner">
+            <div class="live-ticker">
+                <span class="live-dot"></span>
+                <span><strong>PRO KABADDI IMAGE HUB:</strong> Official match photography, high-flying raids, and victory poses!</span>
+            </div>
+            <div class="top-social-icons">
+                <a href="https://www.facebook.com/ProKabaddi" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/ProKabaddi" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/prokabaddi/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/ProKabaddi" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </aside>
+
+    <header class="main-header">
+        <div class="header-container">
+            <a href="index.html" class="brand-logo"><img src="images/logo.png" alt="PKL Logo"></a>
+            <button class="mobile-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="matches.html" class="nav-link">Matches</a>
+                <a href="teams.html" class="nav-link">Teams</a>
+                <a href="videos.html" class="nav-link">Video Hub</a>
+                <a href="unplugged.html" class="nav-link">PKL Unplugged</a>
+                <a href="standings.html" class="nav-link">Standings</a>
+                <a href="stats.html" class="nav-link">Stats</a>
+                <a href="updates.html" class="nav-link">Latest Updates</a>
+                <a href="fans-choice.html" class="nav-link">Fan's Choice</a>
+                <a href="photos.html" class="nav-link active">Photos</a>
+                <a href="about.html" class="nav-link">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-banner">
+            <div class="container page-banner-content">
+                <div>
+                    <h1 class="page-banner-title">Pro Kabaddi Image Hub</h1>
+                    <div class="breadcrumb">
+                        <a href="index.html">Home</a>
+                        <span class="sep">/</span>
+                        <span class="current">Photos</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="padding: 50px 0 80px;">
+            <div class="container">
+                <!-- Gallery Filter Tabs -->
+                <div class="filter-bar" data-filter-group="photos" data-filter-target="gallery-container">
+                    <button class="filter-btn active" data-filter="all">All Photos</button>
+                    <button class="filter-btn" data-filter="raids">Raids & Airtime</button>
+                    <button class="filter-btn" data-filter="tackles">Super Tackles</button>
+                    <button class="filter-btn" data-filter="moments">Arena & Moments</button>
+                </div>
+
+                <!-- Gallery Grid with Lightbox Triggers -->
+                <div class="gallery-grid" id="gallery-container">
+                    <!-- Photo 1: Unplugged Banner -->
+                    <div class="gallery-card" data-category="moments">
+                        <img src="images/image1.webp" alt="PKL Unplugged Official Banner" data-title="PKL Unplugged Feature - Beyond the mat candid star moments">
+                        <div class="gallery-card-overlay">
+                            <span class="gallery-card-tag">Special Spotlight</span>
+                            <h4 class="gallery-card-title">PKL Unplugged Stage</h4>
+                        </div>
+                    </div>
+
+                    <!-- Photo 2: Pawan Sehrawat Raid -->
+                    <div class="gallery-card" data-category="raids">
+                        <img src="images/image2.webp" alt="Pawan Sehrawat Multi-Point Raid" data-title="Pawan Sehrawat outmaneuvers defenders with an explosive leap">
+                        <div class="gallery-card-overlay">
+                            <span class="gallery-card-tag">Super Raid</span>
+                            <h4 class="gallery-card-title">Pawan Sehrawat Airtime</h4>
+                        </div>
+                    </div>
+
+                    <!-- Photo 3: Ankle Hold Tackle -->
+                    <div class="gallery-card" data-category="tackles">
+                        <img src="images/image3.webp" alt="Locking Ankle Hold Tackle" data-title="Textbook ankle-lock defense pinning down raider">
+                        <div class="gallery-card-overlay">
+                            <span class="gallery-card-tag">Defense Lock</span>
+                            <h4 class="gallery-card-title">Precision Ankle Hold</h4>
+                        </div>
+                    </div>
+
+                    <!-- Photo 4: Pardeep Narwal Dubki -->
+                    <div class="gallery-card" data-category="raids">
+                        <img src="images/image4.webp" alt="Pardeep Narwal Dubki King" data-title="Pardeep Narwal sliding under the defensive chain with a classic Dubki">
+                        <div class="gallery-card-overlay">
+                            <span class="gallery-card-tag">Dubki King</span>
+                            <h4 class="gallery-card-title">Pardeep Narwal Masterclass</h4>
+                        </div>
+                    </div>
+
+                    <!-- Photo 5: Rahul Chaudhari Raid -->
+                    <div class="gallery-card" data-category="raids">
+                        <img src="images/image5.webp" alt="Rahul Chaudhari Running Hand Touch" data-title="Rahul Chaudhari testing defensive corners with reach and agility">
+                        <div class="gallery-card-overlay">
+                            <span class="gallery-card-tag">Running Touch</span>
+                            <h4 class="gallery-card-title">Showman Rahul in Action</h4>
+                        </div>
+                    </div>
+
+                    <!-- Photo 6: Naveen Express Raid -->
+                    <div class="gallery-card" data-category="raids">
+                        <img src="images/image6.webp" alt="Naveen Kumar Express Pace" data-title="Naveen Kumar 'The Express' blitzing defenders at lightning speed">
+                        <div class="gallery-card-overlay">
+                            <span class="gallery-card-tag">Lightning Raid</span>
+                            <h4 class="gallery-card-title">Naveen Express on Fire</h4>
+                        </div>
+                    </div>
+
+                    <!-- Photo 7: Super Tackle Pin Down -->
+                    <div class="gallery-card" data-category="tackles">
+                        <img src="images/image7.webp" alt="Super Tackle Group Pin Down" data-title="Defenders combine in a coordinated rush to execute a match-defining Super Tackle">
+                        <div class="gallery-card-overlay">
+                            <span class="gallery-card-tag">Super Tackle</span>
+                            <h4 class="gallery-card-title">Total Defensive Wall</h4>
+                        </div>
+                    </div>
+
+                    <!-- Photo 8: Logo Banner / Trophy Stage -->
+                    <div class="gallery-card" data-category="moments">
+                        <img src="images/logo1.jpg" alt="Pro Kabaddi Official Badge" data-title="Pro Kabaddi Official Banner - Pride of Indian Sports">
+                        <div class="gallery-card-overlay">
+                            <span class="gallery-card-tag">Tournament Brand</span>
+                            <h4 class="gallery-card-title">Pro Kabaddi Heritage</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Global Lightbox Modal -->
+    <div id="lightbox-modal" class="lightbox-modal">
+        <div class="lightbox-content-box">
+            <button class="lightbox-close" title="Close"><i class="fas fa-times"></i></button>
+            <button class="lightbox-prev" title="Previous"><i class="fas fa-chevron-left"></i></button>
+            <img src="" alt="" class="lightbox-image">
+            <p class="lightbox-caption"></p>
+            <button class="lightbox-next" title="Next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="brand-logo"><img src="images/logo.png" alt="PKL Logo"></a>
+                    <p>Official photography and visual archive of the Pro Kabaddi League.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Photo Collections</h4>
+                    <div class="footer-links">
+                        <a href="photos.html">Super Raids</a>
+                        <a href="photos.html">Super Tackles</a>
+                        <a href="photos.html">Arena Atmosphere</a>
+                        <a href="photos.html">Trophies & Celebrations</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="matches.html">Matches</a>
+                        <a href="teams.html">Teams</a>
+                        <a href="unplugged.html">PKL Unplugged</a>
+                        <a href="videos.html">Video Hub</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Media Rights</h4>
+                    <p style="color:var(--text-muted); font-size:0.88rem;">All images copyrighted by Mashal Sports & Pro Kabaddi League.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024–2026 Pro Kabaddi League. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

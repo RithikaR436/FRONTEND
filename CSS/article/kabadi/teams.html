@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teams & Squads - Pro Kabaddi League</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <aside class="top-bar">
+        <div class="container top-bar-inner">
+            <div class="live-ticker">
+                <span class="live-dot"></span>
+                <span><strong>12 FRANCHISES:</strong> Discover player squads, coaches, captains, and championship records.</span>
+            </div>
+            <div class="top-social-icons">
+                <a href="https://www.facebook.com/ProKabaddi" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/ProKabaddi" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/prokabaddi/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/ProKabaddi" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </aside>
+
+    <header class="main-header">
+        <div class="header-container">
+            <a href="index.html" class="brand-logo"><img src="images/logo.png" alt="PKL Logo"></a>
+            <button class="mobile-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="matches.html" class="nav-link">Matches</a>
+                <a href="teams.html" class="nav-link active">Teams</a>
+                <a href="videos.html" class="nav-link">Video Hub</a>
+                <a href="unplugged.html" class="nav-link">PKL Unplugged</a>
+                <a href="standings.html" class="nav-link">Standings</a>
+                <a href="stats.html" class="nav-link">Stats</a>
+                <a href="updates.html" class="nav-link">Latest Updates</a>
+                <a href="fans-choice.html" class="nav-link">Fan's Choice</a>
+                <a href="photos.html" class="nav-link">Photos</a>
+                <a href="about.html" class="nav-link">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-banner">
+            <div class="container page-banner-content">
+                <div>
+                    <h1 class="page-banner-title">Pro Kabaddi Franchises</h1>
+                    <div class="breadcrumb">
+                        <a href="index.html">Home</a>
+                        <span class="sep">/</span>
+                        <span class="current">Teams</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="padding: 50px 0 80px;">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-badge">12 Battle-Ready Contenders</span>
+                    <h2 class="section-heading">Official <span>Franchises</span></h2>
+                    <p class="section-subtitle">Click "View Squad" on any team to see their complete roster of star raiders, defenders, and all-rounders.</p>
+                </div>
+
+                <div class="teams-grid">
+                    <!-- 1. Patna Pirates -->
+                    <div class="team-card">
+                        <div class="team-card-header" style="background: linear-gradient(135deg, #0b6623, #240f3e);">
+                            <div class="team-avatar-wrap">
+                                <i class="fas fa-skull-crossbones text-yellow" style="font-size: 2rem;"></i>
+                            </div>
+                        </div>
+                        <div class="team-card-body">
+                            <h3 class="team-name">Patna Pirates</h3>
+                            <div class="team-motto">"Pirates Hamla!"</div>
+                            <div class="team-specs">
+                                <div class="team-spec-item"><span>Titles:</span> <strong>3 (Seasons 3, 4, 5)</strong></div>
+                                <div class="team-spec-item"><span>Captain:</span> <strong>Sachin Tanwar</strong></div>
+                                <div class="team-spec-item"><span>Coach:</span> <strong>Narender Redhu</strong></div>
+                            </div>
+                            <div class="team-card-footer">
+                                <button class="btn btn-primary btn-sm btn-view-squad" data-team="patna-pirates"><i class="fas fa-users"></i> View Squad</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Jaipur Pink Panthers -->
+                    <div class="team-card">
+                        <div class="team-card-header" style="background: linear-gradient(135deg, #d81b60, #1a0a2c);">
+                            <div class="team-avatar-wrap">
+                                <i class="fas fa-shield-cat text-cyan" style="font-size: 2rem; color: #ff4081;"></i>
+                            </div>
+                        </div>
+                        <div class="team-card-body">
+                            <h3 class="team-name">Jaipur Pink Panthers</h3>
+                            <div class="team-motto">"Roar for Panthers!"</div>
+                            <div class="team-specs">
+                                <div class="team-spec-item"><span>Titles:</span> <strong>2 (Seasons 1, 9)</strong></div>
+                                <div class="team-spec-item"><span>Captain:</span> <strong>Sunil Kumar</strong></div>
+                                <div class="team-spec-item"><span>Coach:</span> <strong>Sanjeev Baliyan</strong></div>
+                            </div>
+                            <div class="team-card-footer">
+                                <button class="btn btn-primary btn-sm btn-view-squad" data-team="jaipur-pink-panthers"><i class="fas fa-users"></i> View Squad</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Puneri Paltan -->
+                    <div class="team-card">
+                        <div class="team-card-header" style="background: linear-gradient(135deg, #ff6f00, #240f3e);">
+                            <div class="team-avatar-wrap">
+                                <i class="fas fa-fist-raised text-orange" style="font-size: 2rem;"></i>
+                            </div>
+                        </div>
+                        <div class="team-card-body">
+                            <h3 class="team-name">Puneri Paltan</h3>
+                            <div class="team-motto">"Gheun Tak!"</div>
+                            <div class="team-specs">
+                                <div class="team-spec-item"><span>Titles:</span> <strong>Season 10 Champions</strong></div>
+                                <div class="team-spec-item"><span>Captain:</span> <strong>Aslam Inamdar</strong></div>
+                                <div class="team-spec-item"><span>Coach:</span> <strong>BC Ramesh</strong></div>
+                            </div>
+                            <div class="team-card-footer">
+                                <button class="btn btn-primary btn-sm btn-view-squad" data-team="puneri-paltan"><i class="fas fa-users"></i> View Squad</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Bengaluru Bulls -->
+                    <div class="team-card">
+                        <div class="team-card-header" style="background: linear-gradient(135deg, #b71c1c, #240f3e);">
+                            <div class="team-avatar-wrap">
+                                <i class="fas fa-bullhorn text-red" style="font-size: 2rem; color: #ff5252;"></i>
+                            </div>
+                        </div>
+                        <div class="team-card-body">
+                            <h3 class="team-name">Bengaluru Bulls</h3>
+                            <div class="team-motto">"Fully Charged!"</div>
+                            <div class="team-specs">
+                                <div class="team-spec-item"><span>Titles:</span> <strong>1 (Season 6)</strong></div>
+                                <div class="team-spec-item"><span>Captain:</span> <strong>Saurabh Nandal</strong></div>
+                                <div class="team-spec-item"><span>Coach:</span> <strong>Randhir Singh</strong></div>
+                            </div>
+                            <div class="team-card-footer">
+                                <button class="btn btn-primary btn-sm btn-view-squad" data-team="bengaluru-bulls"><i class="fas fa-users"></i> View Squad</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. U Mumba -->
+                    <div class="team-card">
+                        <div class="team-card-header" style="background: linear-gradient(135deg, #e65100, #1a0a2c);">
+                            <div class="team-avatar-wrap">
+                                <i class="fas fa-bolt text-yellow" style="font-size: 2rem;"></i>
+                            </div>
+                        </div>
+                        <div class="team-card-body">
+                            <h3 class="team-name">U Mumba</h3>
+                            <div class="team-motto">"Mumboys Rule!"</div>
+                            <div class="team-specs">
+                                <div class="team-spec-item"><span>Titles:</span> <strong>1 (Season 2)</strong></div>
+                                <div class="team-spec-item"><span>Captain:</span> <strong>Surinder Singh</strong></div>
+                                <div class="team-spec-item"><span>Coach:</span> <strong>G. Mazandarani</strong></div>
+                            </div>
+                            <div class="team-card-footer">
+                                <button class="btn btn-primary btn-sm btn-view-squad" data-team="u-mumba"><i class="fas fa-users"></i> View Squad</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6. Dabang Delhi K.C. -->
+                    <div class="team-card">
+                        <div class="team-card-header" style="background: linear-gradient(135deg, #0d47a1, #240f3e);">
+                            <div class="team-avatar-wrap">
+                                <i class="fas fa-shield-halved text-cyan" style="font-size: 2rem;"></i>
+                            </div>
+                        </div>
+                        <div class="team-card-body">
+                            <h3 class="team-name">Dabang Delhi K.C.</h3>
+                            <div class="team-motto">"Bindaas Dabang!"</div>
+                            <div class="team-specs">
+                                <div class="team-spec-item"><span>Titles:</span> <strong>1 (Season 8)</strong></div>
+                                <div class="team-spec-item"><span>Captain:</span> <strong>Naveen Kumar</strong></div>
+                                <div class="team-spec-item"><span>Coach:</span> <strong>Rambir S. Khokhar</strong></div>
+                            </div>
+                            <div class="team-card-footer">
+                                <button class="btn btn-primary btn-sm btn-view-squad" data-team="dabang-delhi"><i class="fas fa-users"></i> View Squad</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 7. Tamil Thalaivas -->
+                    <div class="team-card">
+                        <div class="team-card-header" style="background: linear-gradient(135deg, #fbc02d, #0d47a1);">
+                            <div class="team-avatar-wrap">
+                                <i class="fas fa-crown text-yellow" style="font-size: 2rem;"></i>
+                            </div>
+                        </div>
+                        <div class="team-card-body">
+                            <h3 class="team-name">Tamil Thalaivas</h3>
+                            <div class="team-motto">"Idhu Namma Aatam!"</div>
+                            <div class="team-specs">
+                                <div class="team-spec-item"><span>Best Finish:</span> <strong>Semi-Finals (S9)</strong></div>
+                                <div class="team-spec-item"><span>Captain:</span> <strong>Sagar Rathee</strong></div>
+                                <div class="team-spec-item"><span>Coach:</span> <strong>Ashan Kumar</strong></div>
+                            </div>
+                            <div class="team-card-footer">
+                                <button class="btn btn-primary btn-sm btn-view-squad" data-team="tamil-thalaivas"><i class="fas fa-users"></i> View Squad</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 8. Bengal Warriors -->
+                    <div class="team-card">
+                        <div class="team-card-header" style="background: linear-gradient(135deg, #0288d1, #ff6f00);">
+                            <div class="team-avatar-wrap">
+                                <i class="fas fa-dragon text-orange" style="font-size: 2rem;"></i>
+                            </div>
+                        </div>
+                        <div class="team-card-body">
+                            <h3 class="team-name">Bengal Warriors</h3>
+                            <div class="team-motto">"Aamar Warriors!"</div>
+                            <div class="team-specs">
+                                <div class="team-spec-item"><span>Titles:</span> <strong>1 (Season 7)</strong></div>
+                                <div class="team-spec-item"><span>Captain:</span> <strong>Maninder Singh</strong></div>
+                                <div class="team-spec-item"><span>Coach:</span> <strong>K Baskaran</strong></div>
+                            </div>
+                            <div class="team-card-footer">
+                                <button class="btn btn-primary btn-sm btn-view-squad" data-team="bengal-warriors"><i class="fas fa-users"></i> View Squad</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 9. Gujarat Giants -->
+                    <div class="team-card">
+                        <div class="team-card-header" style="background: linear-gradient(135deg, #c2185b, #ff8f00);">
+                            <div class="team-avatar-wrap">
+                                <i class="fas fa-hand-fist text-yellow" style="font-size: 2rem;"></i>
+                            </div>
+                        </div>
+                        <div class="team-card-body">
+                            <h3 class="team-name">Gujarat Giants</h3>
+                            <div class="team-motto">"Garjega Gujarat!"</div>
+                            <div class="team-specs">
+                                <div class="team-spec-item"><span>Best Finish:</span> <strong>Runners-Up (S5, S6)</strong></div>
+                                <div class="team-spec-item"><span>Captain:</span> <strong>Fazel Atrachali</strong></div>
+                                <div class="team-spec-item"><span>Coach:</span> <strong>Ram Mehar Singh</strong></div>
+                            </div>
+                            <div class="team-card-footer">
+                                <button class="btn btn-primary btn-sm btn-view-squad" data-team="gujarat-giants"><i class="fas fa-users"></i> View Squad</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 10. Haryana Steelers -->
+                    <div class="team-card">
+                        <div class="team-card-header" style="background: linear-gradient(135deg, #1565c0, #240f3e);">
+                            <div class="team-avatar-wrap">
+                                <i class="fas fa-shield-virus text-cyan" style="font-size: 2rem;"></i>
+                            </div>
+                        </div>
+                        <div class="team-card-body">
+                            <h3 class="team-name">Haryana Steelers</h3>
+                            <div class="team-motto">"Dhakad Boys!"</div>
+                            <div class="team-specs">
+                                <div class="team-spec-item"><span>Best Finish:</span> <strong>Finalists (Season 10)</strong></div>
+                                <div class="team-spec-item"><span>Captain:</span> <strong>Jaideep Dahiya</strong></div>
+                                <div class="team-spec-item"><span>Coach:</span> <strong>Manpreet Singh</strong></div>
+                            </div>
+                            <div class="team-card-footer">
+                                <button class="btn btn-primary btn-sm btn-view-squad" data-team="haryanasteelers"><i class="fas fa-users"></i> View Squad</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 11. UP Yoddhas -->
+                    <div class="team-card">
+                        <div class="team-card-header" style="background: linear-gradient(135deg, #6a1b9a, #ffb300);">
+                            <div class="team-avatar-wrap">
+                                <i class="fas fa-meteor text-purple" style="font-size: 2rem;"></i>
+                            </div>
+                        </div>
+                        <div class="team-card-body">
+                            <h3 class="team-name">UP Yoddhas</h3>
+                            <div class="team-motto">"Saans Rok, Seena Thok!"</div>
+                            <div class="team-specs">
+                                <div class="team-spec-item"><span>Record:</span> <strong>5x Playoff Qualifiers</strong></div>
+                                <div class="team-spec-item"><span>Captain:</span> <strong>Pardeep Narwal</strong></div>
+                                <div class="team-spec-item"><span>Coach:</span> <strong>Jasveer Singh</strong></div>
+                            </div>
+                            <div class="team-card-footer">
+                                <button class="btn btn-primary btn-sm btn-view-squad" data-team="up-yoddhas"><i class="fas fa-users"></i> View Squad</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 12. Telugu Titans -->
+                    <div class="team-card">
+                        <div class="team-card-header" style="background: linear-gradient(135deg, #ffd600, #b71c1c);">
+                            <div class="team-avatar-wrap">
+                                <i class="fas fa-fire-flame-curved text-yellow" style="font-size: 2rem;"></i>
+                            </div>
+                        </div>
+                        <div class="team-card-body">
+                            <h3 class="team-name">Telugu Titans</h3>
+                            <div class="team-motto">"Dhee Kottu Kabaddi!"</div>
+                            <div class="team-specs">
+                                <div class="team-spec-item"><span>Arena:</span> <strong>Gachibowli Stadium</strong></div>
+                                <div class="team-spec-item"><span>Captain:</span> <strong>Pawan Sehrawat</strong></div>
+                                <div class="team-spec-item"><span>Coach:</span> <strong>Srinivasreddy</strong></div>
+                            </div>
+                            <div class="team-card-footer">
+                                <button class="btn btn-primary btn-sm btn-view-squad" data-team="telugu-titans"><i class="fas fa-users"></i> View Squad</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Team Squad Modal -->
+    <div id="team-modal" class="custom-modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <div>
+                    <h3 class="modal-title team-modal-name">Team Squad</h3>
+                    <span class="team-modal-motto"></span>
+                </div>
+                <button class="modal-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="team-modal-stats"></div>
+                <h4 class="squad-category-title"><i class="fas fa-running text-orange"></i> Star Raiders</h4>
+                <ul class="squad-roster-list team-modal-raiders"></ul>
+                <h4 class="squad-category-title"><i class="fas fa-shield-alt text-yellow"></i> Rock-Solid Defenders</h4>
+                <ul class="squad-roster-list team-modal-defenders"></ul>
+                <h4 class="squad-category-title"><i class="fas fa-star text-purple"></i> All-Rounders</h4>
+                <ul class="squad-roster-list team-modal-allrounders"></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="brand-logo"><img src="images/logo.png" alt="PKL Logo"></a>
+                    <p>Supporting India's premier indigenous league across 12 dynamic franchise zones.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Tournament</h4>
+                    <div class="footer-links">
+                        <a href="matches.html">Schedule</a>
+                        <a href="teams.html">12 Teams</a>
+                        <a href="standings.html">Points Table</a>
+                        <a href="stats.html">Stats</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Media</h4>
+                    <div class="footer-links">
+                        <a href="videos.html">Video Hub</a>
+                        <a href="unplugged.html">PKL Unplugged</a>
+                        <a href="photos.html">Photos</a>
+                        <a href="fans-choice.html">Fan Voting</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Franchise Hub</h4>
+                    <p style="color:var(--text-muted); font-size:0.88rem;">Official merchandise and ticket bookings available via official team partners.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024–2026 Pro Kabaddi League. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
