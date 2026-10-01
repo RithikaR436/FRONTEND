@@ -24,3 +24,57 @@ const App = () => {
 }
 
 export default App
+
+
+
+// const App = () => {
+//   const course=["Javascript","React","Html","Css","Bootstrap"]
+//   return (
+//     <>
+//     <div className = "bg-green-100 p-10 flex gap-10 flex-wrap ">
+//       { course.map((e,i)=>(
+//         <div key ={i} className ="bg-blue-300 text-black h-60 w-100  
+//           text-center rounded-2xl flex justify-center items-center
+//            " >
+//           <p>{e}</p>
+          
+//         </div>
+//       ))}
+//     </div>
+    
+//     </>
+//   )
+// }
+
+// export default App
+
+
+
+
+// const App = () => {
+//    const student ={
+//     Name:"Rithika",
+//     Age:20,
+//     Course:"Javascript",
+//     City:"Chennai"
+//    }
+
+//   return (
+//     <>
+    
+//   <div className = " bg-blue-300 p-20  gap-50  ">
+    
+//         <p>{student.Name}</p>
+//         <p>{student.Age}</p>
+//         <p>{student.Course}</p>
+//         <p>{student.City}</p>
+      
+//   </div>
+//     </>
+//   )
+// }
+
+// export default App
+
+
+
