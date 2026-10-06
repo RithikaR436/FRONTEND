@@ -1,0 +1,11 @@
+use employee;
+select empdept,count(*) from company group by empdept;
+select empsalary , sum(empsalary) as totalsalary from company group by empsalary;
+select empdept,avg(empsalary) as totalsalary from company group by empsalary;
+select empcity ,count(empname) as employee_name from company group by empcity;
+select empdept as department_name, count(*) as total_employees from company group by empdept having count(*)>0;
+select  empsalary ,  avg(empsalary) as employee_salary from company group by empsalary having  employee_salary> 40000;
+select  empsalary ,  sum(empsalary) as employee_salary from company group by empsalary having  employee_salary> 20000;
+select empdept as department_name, count(*) as employee_count,round(avg(empsalary)) as average_salary from company group by empdept having count(*)>= 1; 
+select empcity as employee_city, sum(empsalary) as total_salary, max(empsalary) as maximum_salary from company group by  empcity having total_salary > 50000;
+select empdept ,count(*)as total_employees,sum(empsalary) as total_salary, avg(empsalary) as average_salary ,max(empsalary) as maximum_salary , min(empsalary) as minimum_salary from company group by empdept having count(*)>=1 and avg(empsalary)>20000 order by average_salary desc;

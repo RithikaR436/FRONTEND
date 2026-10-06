@@ -1,0 +1,24 @@
+use employee;
+SET SQL_SAFE_UPDATES=0;
+select * from company;
+select empname,empsalary,empcity from company;
+select * from company where empcity="Chennai";
+select * from company where empsalary > 45000; 
+select * from company where empsalary< 50000; 
+select * from company where empsalary >= 40000; 
+select * from company  where NOT empdept = "ECE";
+USE employee;
+select * from company  where NOT empdept = "ECE";
+select* from company where empdept="IT" AND  empcity="Chennai";
+select* from company where empcity="Mathurai" OR  empcity="Chennai";
+select * from company where empsalary > 40000 AND empcity="Mathurai";
+select * from company where empcity IN ("Chennai","Mathurai","salem");
+select* from company where empdept not in ("IT","JS");
+SELECT * FROM COMPANY WHERE empcity IS NULL;
+SELECT * FROM COMPANY WHERE empcity IS  NOT NULL;
+SELECT * FROM COMPANY WHERE empsalary BETWEEN 35000 AND 50000;
+SELECT * FROM COMPANY WHERE EMPSALARY BETWEEn 20000 AND 30000 AND empcity="CHENNAI";
+select * from company where empname like "r%";
+select * from company where empname like "%rithi%";
+select distinct empdept from company;
+
