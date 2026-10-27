@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>PRODUCT PRICE CALCULATOR</h1>
+    <script>
+        const product = {
+  name: "Laptop",
+  price: 60000,
+  quantity: 2
+};
+
+const printProductTotal = ({ name, price, quantity }) => {
+  const total = price * quantity;
+
+  console.log(`${name}
+Price: ${price}
+Quantity: ${quantity}
+Total: ${total}`);
+};
+
+printProductTotal(product);
+    </script>
+</body>
+</html>
