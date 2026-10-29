@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Product Price Calculation</h1>
+
+
+    <script>
+        function calculateDiscount(price) {
+  return new Promise(function (resolve, reject) {
+    if (price <= 0) {
+      reject("Invalid price");
+    } else {
+      const discountedPrice = price - price * 0.10;
+      resolve(discountedPrice);
+    }
+  });
+}
+
+calculateDiscount(5000)
+  .then(function (result) {
+    console.log("Discounted Price:", result);
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+  .finally(function () {
+    console.log("Calculation completed");
+  });
+    </script>
+</body>
+</html>

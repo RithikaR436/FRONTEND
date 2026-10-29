@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Pass or Fail</h1>
+
+    <script>
+        const mark = 75;
+
+const checkMarks = new Promise((resolve, reject) => {
+  if (mark >= 35) {
+    resolve("Student Passed");
+  } else {
+    reject("Student Failed");
+  }
+});
+
+checkMarks
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+    </script>
+    
+</body>
+</html>

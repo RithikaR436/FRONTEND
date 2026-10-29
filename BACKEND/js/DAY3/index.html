@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Array Methods - Functions</h1>
+    <script>
+// 1.using some
+        // const number =[10,20,30,40]
+        // const result = number.some ((number)=>number>35);
+        // console.log(result);
+        
+
+//  2.using every       
+            // const students =[60,50,40,90,85,100]
+            // const above= students.every((students)=>students>50);
+            // console.log(above);
+    
+
+// 3.using includes
+
+        // const role=["admin","manager","employee","TL"]
+        // console.log(role.includes("admin"));
+    
+// 4.using reduce
+
+            // const employee=[
+            //     30000,40000,80000,20000,40000
+            // ];
+            // const total= employee.reduce((sum,employee)=>{
+            //  return sum+employee;
+
+            // },0);
+            // console.log(total);
+        
+
+    // 5.using price * quantity
+//          const cart = [
+//   { name: "Laptop", price: 50000, qty: 1 },
+//   { name: "Mouse", price: 50000, qty: 2 },
+//   { name: "Keyboard", price: 186500, qty: 1 }
+// ];
+
+// const total = cart.reduce((sum, item) => {
+//   return sum + item.price * item.qty;
+// }, 0);
+// console.log(total);
+
+
+
+
+// 6.using filter
+    // const employee=[
+    //     {name:"Rithika",salary:40000},
+    //     {name:"Renita",salary:80000},
+    //     {name:"gobika",salary:20000}
+    // ]
+    // const result =employee.filter((employee)=>employee.salary>30000);
+    // console.log(result);
+    
+
+// 7.using find
+       const students = [
+  { id: 1, name: "Arun" },
+  { id: 2, name: "Rithika" },
+  { id: 3, name: "Renita" }
+];
+
+const result = students.find(
+  (student) => student.id === 2
+);
+
+console.log(result);
+
+            
+    </script>
+</body>
+</html>
